@@ -1,0 +1,13 @@
+user frontend
+topic read sensores/+/temperatura
+topic read sensores/+/humedad
+topic read sensores/+/estado
+
+user sensor1
+topic write sensores/1/temperatura
+topic write sensores/1/humedad
+topic write sensores/1/estado
+
+user api
+topic read sensores/#
+topic write comandos/#
