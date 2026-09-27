@@ -41,7 +41,7 @@ public class MqttBrokerConfig {
         return factory;
     }
     @Bean 
-    public MessageChannel mqttInputChannel(){return new QueueChannel(10_000);}
+    public MessageChannel mqttInputChannel(){return new DirectChannel();}
     @Bean 
     public MessageProducer mqttInbound(){
         MqttPahoMessageDrivenChannelAdapter adapter = new MqttPahoMessageDrivenChannelAdapter(mqttBrokerProperties.getId(), mqttClientFactory(),mqttBrokerProperties.getTopic());
