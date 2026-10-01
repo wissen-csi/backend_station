@@ -4,7 +4,6 @@ import java.util.UUID;
 
 import javax.management.relation.Role;
 
-import org.hibernate.annotations.AnyDiscriminatorImplicitValues.Strategy;
 
 import com.station.project.domain.model.User;
 
@@ -20,13 +19,17 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity 
 @Table(name = "users_auth")
 @NoArgsConstructor 
 @AllArgsConstructor 
 @Builder 
+@Getter 
+@Setter 
 public class UserAuthPersisted {
     @Id 
     private UUID id;
