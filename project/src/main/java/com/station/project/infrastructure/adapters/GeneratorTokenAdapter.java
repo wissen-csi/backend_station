@@ -37,5 +37,13 @@ public class GeneratorTokenAdapter implements GeneratorTokenPort {
         byte[] key = Decoders.BASE64.decode(keyRaw);
         return Keys.hmacShaKeyFor(key);
     }
+    @Override
+    public String generateToken(UserAuth user) {
+        return generate(keyRaw, user, this.expiration);
+    }
+    @Override
+    public String generateRefreshToken(UserAuth user) {
+        return  generate(keyRaw, user, this.refresh);
+    }
 
 }

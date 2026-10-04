@@ -39,7 +39,7 @@ public class TokenPersisted {
     private  boolean expired;
     @OneToOne (fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn (name = "user_id", nullable = false)
-    private UserAuth userAuth;
+    private UserAuthPersisted userAuth;
     @Column (nullable = false)
     @Builder.Default
     private TokenType tokenType = TokenType.BARRER;

@@ -2,14 +2,14 @@ package com.station.project.application.services;
 
 
 import com.station.project.application.port.in.CreateAuthUser;
-import com.station.project.application.port.in.findByNameUserAuth;
+import com.station.project.application.port.in.FindByNameUserAuth;
 import com.station.project.application.port.out.PasswordEnconderPort;
 import com.station.project.application.port.out.UserAuthRepositoryPort;
 import com.station.project.domain.model.UserAuth;
 
 import lombok.AllArgsConstructor;
 @AllArgsConstructor 
-public class UserAuthService implements CreateAuthUser, findByNameUserAuth  {
+public class UserAuthService implements CreateAuthUser, FindByNameUserAuth  {
 
     private UserAuthRepositoryPort repository;
     private PasswordEnconderPort passwordEnconderPort;

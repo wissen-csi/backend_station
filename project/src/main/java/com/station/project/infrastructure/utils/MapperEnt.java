@@ -1,13 +1,16 @@
 package com.station.project.infrastructure.utils;
 
+import com.station.project.domain.model.Token;
 import com.station.project.domain.model.User;
 import com.station.project.domain.model.UserAuth;
+import com.station.project.infrastructure.persistence.Entities.TokenPersisted;
 import com.station.project.infrastructure.persistence.Entities.UserAuthPersisted;
 import com.station.project.infrastructure.persistence.Entities.UserPersisted;
 
 public class MapperEnt {
  public static UserPersisted UserPersisted(User user){
     return UserPersisted.builder()
+    .id(user.id())
     .name(user.name())
     .email(user.email())
     .dni(user.dni())
@@ -16,6 +19,7 @@ public class MapperEnt {
  }
  public static UserAuthPersisted userAuthPersisted(UserAuth user){
    return  UserAuthPersisted.builder()
+   .id(user.id())
    .userName(user.userName())
    .role(user.role())
    .user(user.user())
@@ -38,5 +42,25 @@ public class MapperEnt {
       .dni(user.getDni())
       .birthdate(user.getBirthdate())
       .build();
+ }
+ public static TokenPersisted tokenPersisted(Token token){
+  return  TokenPersisted.builder()
+  .id(token.id())
+  .token(token.token())
+  .revoke(token.revoke())
+  .expired(token.expired())
+  .userAuth(userAuthPersisted(token.user()))
+  .tokenType(token.tokenType())
+  .build();
+ }
+ public static  Token token(TokenPersisted token){
+  return  Token.builder()
+  .id(token.getId())
+  .token(token.getToken())
+  .revoke(token.isRevoke())
+  .expired(token.isExpired())
+  .user(userAuth(token.getUserAuth()))
+  .tokenType(token.getTokenType())
+  .build();
  }
 }
