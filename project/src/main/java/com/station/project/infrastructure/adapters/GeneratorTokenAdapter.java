@@ -2,6 +2,7 @@ package com.station.project.infrastructure.adapters;
 
 import java.util.Date;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.crypto.SecretKey;
 
@@ -44,6 +45,36 @@ public class GeneratorTokenAdapter implements GeneratorTokenPort {
     @Override
     public String generateRefreshToken(UserAuth user) {
         return  generate(keyRaw, user, this.refresh);
+    }
+    @Override
+    public String generateMQTTFront(long expiration) {
+        return Jwts.builder()
+    .id(UUID.randomUUID().toString())
+    .subject("frontend")
+    .issuedAt(new Date())
+    .expiration(new Date(System.currentTimeMillis()+expiration))
+    .signWith(key())
+    .compact();
+    }
+    @Override
+    public String generateMQTTAdmin(long expiration) {
+                return Jwts.builder()
+    .id(UUID.randomUUID().toString())
+    .subject("admin")
+    .issuedAt(new Date())
+    .expiration(new Date(System.currentTimeMillis()+expiration))
+    .signWith(key())
+    .compact();
+    }
+    @Override
+    public String generateMQTTBoya(long expiration) {
+        return Jwts.builder()
+    .id(UUID.randomUUID().toString())
+    .subject("boya-001")
+    .issuedAt(new Date())
+    .expiration(new Date(System.currentTimeMillis()+expiration))
+    .signWith(key())
+    .compact();
     }
 
 }

@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.station.project.infrastructure.persistence.Entities.TokenPersisted;
 
-public interface SpringDataTokenRepository extends JpaRepository<TokenPersisted,UUID> {
-    List<TokenPersisted> findAllByUserIdAndValidIsTrueAndRevokedIsFalse(UUID id);
+public interface SpringDataTokenRepository extends JpaRepository<TokenPersisted, UUID> {
+    List<TokenPersisted> findAllByUserAuthIdAndExpiredIsFalseAndRevokedIsFalse(UUID id);
 }

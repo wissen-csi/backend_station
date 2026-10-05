@@ -3,7 +3,6 @@ package com.station.project.infrastructure.persistence.Entities;
 import java.util.UUID;
 
 import com.station.project.domain.enumerations.TokenType;
-import com.station.project.domain.model.UserAuth;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,7 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,10 +33,10 @@ public class TokenPersisted {
     @Column (nullable = false)
     private String token;
     @Column (nullable = false)
-    private boolean revoke;
+    private boolean revoked;
     @Column (nullable = false)
     private  boolean expired;
-    @OneToOne (fetch = FetchType.LAZY, orphanRemoval = true)
+    @ManyToOne  (fetch = FetchType.LAZY)
     @JoinColumn (name = "user_id", nullable = false)
     private UserAuthPersisted userAuth;
     @Column (nullable = false)

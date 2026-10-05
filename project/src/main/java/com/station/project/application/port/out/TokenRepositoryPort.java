@@ -7,5 +7,7 @@ import com.station.project.domain.model.UserAuth;
 
 public interface TokenRepositoryPort {
 public Token save(Token token);
-public List<Token> findAllValidIsFalseOrRevokedIsFalseByUserId(UserAuth user);
+public List<Token> findAllByUserAuthIdAndExpiredIsFalseAndRevokedIsFalse(UserAuth user);
+public List<Token> findAll();
+public List<Token> saveAll(List<Token> list);
 }
