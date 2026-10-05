@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 import  com.station.project.application.port.out.UserRepositoryPort;
 import com.station.project.domain.model.User;
-import com.station.project.infrastructure.persistence.Entities.UserPersisted;
 import com.station.project.infrastructure.persistence.repositories.SpringDataUserRepository;
 import com.station.project.infrastructure.utils.MapperEnt;
 
@@ -19,7 +18,7 @@ public class JpaUserRepositoryAdapter implements UserRepositoryPort {
 
     @Override
     public User save(User user) {
-        return MapperEnt.user(repository.save(new UserPersisted()));
+        return MapperEnt.user(repository.save(MapperEnt.UserPersisted(user)));
         
     }
 
