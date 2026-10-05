@@ -5,14 +5,14 @@ import java.util.UUID;
 
 import com.station.project.application.port.in.CreateUser;
 import com.station.project.application.port.in.DeleteUser;
-import com.station.project.application.port.in.updateUser;
+import com.station.project.application.port.in.UpdateUser;
 import com.station.project.application.port.out.UserRepositoryPort;
 import com.station.project.domain.model.User;
 
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class UserService implements CreateUser, updateUser, DeleteUser {
+public class UserService implements CreateUser, UpdateUser, DeleteUser {
 
     private UserRepositoryPort repository;
 

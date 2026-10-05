@@ -31,7 +31,7 @@ public class DataPersisted {
     @ManyToOne
     @JoinColumn(name = "sensor_id")
 
-    sensorPersisted sensor; 
+    SensorPersisted sensor; 
     @Column (nullable = false)
     int data;
     @Column (nullable = false)

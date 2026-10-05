@@ -16,7 +16,7 @@ import lombok.Setter;
 @AllArgsConstructor 
 @Getter 
 @Setter 
-public class sensorPersisted {
+public class SensorPersisted {
     @Id 
     private String id;
     @Column (nullable = false)
