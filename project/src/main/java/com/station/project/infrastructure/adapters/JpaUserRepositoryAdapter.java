@@ -7,8 +7,6 @@ import com.station.project.infrastructure.persistence.repositories.SpringDataUse
 import com.station.project.infrastructure.utils.MapperEnt;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-@NoArgsConstructor 
 @AllArgsConstructor 
 public class JpaUserRepositoryAdapter implements UserRepositoryPort {
     private  SpringDataUserRepository repository;

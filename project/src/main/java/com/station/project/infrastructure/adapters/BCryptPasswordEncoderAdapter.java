@@ -5,9 +5,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import com.station.project.application.port.out.PasswordEnconderPort;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
-@NoArgsConstructor 
+ 
 @AllArgsConstructor 
 public class BCryptPasswordEncoderAdapter implements PasswordEnconderPort {
     private PasswordEncoder passwordEncoder;

@@ -40,7 +40,5 @@ public class TokenPersisted {
     @JoinColumn (name = "user_id", nullable = false)
     private UserAuthPersisted userAuth;
     @Column (nullable = false)
-    @Builder.Default
-    private TokenType tokenType = TokenType.BARRER;
-
+    private TokenType tokenType ;
 }

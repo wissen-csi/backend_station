@@ -2,7 +2,7 @@ package com.station.project.infrastructure.persistence.Entities;
 
 import java.util.UUID;
 
-import javax.management.relation.Role;
+import com.station.project.domain.enumerations.Role;
 
 
 import com.station.project.domain.model.User;

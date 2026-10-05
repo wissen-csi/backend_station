@@ -2,7 +2,7 @@ package com.station.project.domain.model;
 
 import java.util.UUID;
 
-import javax.management.relation.Role;
+import com.station.project.domain.enumerations.Role;
 
 import lombok.Builder;
 @Builder 

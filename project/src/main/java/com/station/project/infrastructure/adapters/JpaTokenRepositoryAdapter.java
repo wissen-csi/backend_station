@@ -3,6 +3,7 @@ package com.station.project.infrastructure.adapters;
 import java.util.List;
 
 import com.station.project.application.port.out.TokenRepositoryPort;
+import com.station.project.domain.enumerations.TokenType;
 import com.station.project.domain.model.Token;
 import com.station.project.domain.model.UserAuth;
 import com.station.project.infrastructure.persistence.Entities.TokenPersisted;
@@ -33,6 +34,10 @@ public class JpaTokenRepositoryAdapter implements TokenRepositoryPort{
          
         return repository.saveAll(list.stream().map((token)-> MapperEnt.tokenPersisted(token)).toList()).stream().map((token) -> MapperEnt.token(token)).toList();
 
+    }
+    @Override
+    public List<Token> findAllByTokenTypeAndExpiredIsFalseAndRevokedIsFalse(TokenType tokenType) {
+        return repository.findAllByTokenTypeAndExpiredIsFalseAndRevokedIsFalse(tokenType).stream().map((token) -> MapperEnt.token(token)).toList();
     }
     
 

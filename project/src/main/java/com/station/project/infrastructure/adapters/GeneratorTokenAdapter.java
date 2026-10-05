@@ -47,7 +47,7 @@ public class GeneratorTokenAdapter implements GeneratorTokenPort {
         return  generate(keyRaw, user, this.refresh);
     }
     @Override
-    public String generateMQTTFront(long expiration) {
+    public String generateMQTTFront() {
         return Jwts.builder()
     .id(UUID.randomUUID().toString())
     .subject("frontend")
@@ -57,7 +57,7 @@ public class GeneratorTokenAdapter implements GeneratorTokenPort {
     .compact();
     }
     @Override
-    public String generateMQTTAdmin(long expiration) {
+    public String generateMQTTAdmin() {
                 return Jwts.builder()
     .id(UUID.randomUUID().toString())
     .subject("admin")
@@ -67,7 +67,7 @@ public class GeneratorTokenAdapter implements GeneratorTokenPort {
     .compact();
     }
     @Override
-    public String generateMQTTBoya(long expiration) {
+    public String generateMQTTBoya() {
         return Jwts.builder()
     .id(UUID.randomUUID().toString())
     .subject("boya-001")

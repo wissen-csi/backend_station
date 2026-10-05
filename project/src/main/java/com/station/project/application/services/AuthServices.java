@@ -28,14 +28,14 @@ public class AuthServices implements Login {
         .revoked(false)
         .expired(false)
         .user(user)
-        .tokenType(TokenType.BARRER)
+        .tokenType(TokenType.ACCESS)
         .build();
         Token refresh = Token.builder()
         .token(jwtTokenRefresh)
         .revoked(false)
         .expired(false)
         .user(user)
-        .tokenType(TokenType.BARRER)
+        .tokenType(TokenType.REFRESH)
         .build();
         tokenService.revokedAll(user);
         tokenService.save(refresh);
