@@ -35,5 +35,7 @@ public class UserPersisted {
     private  String dni;
     @Column(nullable = false)
     private LocalDate birthdate;
+    @Column 
+    private boolean active;
 
 }

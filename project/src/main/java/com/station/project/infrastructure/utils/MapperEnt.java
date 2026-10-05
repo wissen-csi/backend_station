@@ -15,6 +15,7 @@ public class MapperEnt {
     .email(user.email())
     .dni(user.dni())
     .birthdate(user.birthdate())
+    .active(user.active())
     .build();
  }
  public static UserAuthPersisted userAuthPersisted(UserAuth user){
@@ -41,6 +42,7 @@ public class MapperEnt {
       .email(user.getEmail())
       .dni(user.getDni())
       .birthdate(user.getBirthdate())
+      .active(user.isActive())
       .build();
  }
  public static TokenPersisted tokenPersisted(Token token){

@@ -4,9 +4,6 @@ import java.util.UUID;
 
 import com.station.project.domain.enumerations.Role;
 
-
-import com.station.project.domain.model.User;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

@@ -5,5 +5,5 @@ import java.util.UUID;
 
 import lombok.Builder;
 @Builder 
-public record User(UUID id, String name, String email, String dni, LocalDate birthdate) {
+public record User(UUID id, String name, String email, String dni, LocalDate birthdate, boolean active) {
 }
