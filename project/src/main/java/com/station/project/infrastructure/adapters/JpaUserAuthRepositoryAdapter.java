@@ -3,6 +3,8 @@ package com.station.project.infrastructure.adapters;
 
 import java.util.Optional;
 
+import org.springframework.stereotype.Component;
+
 import com.station.project.application.port.out.UserAuthRepositoryPort;
 import com.station.project.domain.model.UserAuth;
 import com.station.project.infrastructure.persistence.Entities.UserAuthPersisted;
@@ -10,7 +12,7 @@ import com.station.project.infrastructure.persistence.repositories.SpringDataUsa
 import com.station.project.infrastructure.utils.MapperEnt;
 
 import lombok.AllArgsConstructor;
- 
+ @Component 
 @AllArgsConstructor 
 public class JpaUserAuthRepositoryAdapter implements UserAuthRepositoryPort {
 

@@ -1,12 +1,13 @@
 package com.station.project.infrastructure.adapters;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 import com.station.project.application.port.out.PasswordEnconderPort;
 
 import lombok.AllArgsConstructor;
 
- 
+ @Component 
 @AllArgsConstructor 
 public class BCryptPasswordEncoderAdapter implements PasswordEnconderPort {
     private PasswordEncoder passwordEncoder;

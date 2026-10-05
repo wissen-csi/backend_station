@@ -1,5 +1,7 @@
 package com.station.project.infrastructure.adapters;
 
+import org.springframework.stereotype.Component;
+
 import  com.station.project.application.port.out.UserRepositoryPort;
 import com.station.project.domain.model.User;
 import com.station.project.infrastructure.persistence.Entities.UserPersisted;
@@ -8,6 +10,7 @@ import com.station.project.infrastructure.utils.MapperEnt;
 
 import lombok.AllArgsConstructor;
 @AllArgsConstructor 
+@Component 
 public class JpaUserRepositoryAdapter implements UserRepositoryPort {
     private  SpringDataUserRepository repository;
 

@@ -2,6 +2,8 @@ package com.station.project.infrastructure.adapters;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.station.project.application.port.out.TokenRepositoryPort;
 import com.station.project.domain.enumerations.TokenType;
 import com.station.project.domain.model.Token;
@@ -12,6 +14,7 @@ import com.station.project.infrastructure.utils.MapperEnt;
 
 import lombok.AllArgsConstructor;
 @AllArgsConstructor 
+@Component 
 public class JpaTokenRepositoryAdapter implements TokenRepositoryPort{
 
         private SpringDataTokenRepository repository;

@@ -21,7 +21,7 @@ public class MailManager {
     private final JavaMailSender javaMailSender;
     private  final TemplateEngine templateEngine;
     @Value("${spring.mail.username}")
-    private final String sender;
+    private  String sender;
     
     public void sendMail(String mail, String message, String title) throws MessagingException{
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();

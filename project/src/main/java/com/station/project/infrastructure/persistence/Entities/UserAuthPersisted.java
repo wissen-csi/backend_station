@@ -42,5 +42,5 @@ public class UserAuthPersisted {
     @OneToOne (fetch = FetchType.LAZY)
     @MapsId 
     @JoinColumn (name = "user_id", nullable = false, unique = true)
-    private  User user;
+    private  UserPersisted user;
 }

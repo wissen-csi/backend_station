@@ -22,7 +22,7 @@ public class MapperEnt {
    .id(user.id())
    .userName(user.userName())
    .role(user.role())
-   .user(user.user())
+   .user(UserPersisted(user.user()))
    .build();
  }
  public  static  UserAuth userAuth(UserAuthPersisted user){
@@ -31,7 +31,7 @@ public class MapperEnt {
   .userName(user.getUserName())
   .password(user.getPassword())
   .role(user.getRole())
-  .user(user.getUser())
+  .user(user(user.getUser()))
   .build();
  }
  public static User user(UserPersisted user){
