@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+        <link rel="stylesheet" href="css/style.css"/>
+    <style>
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            "darkMode": "class",
+            "theme": {
+                "extend": {
+                    "colors": {
+                        "on-tertiary-container": "#00452e",
+                        "tertiary-container": "#1bbd85",
+                        "on-secondary-fixed": "#001e2f",
+                        "surface-tint": "#4cd7f6",
+                        "on-primary": "#003640",
+                        "on-primary-fixed": "#001f26",
+                        "surface": "#0b1326",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "inverse-surface": "#dae2fd",
+                        "surface-container-low": "#131b2e",
+                        "on-tertiary-fixed": "#002113",
+                        "secondary-fixed-dim": "#89ceff",
+                        "surface-container-highest": "#2d3449",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-error": "#690005", "tertiary-fixed-dim": "#4edea3",
+                        "on-primary-fixed-variant": "#004e5c",
+                        "surface-dim": "#0b1326",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-container": "#00424f",
+                        "primary-fixed": "#acedff",
+                        "on-secondary-fixed-variant": "#004c6e",
+                        "inverse-on-surface": "#283044",
+                        "surface-container-lowest": "#060e20",
+                        "secondary-fixed": "#c9e6ff",
+                        "primary-fixed-dim": "#4cd7f6",
+                        "background": "#0b1326",
+                        "inverse-primary": "#00687a",
+                        "on-secondary": "#00344d",
+                        "on-surface-variant": "#bcc9cd",
+                        "tertiary": "#4edea3",
+                        "surface-variant": "#2d3449",
+                        "surface-container": "#171f33",
+                        "surface-bright": "#31394d",
+                        "error": "#ffb4ab",
+                        "primary": "#4cd7f6",
+                        "secondary": "#89ceff",
+                        "primary-container": "#06b6d4",
+                        "surface-container-high": "#222a3d",
+                        "secondary-container": "#00a2e6",
+                        "outline-variant": "#3d494c",
+                        "on-surface": "#dae2fd",
+                        "on-tertiary": "#003824",
+                        "outline": "#869397",
+                        "on-background": "#dae2fd",
+                        "on-secondary-container": "#00344e"
+                    }, "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter-mobile": "1rem",
+                        "space-xl": "2rem",
+                        "header-height": "4rem",
+                        "space-xs": "0.5rem",
+                        "space-md": "1rem",
+                        "space-sm": "0.75rem",
+                        "sidebar-width": "16rem",
+                        "space-2xl": "3rem",
+                        "space-lg": "1.5rem",
+                        "gutter-desktop": "1.5rem",
+                        "space-2xs": "0.25rem"
+                    }, "fontFamily": {
+                        "body-md": ["Geist"],
+                        "metric-val": ["Geist"],
+                        "body-lg": ["Geist"],
+                        "headline-lg": ["Manrope"],
+                        "body-sm": ["Geist"],
+                        "headline-xl": ["Manrope"],
+                        "label-md": ["Geist"],
+                        "display-lg-mobile": ["Manrope"],
+                        "display-lg": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "label-sm": ["Geist"]
+                    }, "fontSize": {
+                        "body-md": ["0.875rem", {
+                            "lineHeight": "1.375rem",
+                            "fontWeight": "400"
+                        }],
+                        "metric-val": ["1.875rem", {
+                            "lineHeight": "2.25rem",
+                            "letterSpacing": "-0.02em",
+                            "fontWeight": "600"
+                        }],
+                        "body-lg": ["1.125rem", {
+                            "lineHeight": "1.75rem",
+                            "fontWeight": "400"
+                        }],
+                        "headline-lg": ["1.5rem", {
+                            "lineHeight": "2rem",
+                            "letterSpacing": "-0.015em",
+                            "fontWeight": "600"
+                        }],
+                        "body-sm": ["0.75rem", { "lineHeight": "1.125rem",
+                         "fontWeight": "400" }],
+                        "headline-xl": ["2rem", {
+                            "lineHeight": "2.5rem", "letterSpacing": "-0.02em",
+                            "fontWeight": "600"
+                        }], "label-md": ["0.75rem", {
+                            "lineHeight": "1rem",
+                            "letterSpacing": "0.05em", "fontWeight": "500"
+                        }], "display-lg-mobile": ["2rem",
+                            { "lineHeight": "2.5rem",
+                             "letterSpacing": "-0.02em",
+                             "fontWeight": "700" }],
+                        "display-lg": ["3rem", {
+                            "lineHeight": "3.5rem",
+                             "letterSpacing": "-0.025em",
+                            "fontWeight": "700"
+                        }], "headline-md": ["1.25rem", {
+                            "lineHeight": "1.75rem",
+                            "letterSpacing": "-0.01em",
+                             "fontWeight": "600"
+                        }], "label-sm": ["0.6875rem",
+                            {
+                                "lineHeight": "0.875rem", 
+                                "letterSpacing": "0.08em",
+                                 "fontWeight": "600"
+
+                            }]
+                    }
+                }
+            }
+        };</script>
+</head>
+
+<body class="bg-background font-body-md text-on-surface antialiased min-h-screen">
+    <aside
+        class="fixed left-0 top-0 h-full w-sidebar-width bg-surface-container-low z-50 flex flex-col justify-between py-space-md shadow-[0_1px_8px_rgba(0,0,0,0.25)]">
+        <div class="flex flex-col gap-space-lg">
+            <div class="flex items-center gap-space-xs px-space-md"><img alt="EcoSense Telemetry Logo"
+                    class="h-8 w-auto object-contain"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAim-ckI56_9b6QeytXJOEMIa_T9CKlHuLOk7dC4-Oaumb9q7pW2QdWWdQV7I-S65rJKOM8oPidXLI6d3PA1TRwBzK51eUBV3-ehzLpHmN-UXdHj3OntNK_3GymC-ZiiOJDoyXTKnkCtZJlb0j3NB90cxug3Fpp4rFWFEa_z2KAO7ViihvqESRhTo47GydKTKpw9ybwwjmCcmAiwHtQZ8j3CnxvcEYQzbAPw2GRouEeRPQ-HMhuqCan" />
+                <div class="flex flex-col"><span
+                        class="font-headline-md text-headline-md tracking-tight text-on-surface leading-none">AuraSense</span><span
+                        class="font-label-sm text-label-sm uppercase tracking-widest text-primary">Telemetry v2.4</span>
+                </div>
+            </div>
+            <div class="px-space-md">
+                <div
+                    class="flex items-center gap-space-xs px-space-xs py-space-2xs rounded-lg bg-surface-container-high/60">
+                    <span class="material-symbols-outlined text-primary text-[18px]">pin_drop</span>
+                    <div class="flex flex-col"><span
+                            class="font-label-sm text-label-sm uppercase text-on-surface-variant">Estación
+                            Activa</span><span
+                            class="font-body-sm text-body-sm font-semibold text-on-surface truncate max-w-[170px]">Valle
+                            Central - Nodo 01</span></div>
+                </div>
+            </div>
+            <nav class="flex flex-col gap-space-2xs px-space-xs"
+                data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a
+                    aria-current="page"
+                    class="flex items-center gap-space-xs px-space-sm py-space-xs transition-colors bg-primary-container text-on-primary-container font-semibold rounded-lg"
+                    data-path="monitoreo-general" href="#"><span
+                        class="material-symbols-outlined text-[20px]">dashboard</span><span
+                        class="font-body-md text-body-md">Monitoreo General</span></a><a
+                    class="flex items-center gap-space-xs px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors"
+                    data-path="analisis-tendencias" href="#"><span
+                        class="material-symbols-outlined text-[20px]">ssid_chart</span><span
+                        class="font-body-md text-body-md">Tendencias y Series</span></a><a
+                    class="flex items-center gap-space-xs px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors"
+                    data-path="registro-mediciones" href="#"><span
+                        class="material-symbols-outlined text-[20px]">table_chart</span><span
+                        class="font-body-md text-body-md">Registro de Datos</span></a><a
+                    class="flex items-center gap-space-xs px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors"
+                    data-path="red-sensores" href="#"><span
+                        class="material-symbols-outlined text-[20px]">sensors</span><span
+                        class="font-body-md text-body-md">Red de Nodos</span></a><a
+                    class="flex items-center gap-space-xs px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors"
+                    data-path="alertas-umbrales" href="#"><span
+                        class="material-symbols-outlined text-[20px]">warning</span><span
+                        class="font-body-md text-body-md">Alertas de Umbral</span></a></nav>
+        </div>
+        <div class="px-space-md flex flex-col gap-space-sm">
+            <div class="p-space-xs rounded-xl bg-surface-container/70 flex flex-col gap-space-2xs"><span
+                    class="font-label-sm text-label-sm text-on-surface-variant uppercase">Enlace RF / LoRa</span>
+                <div class="flex items-center justify-between text-on-surface"><span
+                        class="font-body-sm text-body-sm">RSSI: -68 dBm</span><span
+                        class="font-label-sm text-label-sm text-tertiary">99.8% SNR</span></div>
+            </div>
+            <div class="flex items-center justify-between px-space-2xs text-on-surface-variant"><span
+                    class="font-label-sm text-label-sm">SysTime UTC-4</span><span
+                    class="font-label-sm text-label-sm font-mono">14:28:02</span></div>
+        </div>
+    </aside>
+    <div class="pl-sidebar-width">
+        <header
+            class="fixed top-0 left-sidebar-width right-0 h-header-height bg-surface/85 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.18)]">
+            <div class="h-full w-full px-space-lg flex items-center justify-between">
+                <div class="flex items-center gap-space-md">
+                    <div class="flex items-center gap-space-xs"><span
+                            class="font-headline-md text-headline-md text-on-surface">AuraSense - Estación Central
+                            v2.4</span></div>
+                    <div
+                        class="flex items-center gap-space-xs px-space-xs py-space-2xs rounded-full bg-surface-container-high">
+                        <span class="flex h-2 w-2 relative"><span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span><span
+                                class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span></span><span
+                            class="font-label-sm text-label-sm font-medium text-tertiary tracking-wide uppercase">En
+                            línea / Transmitiendo en vivo (12s)</span></div>
+                </div>
+                <div class="flex items-center gap-space-md">
+                    <div
+                        class="hidden xl:flex items-center gap-space-xs bg-surface-container-low px-space-xs py-space-2xs rounded-lg">
+                        <span
+                            class="material-symbols-outlined text-on-surface-variant text-[18px]">location_on</span><span
+                            class="font-body-sm text-body-sm text-on-surface">Valle Central - Nodo 01</span><span
+                            class="material-symbols-outlined text-on-surface-variant text-[16px]">unfold_more</span>
+                    </div>
+                    <div class="flex items-center bg-surface-container-low p-space-2xs rounded-lg">
+                        <nav class="flex items-center gap-space-2xs"
+                            data-active-classes="bg-surface-container-high text-primary font-semibold rounded-lg"><a
+                                class="px-space-xs py-space-2xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors"
+                                data-path="filtro-24h" href="#">Últimas 24 Horas</a><a
+                                class="px-space-xs py-space-2xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors"
+                                data-path="filtro-7d" href="#">Última semana</a><a
+                                class="px-space-xs py-space-2xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors"
+                                data-path="filtro-30d" href="#">Últimos 30 días</a><a
+                                class="px-space-xs py-space-2xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors"
+                                data-path="filtro-personalizado" href="#">Rango personalizado</a></nav>
+                    </div><button
+                        class="flex items-center gap-space-2xs px-space-sm py-space-xs rounded-lg bg-primary-container text-on-primary font-body-sm text-body-sm font-semibold hover:bg-surface-tint hover:text-on-primary-fixed transition-colors shadow-sm"
+                        type="button"><span
+                            class="material-symbols-outlined text-[18px]">download</span><span>Exportar</span></button>
+                    <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span
+                            class="material-symbols-outlined text-on-primary text-[18px]">person</span></div>
+                </div>
+            </div>
+        </header>
+        <main class="w-full pt-header-height bg-surface min-h-screen px-space-lg py-space-lg">
+            <div class="flex flex-col w-full gap-space-lg">
+                <!-- Control & Filter Toolbar Panel -->
+                <section class="w-full bg-surface-container-low rounded-xl p-space-md shadow-md">
+                    <div class="flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-space-md">
+                        <!-- Station selector & telemetry pulse -->
+                        <div class="flex flex-wrap items-center gap-space-md">
+                            <div
+                                class="flex items-center gap-space-xs bg-surface-container px-space-sm py-space-xs rounded-lg">
+                                <span class="material-symbols-outlined text-primary text-[20px]">hub</span>
+                                <div class="flex flex-col">
+                                    <span
+                                        class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Nodo
+                                        de Medición</span>
+                                    <div class="flex items-center gap-space-2xs cursor-pointer group">
+                                        <span
+                                            class="font-body-md text-body-md font-semibold text-on-surface group-hover:text-primary transition-colors">Nodo
+                                            01 - Cuenca Río Verde</span>
+                                        <span
+                                            class="material-symbols-outlined text-on-surface-variant text-[18px]">arrow_drop_down</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="hidden sm:flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg bg-surface-container/60">
+                                <span class="material-symbols-outlined text-tertiary text-[18px]">sync</span>
+                                <div class="flex items-center gap-space-2xs">
+                                    <span class="font-label-sm text-label-sm text-on-surface-variant">Última
+                                        sinc:</span>
+                                    <span class="font-body-sm text-body-sm font-semibold text-tertiary"
+                                        id="sync-time-label">Hace 42 segundos</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Time frame selectors & action triggers -->
+                        <div class="flex flex-wrap items-center gap-space-sm justify-between xl:justify-end">
+                            <!-- Interactive timeframe buttons -->
+                            <div class="flex items-center bg-surface-container p-space-2xs rounded-lg gap-space-2xs"
+                                id="timeframe-container">
+                                <button
+                                    class="timeframe-btn px-space-sm py-space-xs rounded-lg bg-primary-container text-on-primary font-body-sm text-body-sm font-semibold shadow-sm transition-all"
+                                    data-timeframe="24h" type="button">
+                                    Últimas 24 Horas
+                                </button>
+                                <button
+                                    class="timeframe-btn px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-body-sm text-body-sm font-medium transition-all"
+                                    data-timeframe="7d" type="button">
+                                    Última Semana
+                                </button>
+                                <button
+                                    class="timeframe-btn px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-body-sm text-body-sm font-medium transition-all"
+                                    data-timeframe="30d" type="button">
+                                    Últimos 30 días
+                                </button>
+                                <button
+                                    class="timeframe-btn hidden md:flex items-center gap-space-2xs px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-body-sm text-body-sm font-medium transition-all"
+                                    data-timeframe="custom" type="button">
+                                    <span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                                    <span>Personalizado</span>
+                                </button>
+                            </div>
+                            <!-- Action buttons -->
+                            <div class="flex items-center gap-space-xs">
+                                <button
+                                    class="flex items-center gap-space-2xs px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-bright hover:text-primary transition-colors text-body-sm font-body-sm"
+                                    id="btn-refresh" type="button">
+                                    <span class="material-symbols-outlined text-[18px]">refresh</span>
+                                    <span class="hidden sm:inline font-medium">Actualizar ahora</span>
+                                </button>
+                                <button
+                                    class="flex items-center gap-space-2xs px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-bright hover:text-secondary transition-colors text-body-sm font-body-sm"
+                                    id="btn-export-csv" type="button">
+                                    <span class="material-symbols-outlined text-[18px]">description</span>
+                                    <span class="font-medium">Exportar CSV</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Telemetry Sensor Cards Grid -->
+                <section class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-space-md">
+                    <!-- 1. Temperatura -->
+                    <div
+                        class="bg-surface-container-low rounded-xl p-space-md flex flex-col justify-between shadow-sm relative overflow-hidden group hover:bg-surface-container transition-all duration-200">
+                        <div class="flex items-center justify-between w-full">
+                            <span
+                                class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-medium">Temperatura</span>
+                            <div
+                                class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+                                <span class="material-symbols-outlined text-[18px]">thermostat</span>
+                            </div>
+                        </div>
+                        <div class="my-space-sm">
+                            <div class="flex items-baseline gap-space-2xs">
+                                <span class="font-metric-val text-metric-val text-on-surface">23.4</span>
+                                <span class="font-body-md text-body-md text-outline">°C</span>
+                            </div>
+                            <div class="flex items-center gap-space-2xs mt-space-2xs">
+                                <span class="material-symbols-outlined text-tertiary text-[16px]">horizontal_rule</span>
+                                <span class="font-label-sm text-label-sm text-tertiary">Tendencia estable</span>
+                            </div>
+                        </div>
+                        <div
+                            class="pt-space-xs bg-surface-container-lowest/40 -mx-space-md -mb-space-md px-space-md pb-space-xs flex items-center justify-between text-on-surface-variant">
+                            <span class="font-label-sm text-label-sm">Mín: <strong
+                                    class="text-on-surface font-mono">18.2°</strong></span>
+                            <span class="font-label-sm text-label-sm">Máx: <strong
+                                    class="text-on-surface font-mono">26.1°</strong></span>
+                        </div>
+                    </div>
+                    <!-- 2. Humedad Relativa -->
+                    <div
+                        class="bg-surface-container-low rounded-xl p-space-md flex flex-col justify-between shadow-sm relative overflow-hidden group hover:bg-surface-container transition-all duration-200">
+                        <div class="flex items-center justify-between w-full">
+                            <span
+                                class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-medium">Humedad</span>
+                            <div
+                                class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+                                <span class="material-symbols-outlined text-[18px]">humidity_percentage</span>
+                            </div>
+                        </div>
+                        <div class="my-space-sm">
+                            <div class="flex items-baseline gap-space-2xs">
+                                <span class="font-metric-val text-metric-val text-on-surface">68</span>
+                                <span class="font-body-md text-body-md text-outline">%</span>
+                            </div>
+                            <div class="flex items-center gap-space-2xs mt-space-2xs">
+                                <span class="material-symbols-outlined text-tertiary text-[16px]">check_circle</span>
+                                <span class="font-label-sm text-label-sm text-tertiary font-medium">Confort
+                                    óptimo</span>
+                            </div>
+                        </div>
+                        <div
+                            class="pt-space-xs bg-surface-container-lowest/40 -mx-space-md -mb-space-md px-space-md pb-space-xs flex items-center justify-between text-on-surface-variant">
+                            <span class="font-label-sm text-label-sm">Pto. Rocío</span>
+                            <span class="font-label-sm text-label-sm font-mono text-on-surface">17.1 °C</span>
+                        </div>
+                    </div>
+                    <!-- 3. Presión Atmosférica -->
+                    <div
+                        class="bg-surface-container-low rounded-xl p-space-md flex flex-col justify-between shadow-sm relative overflow-hidden group hover:bg-surface-container transition-all duration-200">
+                        <div class="flex items-center justify-between w-full">
+                            <span
+                                class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-medium">Presión</span>
+                            <div
+                                class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-primary-fixed-dim">
+                                <span class="material-symbols-outlined text-[18px]">compress</span>
+                            </div>
+                        </div>
+                        <div class="my-space-sm">
+                            <div class="flex items-baseline gap-space-2xs">
+                                <span class="font-metric-val text-metric-val text-on-surface">1013.2</span>
+                                <span class="font-body-md text-body-md text-outline">hPa</span>
+                            </div>
+                            <div class="flex items-center gap-space-2xs mt-space-2xs">
+                                <span class="material-symbols-outlined text-primary text-[16px]">trending_up</span>
+                                <span class="font-label-sm text-label-sm text-primary">+0.4 hPa/3h</span>
+                            </div>
+                        </div>
+                        <div
+                            class="pt-space-xs bg-surface-container-lowest/40 -mx-space-md -mb-space-md px-space-md pb-space-xs flex items-center justify-between text-on-surface-variant">
+                            <span class="font-label-sm text-label-sm">Nivel de mar</span>
+                            <span class="font-label-sm text-label-sm font-mono text-on-surface">1014.1 hPa</span>
+                        </div>
+                    </div>
+                    <!-- 4. Viento y Dirección -->
+                    <div
+                        class="bg-surface-container-low rounded-xl p-space-md flex flex-col justify-between shadow-sm relative overflow-hidden group hover:bg-surface-container transition-all duration-200">
+                        <div class="flex items-center justify-between w-full">
+                            <span
+                                class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-medium">Viento</span>
+                            <div
+                                class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary-fixed">
+                                <span class="material-symbols-outlined text-[18px]">air</span>
+                            </div>
+                        </div>
+                        <div class="my-space-sm">
+                            <div class="flex items-baseline gap-space-2xs">
+                                <span class="font-metric-val text-metric-val text-on-surface">14.8</span>
+                                <span class="font-body-md text-body-md text-outline">km/h</span>
+                            </div>
+                            <div class="flex items-center gap-space-2xs mt-space-2xs">
+                                <span
+                                    class="inline-block transform rotate-45 text-secondary text-[16px] material-symbols-outlined">navigation</span>
+                                <span class="font-label-sm text-label-sm text-secondary font-medium">NE (45°)</span>
+                            </div>
+                        </div>
+                        <div
+                            class="pt-space-xs bg-surface-container-lowest/40 -mx-space-md -mb-space-md px-space-md pb-space-xs flex items-center justify-between text-on-surface-variant">
+                            <span class="font-label-sm text-label-sm">Ráfagas</span>
+                            <span class="font-label-sm text-label-sm font-mono text-on-surface">22.5 km/h</span>
+                        </div>
+                    </div>
+                    <!-- 5. Precipitación / Lluvia -->
+                    <div
+                        class="bg-surface-container-low rounded-xl p-space-md flex flex-col justify-between shadow-sm relative overflow-hidden group hover:bg-surface-container transition-all duration-200">
+                        <div class="flex items-center justify-between w-full">
+                            <span
+                                class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-medium">Precipitación</span>
+                            <div
+                                class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-primary-container">
+                                <span class="material-symbols-outlined text-[18px]">rainy</span>
+                            </div>
+                        </div>
+                        <div class="my-space-sm">
+                            <div class="flex items-baseline gap-space-2xs">
+                                <span class="font-metric-val text-metric-val text-on-surface">2.4</span>
+                                <span class="font-body-md text-body-md text-outline">mm</span>
+                            </div>
+                            <div class="flex items-center gap-space-2xs mt-space-2xs">
+                                <span class="material-symbols-outlined text-outline text-[16px]">water_drop</span>
+                                <span class="font-label-sm text-label-sm text-on-surface-variant">Acumulado hoy</span>
+                            </div>
+                        </div>
+                        <div
+                            class="pt-space-xs bg-surface-container-lowest/40 -mx-space-md -mb-space-md px-space-md pb-space-xs flex items-center justify-between text-on-surface-variant">
+                            <span class="font-label-sm text-label-sm">Intensidad</span>
+                            <span class="font-label-sm text-label-sm font-mono text-on-surface">0.0 mm/h</span>
+                        </div>
+                    </div>
+                    <!-- 6. Calidad Hidrológica / Sondas de Agua -->
+                    <div
+                        class="bg-surface-container-low rounded-xl p-space-md flex flex-col justify-between shadow-sm relative overflow-hidden group hover:bg-surface-container transition-all duration-200">
+                        <div class="flex items-center justify-between w-full">
+                            <span
+                                class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-medium">Sonda
+                                Río</span>
+                            <div
+                                class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary">
+                                <span class="material-symbols-outlined text-[18px]">waves</span>
+                            </div>
+                        </div>
+                        <div class="my-space-sm">
+                            <div class="flex items-baseline gap-space-2xs">
+                                <span class="font-metric-val text-metric-val text-tertiary">7.2</span>
+                                <span class="font-body-md text-body-md text-outline">pH</span>
+                            </div>
+                            <div class="flex items-center gap-space-2xs mt-space-2xs">
+                                <span class="font-label-sm text-label-sm text-on-surface">Cond: <strong
+                                        class="text-secondary font-mono">415 µS/cm</strong></span>
+                            </div>
+                        </div>
+                        <div
+                            class="pt-space-xs bg-surface-container-lowest/40 -mx-space-md -mb-space-md px-space-md pb-space-xs flex items-center justify-between text-on-surface-variant">
+                            <span class="font-label-sm text-label-sm">T. Agua</span>
+                            <span class="font-label-sm text-label-sm font-mono text-on-surface">19.1 °C</span>
+                        </div>
+                    </div>
+                </section>
+                <!-- Visual Time-Series Analytics & Chart Section -->
+                <section
+                    class="w-full bg-surface-container-low rounded-xl p-space-md lg:p-space-lg shadow-md flex flex-col gap-space-md">
+                    <!-- Chart Header with Metric Switchers -->
+                    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pb-space-xs">
+                        <div>
+                            <div class="flex items-center gap-space-2xs">
+                                <span class="font-headline-md text-headline-md text-on-surface font-semibold">Análisis
+                                    de Serie Temporal</span>
+                                <span
+                                    class="px-space-xs py-space-2xs rounded-full bg-surface-container-high text-tertiary font-label-sm text-label-sm">Transmisión
+                                    Continua</span>
+                            </div>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant mt-space-2xs">Telemetría de
+                                sensores atmosféricos y fisicoquímicos en intervalos de 15 minutos</p>
+                        </div>
+                        <!-- Variable Tabs -->
+                        <div class="flex flex-wrap items-center bg-surface-container p-space-2xs rounded-lg gap-space-2xs"
+                            id="chart-tabs">
+                            <button
+                                class="chart-tab-btn px-space-sm py-space-xs rounded-lg bg-primary-container text-on-primary font-body-sm text-body-sm font-semibold shadow-sm transition-all"
+                                data-series="temp" type="button">
+                                Temperatura (°C)
+                            </button>
+                            <button
+                                class="chart-tab-btn px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-body-sm text-body-sm font-medium transition-all"
+                                data-series="hum" type="button">
+                                Humedad (%)
+                            </button>
+                            <button
+                                class="chart-tab-btn px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-body-sm text-body-sm font-medium transition-all"
+                                data-series="press" type="button">
+                                Presión (hPa)
+                            </button>
+                            <button
+                                class="chart-tab-btn px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-body-sm text-body-sm font-medium transition-all"
+                                data-series="rain" type="button">
+                                Lluvia (mm)
+                            </button>
+                            <button
+                                class="chart-tab-btn px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-body-sm text-body-sm font-medium transition-all"
+                                data-series="ph" type="button">
+                                pH de Agua
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Chart Visualization Canvas (SVG Precision Plot) -->
+                    <div class="relative w-full bg-surface-container-lowest/70 rounded-xl p-space-md overflow-hidden">
+                        <!-- Interactive Tooltip Overlay (Anchored at 14:30 peak) -->
+                        <div
+                            class="absolute left-[70%] top-[24%] transform -translate-x-1/2 -translate-y-full mb-space-xs hidden md:flex flex-col items-center pointer-events-none z-20">
+                            <div
+                                class="bg-surface-container-highest/95 backdrop-blur-md px-space-sm py-space-xs rounded-lg shadow-xl text-center">
+                                <div class="font-label-sm text-label-sm text-on-surface-variant">Hoy 14:30:00</div>
+                                <div class="font-body-md text-body-md font-semibold text-primary">26.1 °C <span
+                                        class="font-label-sm text-label-sm text-tertiary">(Pico máx)</span></div>
+                            </div>
+                            <div class="w-2 h-2 bg-surface-container-highest rotate-45 -mt-1"></div>
+                        </div>
+                        <!-- Main Responsive SVG Graphic -->
+                        <div class="w-full h-72 sm:h-80 relative flex items-center justify-center">
+                            <svg class="w-full h-full text-primary overflow-visible" preserveaspectratio="none"
+                                viewbox="0 0 1000 320">
+                                <defs>
+                                    <lineargradient id="cyanGradient" x1="0" x2="0" y1="0" y2="1">
+                                        <stop offset="0%" stop-color="#4cd7f6" stop-opacity="0.32"></stop>
+                                        <stop offset="70%" stop-color="#1bbd85" stop-opacity="0.08"></stop>
+                                        <stop offset="100%" stop-color="#0b1326" stop-opacity="0"></stop>
+                                    </lineargradient>
+                                    <lineargradient id="lineStroke" x1="0" x2="1" y1="0" y2="0">
+                                        <stop offset="0%" stop-color="#06b6d4"></stop>
+                                        <stop offset="50%" stop-color="#4cd7f6"></stop>
+                                        <stop offset="100%" stop-color="#4edea3"></stop>
+                                    </lineargradient>
+                                </defs>
+                                <!-- Horizontal Reference Threshold Grid -->
+                                <g opacity="0.45" stroke="#2d3449" stroke-dasharray="4 6" stroke-width="1">
+                                    <line x1="50" x2="980" y1="40" y2="40"></line>
+                                    <line x1="50" x2="980" y1="100" y2="100"></line>
+                                    <line x1="50" x2="980" y1="160" y2="160"></line>
+                                    <line x1="50" x2="980" y1="220" y2="220"></line>
+                                    <line x1="50" x2="980" y1="280" y2="280"></line>
+                                </g>
+                                <!-- Y-Axis Value Labels -->
+                                <g fill="#869397" font-family="Geist" font-size="11" text-anchor="end">
+                                    <text x="42" y="44">28 °C</text>
+                                    <text x="42" y="104">25 °C</text>
+                                    <text x="42" y="164">22 °C</text>
+                                    <text x="42" y="224">19 °C</text>
+                                    <text x="42" y="284">16 °C</text>
+                                </g>
+                                <!-- Vertical Time Guides -->
+                                <g opacity="0.3" stroke="#2d3449" stroke-dasharray="3 5" stroke-width="1">
+                                    <line x1="120" x2="120" y1="30" y2="280"></line>
+                                    <line x1="260" x2="260" y1="30" y2="280"></line>
+                                    <line x1="400" x2="400" y1="30" y2="280"></line>
+                                    <line x1="540" x2="540" y1="30" y2="280"></line>
+                                    <line x1="700" x2="700" y1="30" y2="280"></line>
+                                    <line x1="840" x2="840" y1="30" y2="280"></line>
+                                    <line x1="960" x2="960" y1="30" y2="280"></line>
+                                </g>
+                                <!-- Filled Spline Area -->
+                                <path d="M 60,240
+                   C 120,245 180,265 240,268
+                   C 300,270 340,240 400,210
+                   C 460,180 500,165 560,130
+                   C 620,95 660,75 700,75
+                   C 760,75 800,110 840,140
+                   C 880,165 920,150 960,145
+                   L 960,280 L 60,280 Z" fill="url(#cyanGradient)"></path>
+                                <!-- Continuous Telemetry Line Path -->
+                                <path d="M 60,240
+                   C 120,245 180,265 240,268
+                   C 300,270 340,240 400,210
+                   C 460,180 500,165 560,130
+                   C 620,95 660,75 700,75
+                   C 760,75 800,110 840,140
+                   C 880,165 920,150 960,145" fill="none" id="telemetry-chart-line" stroke="url(#lineStroke)"
+                                    stroke-linecap="round" stroke-width="3"></path>
+                                <!-- Key Data Points (Hour Anchors) -->
+                                <circle cx="60" cy="240" fill="#0b1326" r="4.5" stroke="#4cd7f6" stroke-width="2.5">
+                                </circle>
+                                <circle cx="260" cy="268" fill="#0b1326" r="4.5" stroke="#4cd7f6" stroke-width="2.5">
+                                </circle>
+                                <circle cx="400" cy="210" fill="#0b1326" r="4.5" stroke="#4cd7f6" stroke-width="2.5">
+                                </circle>
+                                <circle cx="560" cy="130" fill="#0b1326" r="4.5" stroke="#4cd7f6" stroke-width="2.5">
+                                </circle>
+                                <!-- Highlighted Peak Dot -->
+                                <circle class="animate-ping" cx="700" cy="75" fill="#4cd7f6" opacity="0.3" r="7">
+                                </circle>
+                                <circle cx="700" cy="75" fill="#06b6d4" r="5" stroke="#dae2fd" stroke-width="2">
+                                </circle>
+                                <circle cx="840" cy="140" fill="#0b1326" r="4.5" stroke="#4edea3" stroke-width="2.5">
+                                </circle>
+                                <!-- Current Live Point -->
+                                <circle cx="960" cy="145" fill="#4edea3" r="6" stroke="#0b1326" stroke-width="2">
+                                </circle>
+                            </svg>
+                        </div>
+                        <!-- X-Axis Timeline Labels -->
+                        <div
+                            class="flex items-center justify-between pt-space-xs text-on-surface-variant font-label-sm text-label-sm pl-12 pr-4 font-mono">
+                            <span>00:00</span>
+                            <span>04:00</span>
+                            <span>08:00</span>
+                            <span>12:00</span>
+                            <span class="text-primary font-bold">16:00 (Pico)</span>
+                            <span>20:00</span>
+                            <span class="text-tertiary font-bold flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tertiary inline-block animate-pulse"></span>
+                                Ahora (14:28)
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Quick Telemetry Summary Metrics -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-space-md pt-space-xs">
+                        <div class="flex items-center gap-space-md p-space-sm bg-surface-container/60 rounded-xl">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+                                <span class="material-symbols-outlined text-[22px]">functions</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span
+                                    class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Promedio
+                                    24h</span>
+                                <span class="font-headline-md text-headline-md font-semibold text-on-surface">22.8 <span
+                                        class="text-body-sm font-normal text-outline">°C</span></span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-space-md p-space-sm bg-surface-container/60 rounded-xl">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-error">
+                                <span class="material-symbols-outlined text-[22px]">arrow_upward</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span
+                                    class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Valor
+                                    Máximo</span>
+                                <div class="flex items-baseline gap-space-xs">
+                                    <span class="font-headline-md text-headline-md font-semibold text-on-surface">26.1
+                                        <span class="text-body-sm font-normal text-outline">°C</span></span>
+                                    <span class="font-label-sm text-label-sm text-on-surface-variant">a las 14:30</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-space-md p-space-sm bg-surface-container/60 rounded-xl">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+                                <span class="material-symbols-outlined text-[22px]">arrow_downward</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span
+                                    class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Valor
+                                    Mínimo</span>
+                                <div class="flex items-baseline gap-space-xs">
+                                    <span class="font-headline-md text-headline-md font-semibold text-on-surface">18.2
+                                        <span class="text-body-sm font-normal text-outline">°C</span></span>
+                                    <span class="font-label-sm text-label-sm text-on-surface-variant">a las 05:15</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Environmental Station Real-Time Imagery & Status Overview -->
+                <section class="w-full grid grid-cols-1 lg:grid-cols-3 gap-space-md">
+                    <!-- Station Optical Observation Camera -->
+                    <div
+                        class="lg:col-span-2 bg-surface-container-low rounded-xl p-space-md shadow-md flex flex-col gap-space-sm">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-space-xs">
+                                <span class="material-symbols-outlined text-primary text-[20px]">videocam</span>
+                                <span class="font-headline-md text-headline-md text-on-surface">Cámara de Monitoreo en
+                                    Campo</span>
+                            </div>
+                            <div
+                                class="flex items-center gap-space-2xs bg-surface-container-high px-space-xs py-space-2xs rounded-md">
+                                <span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+                                <span
+                                    class="font-label-sm text-label-sm uppercase text-on-surface tracking-wider font-semibold">REC
+                                    • Vista Este</span>
+                            </div>
+                        </div>
+                        <div
+                            class="relative w-full h-56 md:h-64 rounded-xl overflow-hidden bg-surface-container-lowest">
+                            <img class="w-full h-full object-cover"
+                                data-alt="An executive-level ultra-high-definition field photograph of an automated solar-powered environmental telemetry weather station mounted on a metallic mast overlooking a pristine green river basin with surrounding mountain peaks at dusk. Modern atmospheric sensors, anemometer, solar panel, and rain gauge glisten under dramatic cool cyan twilight atmospheric lighting, captured with photorealistic precision and documentary clarity."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvHa15x5Ym-cMxzfOc6TxkHFLgC7X5qdV4muw0s7QKp7w5SU0EcSfvpB1-BjlM1PYZRCUcnfXIw4Rv6p-vrep-r284I8BHMiV6ipfdILrjZR6z_yv_0HWhvMa6ikLBtZzH3XFeik9mgn2uX3poWPISWhCcwJBxj9jY76U8ADUjyCUeagzUdC_mjOsd81nVZXk8l431hmctb78uy6-ziCr9XYJpggL04ZE-7NVH-iWiMBL7GSaWJsP0" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-transparent to-transparent flex items-end p-space-md">
+                                <div class="flex items-center justify-between w-full text-on-surface">
+                                    <div class="flex items-center gap-space-xs">
+                                        <span
+                                            class="material-symbols-outlined text-tertiary text-[18px]">photo_camera</span>
+                                        <span class="font-body-sm text-body-sm font-mono">Captura óptica: 14:25:00
+                                            UTC-4</span>
+                                    </div>
+                                    <span
+                                        class="font-label-sm text-label-sm px-space-xs py-space-2xs rounded bg-surface-container-high/80 backdrop-blur-md">Visibilidad:
+                                        Óptima (&gt;15km)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Station Diagnostic Hardware Specs -->
+                    <div
+                        class="bg-surface-container-low rounded-xl p-space-md shadow-md flex flex-col justify-between gap-space-sm">
+                        <div class="flex items-center justify-between">
+                            <span class="font-headline-md text-headline-md text-on-surface">Diagnóstico del Nodo</span>
+                            <span class="material-symbols-outlined text-tertiary text-[22px]">verified_user</span>
+                        </div>
+                        <div class="flex flex-col gap-space-xs">
+                            <div
+                                class="flex items-center justify-between p-space-xs rounded-lg bg-surface-container/60">
+                                <span class="font-body-sm text-body-sm text-on-surface-variant">Batería LiFePO4</span>
+                                <span class="font-body-sm text-body-sm font-semibold text-tertiary">98% (13.6V)</span>
+                            </div>
+                            <div
+                                class="flex items-center justify-between p-space-xs rounded-lg bg-surface-container/60">
+                                <span class="font-body-sm text-body-sm text-on-surface-variant">Generación Solar</span>
+                                <span class="font-body-sm text-body-sm font-semibold text-primary">42 W / 3.1 A</span>
+                            </div>
+                            <div
+                                class="flex items-center justify-between p-space-xs rounded-lg bg-surface-container/60">
+                                <span class="font-body-sm text-body-sm text-on-surface-variant">Calibración Sonda
+                                    pH</span>
+                                <span class="font-body-sm text-body-sm font-semibold text-on-surface">Válida (24d
+                                    restantes)</span>
+                            </div>
+                            <div
+                                class="flex items-center justify-between p-space-xs rounded-lg bg-surface-container/60">
+                                <span class="font-body-sm text-body-sm text-on-surface-variant">Paquetes Perdidos</span>
+                                <span class="font-body-sm text-body-sm font-semibold text-tertiary">0.02%
+                                    (LoRaWAN)</span>
+                            </div>
+                        </div>
+                        <div class="p-space-xs rounded-lg bg-primary-container/20 flex items-center gap-space-xs">
+                            <span class="material-symbols-outlined text-primary text-[20px]">cloud_done</span>
+                            <span class="font-label-sm text-label-sm text-on-surface">Sincronización con base de datos
+                                hidrológica activa y cifrada.</span>
+                        </div>
+                    </div>
+                </section>
+                <!-- Telemetry Table: Recent Station Measurements -->
+                <section
+                    class="w-full bg-surface-container-low rounded-xl p-space-md lg:p-space-lg shadow-md flex flex-col gap-space-md">
+                    <!-- Table Controls Header -->
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-md">
+                        <div>
+                            <span class="font-headline-md text-headline-md text-on-surface font-semibold">Registro
+                                Reciente de Mediciones</span>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant">Histórico secuencial
+                                transmitido por las sondas de campo</p>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-space-sm">
+                            <!-- Search filter input -->
+                            <div class="relative flex items-center">
+                                <span
+                                    class="material-symbols-outlined absolute left-2.5 text-on-surface-variant text-[18px] pointer-events-none">search</span>
+                                <input
+                                    class="bg-surface-container-lowest text-on-surface placeholder-on-surface-variant text-body-sm font-body-sm pl-8 pr-space-sm py-space-xs rounded-lg focus:outline-none focus:ring-1 focus:ring-primary w-48 lg:w-64"
+                                    placeholder="Filtrar por hora o estado..." type="text" />
+                            </div>
+                            <!-- Rows per page selector -->
+                            <div
+                                class="flex items-center gap-space-2xs bg-surface-container px-space-sm py-space-xs rounded-lg">
+                                <span class="font-label-sm text-label-sm text-on-surface-variant">Filas:</span>
+                                <select
+                                    class="bg-transparent text-on-surface font-body-sm text-body-sm focus:outline-none cursor-pointer">
+                                    <option class="bg-surface-container-high" value="6">6</option>
+                                    <option class="bg-surface-container-high" value="12">12</option>
+                                    <option class="bg-surface-container-high" value="24">24</option>
+                                    <option class="bg-surface-container-high" value="50">50</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Table Container with Horizontal Scroll -->
+                    <div class="w-full overflow-x-auto">
+                        <table class="w-full text-left border-collapse min-w-[900px]">
+                            <thead>
+                                <tr
+                                    class="bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+                                    <th class="py-space-sm px-space-md rounded-l-lg">Fecha y Hora</th>
+                                    <th class="py-space-sm px-space-sm text-right">Temp (°C)</th>
+                                    <th class="py-space-sm px-space-sm text-right">Humedad</th>
+                                    <th class="py-space-sm px-space-sm text-right">Presión (hPa)</th>
+                                    <th class="py-space-sm px-space-sm text-right">Viento</th>
+                                    <th class="py-space-sm px-space-sm text-right">Lluvia (mm)</th>
+                                    <th class="py-space-sm px-space-sm text-right">pH Agua</th>
+                                    <th class="py-space-sm px-space-sm text-right">Conductividad</th>
+                                    <th class="py-space-sm px-space-md text-center rounded-r-lg">Estado Sensor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-surface-container font-body-sm text-body-sm">
+                                <!-- Row 1 (Latest) -->
+                                <tr class="hover:bg-surface-container/50 transition-colors">
+                                    <td class="py-space-sm px-space-md font-mono text-on-surface font-medium">Hoy
+                                        14:28:02</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-primary font-semibold">
+                                        23.4 °C</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">68 %</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">1013.2</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">14.8 km/h
+                                        <span class="text-on-surface-variant text-label-sm">NE</span></td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">2.4</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-tertiary font-medium">
+                                        7.21</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">415 µS/cm
+                                    </td>
+                                    <td class="py-space-sm px-space-md text-center">
+                                        <span
+                                            class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-tertiary-container/30 text-tertiary font-label-sm text-label-sm font-semibold">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                                            Normal
+                                        </span>
+                                    </td>
+                                </tr>
+                                <!-- Row 2 -->
+                                <tr class="hover:bg-surface-container/50 transition-colors">
+                                    <td class="py-space-sm px-space-md font-mono text-on-surface">Hoy 14:15:00</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-primary">23.6 °C</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">67 %</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">1013.1</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">15.2 km/h
+                                        <span class="text-on-surface-variant text-label-sm">NE</span></td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">2.4</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-tertiary font-medium">
+                                        7.20</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">416 µS/cm
+                                    </td>
+                                    <td class="py-space-sm px-space-md text-center">
+                                        <span
+                                            class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-tertiary-container/30 text-tertiary font-label-sm text-label-sm font-semibold">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                                            OK
+                                        </span>
+                                    </td>
+                                </tr>
+                                <!-- Row 3 -->
+                                <tr class="hover:bg-surface-container/50 transition-colors">
+                                    <td class="py-space-sm px-space-md font-mono text-on-surface">Hoy 14:00:00</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-primary">24.1 °C</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">65 %</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">1013.0</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">16.0 km/h
+                                        <span class="text-on-surface-variant text-label-sm">ENE</span></td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">2.4</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-tertiary font-medium">
+                                        7.19</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">414 µS/cm
+                                    </td>
+                                    <td class="py-space-sm px-space-md text-center">
+                                        <span
+                                            class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-tertiary-container/30 text-tertiary font-label-sm text-label-sm font-semibold">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                                            OK
+                                        </span>
+                                    </td>
+                                </tr>
+                                <!-- Row 4 -->
+                                <tr class="hover:bg-surface-container/50 transition-colors">
+                                    <td class="py-space-sm px-space-md font-mono text-on-surface">Hoy 13:45:00</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-primary">24.8 °C</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">63 %</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">1012.9</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">18.4 km/h
+                                        <span class="text-on-surface-variant text-label-sm">E</span></td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">2.4</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-tertiary font-medium">
+                                        7.18</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">412 µS/cm
+                                    </td>
+                                    <td class="py-space-sm px-space-md text-center">
+                                        <span
+                                            class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-tertiary-container/30 text-tertiary font-label-sm text-label-sm font-semibold">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                                            Normal
+                                        </span>
+                                    </td>
+                                </tr>
+                                <!-- Row 5 -->
+                                <tr class="hover:bg-surface-container/50 transition-colors">
+                                    <td class="py-space-sm px-space-md font-mono text-on-surface">Hoy 13:30:00</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-primary">25.3 °C</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">61 %</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">1012.8</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">19.1 km/h
+                                        <span class="text-on-surface-variant text-label-sm">E</span></td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">2.4</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-tertiary font-medium">
+                                        7.18</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">411 µS/cm
+                                    </td>
+                                    <td class="py-space-sm px-space-md text-center">
+                                        <span
+                                            class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-tertiary-container/30 text-tertiary font-label-sm text-label-sm font-semibold">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                                            OK
+                                        </span>
+                                    </td>
+                                </tr>
+                                <!-- Row 6 -->
+                                <tr class="hover:bg-surface-container/50 transition-colors">
+                                    <td class="py-space-sm px-space-md font-mono text-on-surface">Hoy 13:15:00</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-primary">25.8 °C</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">59 %</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">1012.7</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">17.6 km/h
+                                        <span class="text-on-surface-variant text-label-sm">ENE</span></td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">2.4</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-tertiary font-medium">
+                                        7.17</td>
+                                    <td class="py-space-sm px-space-sm text-right font-mono text-on-surface">410 µS/cm
+                                    </td>
+                                    <td class="py-space-sm px-space-md text-center">
+                                        <span
+                                            class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-tertiary-container/30 text-tertiary font-label-sm text-label-sm font-semibold">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                                            Normal
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Table Pagination Footer -->
+                    <div
+                        class="flex flex-col sm:flex-row items-center justify-between gap-space-sm pt-space-xs text-on-surface-variant">
+                        <span class="font-label-sm text-label-sm">
+                            Mostrando <strong class="text-on-surface">1 - 6</strong> de 84 mediciones registradas hoy
+                        </span>
+                        <div class="flex items-center gap-space-sm">
+                            <span class="font-body-sm text-body-sm text-on-surface">Página 1 de 14</span>
+                            <div class="flex items-center gap-space-2xs">
+                                <button
+                                    class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-outline cursor-not-allowed opacity-50"
+                                    disabled="" type="button">
+                                    <span class="material-symbols-outlined text-[18px]">chevron_left</span>
+                                </button>
+                                <button
+                                    class="w-8 h-8 rounded-lg bg-surface-container-high hover:bg-surface-bright flex items-center justify-center text-on-surface transition-colors"
+                                    type="button">
+                                    <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <script>
+                (function () {
+                    // Timeframe selector interaction
+                    const timeframeButtons = document.querySelectorAll('.timeframe-btn');
+                    timeframeButtons.forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            timeframeButtons.forEach(b => {
+                                b.classList.remove('bg-primary-container', 'text-on-primary', 'font-semibold', 'shadow-sm');
+                                b.classList.add('text-on-surface-variant', 'font-medium');
+                            });
+                            btn.classList.remove('text-on-surface-variant', 'font-medium');
+                            btn.classList.add('bg-primary-container', 'text-on-primary', 'font-semibold', 'shadow-sm');
+                        });
+                    });
+
+                    // Chart metric tab selector interaction
+                    const chartTabButtons = document.querySelectorAll('.chart-tab-btn');
+                    chartTabButtons.forEach(tab => {
+                        tab.addEventListener('click', () => {
+                            chartTabButtons.forEach(t => {
+                                t.classList.remove('bg-primary-container', 'text-on-primary', 'font-semibold', 'shadow-sm');
+                                t.classList.add('text-on-surface-variant', 'font-medium');
+                            });
+                            tab.classList.remove('text-on-surface-variant', 'font-medium');
+                            tab.classList.add('bg-primary-container', 'text-on-primary', 'font-semibold', 'shadow-sm');
+                        });
+                    });
+
+                    // Refresh simulation trigger
+                    const refreshBtn = document.getElementById('btn-refresh');
+                    const syncLabel = document.getElementById('sync-time-label');
+                    if (refreshBtn && syncLabel) {
+                        refreshBtn.addEventListener('click', () => {
+                            syncLabel.textContent = 'Actualizando...';
+                            const icon = refreshBtn.querySelector('.material-symbols-outlined');
+                            if (icon) icon.classList.add('animate-spin');
+
+                            setTimeout(() => {
+                                syncLabel.textContent = 'Hace 1 segundo';
+                                if (icon) icon.classList.remove('animate-spin');
+                            }, 700);
+                        });
+                    }
+
+                    // Export CSV click trigger
+                    const exportBtn = document.getElementById('btn-export-csv');
+                    if (exportBtn) {
+                        exportBtn.addEventListener('click', () => {
+                            const originalText = exportBtn.innerHTML;
+                            exportBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-bounce">check</span><span class="font-medium">Generando CSV...</span>';
+                            setTimeout(() => {
+                                exportBtn.innerHTML = originalText;
+                            }, 1500);
+                        });
+                    }
+                })();
+            </script>
+        </main>
+    </div>
+</body>
+
+</html>
