@@ -3,8 +3,11 @@ package com.station.project.application.services;
 import java.time.LocalDate;
 import java.util.UUID;
 
+import org.springframework.stereotype.Service;
+
 import com.station.project.application.port.in.CreateUser;
 import com.station.project.application.port.in.DeleteUser;
+import com.station.project.application.port.in.SearchUser;
 import com.station.project.application.port.in.UpdateUser;
 import com.station.project.application.port.out.UserRepositoryPort;
 import com.station.project.domain.model.User;
@@ -12,7 +15,8 @@ import com.station.project.domain.model.User;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class UserService implements CreateUser, UpdateUser, DeleteUser {
+@Service 
+public class UserService implements CreateUser, UpdateUser, DeleteUser, SearchUser {
 
     private UserRepositoryPort repository;
 
@@ -52,6 +56,11 @@ public class UserService implements CreateUser, UpdateUser, DeleteUser {
                 .build()
             );
         return true;
+    }
+
+    @Override
+    public User findById(UUID id) {
+        return repository.findById(id);
     }
 
 }

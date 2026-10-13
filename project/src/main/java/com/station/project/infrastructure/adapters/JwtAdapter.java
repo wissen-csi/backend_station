@@ -9,14 +9,15 @@ import javax.crypto.SecretKey;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.station.project.application.port.out.GeneratorTokenPort;
+import com.station.project.application.port.out.JwtPort;
 import com.station.project.domain.model.UserAuth;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 @Component 
-public class GeneratorTokenAdapter implements GeneratorTokenPort {
+public class JwtAdapter implements JwtPort {
     @Value ("${jwt.secret-key}")
     private  String keyRaw;
     @Value ("${jwt.expiration}")
@@ -27,7 +28,7 @@ public class GeneratorTokenAdapter implements GeneratorTokenPort {
     public String generate(String id, UserAuth user, long expiration) {
         return Jwts.builder()
         .id(user.id().toString())
-        .claims(Map.of("userName",user.userName(),"role",user.role()))
+        .claims(Map.of("userName",user.userName(),"role",user.role(),"active",user.user().active()))
         .subject(user.userName())
         .issuedAt(new Date(System.currentTimeMillis()))
         .expiration(new Date(System.currentTimeMillis()+ expiration))
@@ -41,11 +42,11 @@ public class GeneratorTokenAdapter implements GeneratorTokenPort {
     }
     @Override
     public String generateToken(UserAuth user) {
-        return generate(keyRaw, user, this.expiration);
+        return generate(user.id().toString(), user, this.expiration);
     }
     @Override
     public String generateRefreshToken(UserAuth user) {
-        return  generate(keyRaw, user, this.refresh);
+        return generate(user.id().toString(), user, this.refresh);
     }
     @Override
     public String generateMQTTFront() {
@@ -77,5 +78,28 @@ public class GeneratorTokenAdapter implements GeneratorTokenPort {
     .signWith(key())
     .compact();
     }
+    @Override
+    public String extractUserName(String token) {
+        Claims  jwt = Jwts.parser().verifyWith(key()).build().parseSignedClaims(token).getPayload();
+        return jwt.getSubject();
+    }
+    @Override
+    public boolean isTokenValid(String token, UserAuth userAuth) {
+        String userName = extractUserName(token);
+        String name = userAuth.userName();
+        return userName.equals(name);
+    }
+    @Override
+    public boolean isTokenExpired(String token) {
+        return extractExpired(token).before(new Date());
+        
+    }
+    private Date extractExpired(String token){
+        Claims claims = Jwts.parser().verifyWith(key()).build().parseSignedClaims(token).getPayload();
+        return claims.getExpiration();
+    }
+
+
+    
 
 }

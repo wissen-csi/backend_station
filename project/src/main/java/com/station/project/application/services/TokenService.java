@@ -2,6 +2,8 @@ package com.station.project.application.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.station.project.application.port.in.CreateToken;
 import com.station.project.application.port.in.RevokedAll;
 import com.station.project.application.port.out.TokenRepositoryPort;
@@ -10,7 +12,7 @@ import com.station.project.domain.model.Token;
 import com.station.project.domain.model.UserAuth;
 
 import lombok.AllArgsConstructor;
-
+@Service 
 @AllArgsConstructor
 public class TokenService implements CreateToken, RevokedAll {
     private TokenRepositoryPort tokenRepositoryPort;

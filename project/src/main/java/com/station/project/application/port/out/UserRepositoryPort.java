@@ -5,7 +5,7 @@ import java.util.UUID;
 import com.station.project.domain.model.User;
 
 public interface UserRepositoryPort {
- User save(User user);
- public User findById(UUID id);
+    User save(User user);
 
+    User findById(UUID id);
 }

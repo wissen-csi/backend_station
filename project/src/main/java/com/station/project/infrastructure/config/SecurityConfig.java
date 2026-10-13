@@ -8,14 +8,16 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.station.project.application.port.out.UserAuthRepositoryPort;
 import com.station.project.domain.model.UserAuth;
+import com.station.project.infrastructure.components.JwtAuthFilter;
 
 import lombok.RequiredArgsConstructor;
 
@@ -24,6 +26,7 @@ import lombok.RequiredArgsConstructor;
 public class SecurityConfig {
 
     private final UserAuthRepositoryPort repositoryPort;
+    private final JwtAuthFilter jwtAuthFilter;
 
     @Bean 
     public PasswordEncoder passwordEncoder() {
@@ -39,19 +42,21 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/auth/**").permitAll() 
                         .anyRequest().authenticated()
                 )
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authenticationProvider(authenticationProvider())
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
     @Bean 
     public UserDetailsService userDetailsService() {
         return userName -> {
-            final UserAuth user = repositoryPort.findByUserName(userName)
-                    .orElseThrow(() -> new UsernameNotFoundException("User name not found: " + userName));
+            final UserAuth user = repositoryPort.findByUserName(userName);
             
             return org.springframework.security.core.userdetails.User.builder()
                     .username(user.userName())
                     .password(user.password())
-                    .roles(user.role().toString())
+                    .roles(user.role().name())
                     .build();
         };
     }

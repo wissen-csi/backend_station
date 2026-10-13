@@ -1,16 +1,17 @@
 package com.station.project.infrastructure.adapters;
 
 
-import java.util.Optional;
+
+import java.util.UUID;
 
 import org.springframework.stereotype.Component;
 
 import com.station.project.application.port.out.UserAuthRepositoryPort;
 import com.station.project.domain.model.UserAuth;
-import com.station.project.infrastructure.persistence.Entities.UserAuthPersisted;
 import com.station.project.infrastructure.persistence.repositories.SpringDataUsarAuthRepository;
 import com.station.project.infrastructure.utils.MapperEnt;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
  @Component 
 @AllArgsConstructor 
@@ -21,13 +22,8 @@ public class JpaUserAuthRepositoryAdapter implements UserAuthRepositoryPort {
 
 
     @Override
-    public Optional<UserAuth> findByUserName(String userName) {
-        Optional<UserAuthPersisted> opt = repository.findByUserName(userName);
-        if (opt.isEmpty()) {
-            return Optional.empty();
-        }else{
-            return Optional.of(MapperEnt.userAuth(opt.get()));
-        }
+    public UserAuth findByUserName(String userName) {
+        return MapperEnt.userAuth(repository.findByUserName(userName).orElseThrow(() -> new EntityNotFoundException(userName)));
     }
 
 
@@ -35,6 +31,13 @@ public class JpaUserAuthRepositoryAdapter implements UserAuthRepositoryPort {
     @Override
     public UserAuth save(UserAuth user) {
         return MapperEnt.userAuth(repository.save(MapperEnt.userAuthPersisted(user)));
+    }
+
+
+
+    @Override
+    public UserAuth findById(UUID id) {
+        return MapperEnt.userAuth(repository.findById(id).orElseThrow(()-> new EntityNotFoundException()));
     }
 
 
