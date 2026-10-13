@@ -1,5 +1,6 @@
 package com.station.project.infrastructure.adapters;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Component;
@@ -27,5 +28,13 @@ public class JpaUserRepositoryAdapter implements UserRepositoryPort {
        return  MapperEnt.user(repository.findById(id).orElseThrow(() -> new EntityNotFoundException()));
     }
 
-    
+    @Override
+    public List<User> findAll() {
+        return repository.findAll().stream().map(MapperEnt::user).toList();
+    }
+
+    @Override
+    public void deleteById(UUID id) {
+        repository.deleteById(id);
+    }
 }

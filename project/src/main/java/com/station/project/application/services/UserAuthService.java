@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import com.station.project.application.port.in.CreateAuthUser;
+import com.station.project.application.port.in.DeleteUserAuth;
 import com.station.project.application.port.in.FindByIdUserAuth;
 import com.station.project.application.port.in.FindByNameUserAuth;
 import com.station.project.application.port.in.UpdateUserAuth;
@@ -16,7 +17,7 @@ import com.station.project.domain.model.UserAuth;
 import lombok.AllArgsConstructor;
 @Service 
 @AllArgsConstructor 
-public class UserAuthService implements CreateAuthUser, FindByNameUserAuth, UpdateUserAuth, FindByIdUserAuth  {
+public class UserAuthService implements CreateAuthUser, FindByNameUserAuth, UpdateUserAuth, FindByIdUserAuth, DeleteUserAuth  {
 
     private UserAuthRepositoryPort repository;
     private PasswordEnconderPort passwordEnconderPort;
@@ -63,5 +64,11 @@ public class UserAuthService implements CreateAuthUser, FindByNameUserAuth, Upda
     public UserAuth findById(UUID id) {
         return  repository.findById(id);
     }
-    
+
+    @Override
+    public boolean deleteById(UUID id) {
+        repository.deleteById(id);
+        return true;
+    }
+
 }

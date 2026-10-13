@@ -8,7 +8,7 @@ import org.springframework.data.redis.core.RedisHash;
 
 import com.station.project.domain.model.Sensor;
 
-import jakarta.persistence.Id;
+import org.springframework.data.annotation.Id;
 import lombok.Builder;
 import lombok.Data;
 @RedisHash ("Data")

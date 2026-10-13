@@ -1,6 +1,7 @@
 package com.station.project.application.services;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
@@ -43,24 +44,18 @@ public class UserService implements CreateUser, UpdateUser, DeleteUser, SearchUs
 
     @Override
     public boolean deleteUser(String id) {
-        User user = repository.findById(UUID.fromString(id));
-         repository
-                .save(User
-                    .builder()
-                .id(user.id())
-                .name(user.name())
-                .email(user.email())
-                .dni(user.dni())
-                .birthdate(user.birthdate())
-                .active(user.active())
-                .build()
-            );
+        repository.deleteById(UUID.fromString(id));
         return true;
     }
 
     @Override
     public User findById(UUID id) {
         return repository.findById(id);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return repository.findAll();
     }
 
 }

@@ -41,4 +41,11 @@ public class JpaUserAuthRepositoryAdapter implements UserAuthRepositoryPort {
     }
 
 
+
+    @Override
+    public void deleteById(UUID id) {
+        repository.deleteById(id);
+    }
+
+
 }

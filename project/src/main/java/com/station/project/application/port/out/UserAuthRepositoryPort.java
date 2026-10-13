@@ -10,4 +10,6 @@ public interface UserAuthRepositoryPort {
     UserAuth findByUserName(String userName);
 
     UserAuth findById(UUID id);
+
+    void deleteById(UUID id);
 }

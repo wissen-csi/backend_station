@@ -1,6 +1,7 @@
 package com.station.project.application.services;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
@@ -41,21 +42,23 @@ public class DataService implements CreateData, UpdateData, DeleteData, SearchDa
 
     @Override
     public boolean deleteData(String id) {
-        Data existing = repository.findById(UUID.fromString(id));
-        repository.save(Data.builder()
-                .id(existing.id())
-                .sensor(existing.sensor())
-                .data(existing.data())
-                .data1(existing.data1())
-                .data2(existing.data2())
-                .current(existing.current())
-                .build());
+        repository.deleteById(UUID.fromString(id));
         return true;
     }
 
     @Override
     public Data findById(UUID id) {
         return repository.findById(id);
+    }
+
+    @Override
+    public List<Data> findAll() {
+        return repository.findAll();
+    }
+
+    @Override
+    public void saveAll(List<Data> list) {
+        repository.saveAll(list);
     }
 }
 

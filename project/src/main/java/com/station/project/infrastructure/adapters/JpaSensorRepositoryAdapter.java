@@ -1,5 +1,7 @@
 package com.station.project.infrastructure.adapters;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.station.project.application.port.out.SensorRepositoryPort;
@@ -23,6 +25,16 @@ public class JpaSensorRepositoryAdapter implements SensorRepositoryPort {
     @Override
     public Sensor findById(String id) {
         return MapperEnt.sensor(repository.findById(id).orElseThrow(() -> new EntityNotFoundException()));
+    }
+
+    @Override
+    public List<Sensor> findAll() {
+        return repository.findAll().stream().map(MapperEnt::sensor).toList();
+    }
+
+    @Override
+    public void deleteById(String id) {
+        repository.deleteById(id);
     }
 }
 

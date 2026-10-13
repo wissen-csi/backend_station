@@ -1,5 +1,7 @@
 package com.station.project.application.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.station.project.application.port.in.CreateSensor;
@@ -30,14 +32,18 @@ public class SensorService implements CreateSensor, UpdateSensor, DeleteSensor, 
 
     @Override
     public boolean delete(String id) {
-        Sensor sensor = repository.findById(id);
-        repository.save(Sensor.builder().id(sensor.id()).name(sensor.name()).build());
+        repository.deleteById(id);
         return true;
     }
 
     @Override
     public Sensor findById(String id) {
         return repository.findById(id);
+    }
+
+    @Override
+    public List<Sensor> findAll() {
+        return repository.findAll();
     }
 }
 

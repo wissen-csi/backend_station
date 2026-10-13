@@ -122,5 +122,11 @@ public class MapperEnt {
                 .current(data.getCurrent())
                 .build();
     }
+    public static Data dataD(DataRegister data){
+        return Data.builder().id(data.getId()).sensor(data.getSensor()).data(data.getData()).data1(data.getData1()).data2(data.getData2()).current(data.getCurrent()).build();
+    }
+    public static DataRegister dataC(Data data){
+        return DataRegister.builder().id(data.id()).sensor(data.sensor()).data(data.data()).data1(data.data1()).data2(data.data2()).current(data.current()).build();
+    }
 }
 

@@ -10,5 +10,6 @@ public interface CacheDataRepositoryPort {
     public Data findById(UUID id);
     public List<Data> findAll();
     public void deleteById(UUID id);
-    public void saveAll(List<Data> list);
+    public void deleteAll();
+    public List<Data> saveAll(List<Data> list);
 }

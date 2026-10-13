@@ -21,12 +21,22 @@ import com.station.project.infrastructure.components.JwtAuthFilter;
 
 import lombok.RequiredArgsConstructor;
 
+
 @Configuration
-@RequiredArgsConstructor
 public class SecurityConfig {
 
     private final UserAuthRepositoryPort repositoryPort;
     private final JwtAuthFilter jwtAuthFilter;
+
+    public SecurityConfig(
+            UserAuthRepositoryPort repositoryPort,
+            JwtAuthFilter jwtAuthFilter) {
+        this.repositoryPort = repositoryPort;
+        this.jwtAuthFilter = jwtAuthFilter;
+    }
+
+
+
 
     @Bean 
     public PasswordEncoder passwordEncoder() {
