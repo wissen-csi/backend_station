@@ -73,4 +73,9 @@ public class TokensMQTTService implements TokenMQTT {
                 .build()).toList());
     }
 
+    @Override
+    public String systemToken() {
+        return jwtPort.generateMQTTAdmin();
+    }
+
 }
