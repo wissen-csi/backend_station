@@ -23,6 +23,7 @@ import com.station.project.infrastructure.dto.RefreshTokenResponseDTO;
 import com.station.project.infrastructure.dto.RegisterRequestDTO;
 import com.station.project.infrastructure.dto.RegistrationResponseDTO;
 
+import jakarta.annotation.security.PermitAll;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -35,6 +36,7 @@ public class AuthController {
     private final Refresh refresh;
 
     @PostMapping("/register")
+    @PermitAll 
     public ResponseEntity<RegistrationResponseDTO> register(@RequestBody RegisterRequestDTO request) {
         User user = User.builder()
                 .name(request.name())

@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.station.project.application.services.DataService;
-import com.station.project.application.services.SensorService;
+import com.station.project.application.port.in.CreateData;
+import com.station.project.application.port.in.DeleteData;
+import com.station.project.application.port.in.SearchData;
+import com.station.project.application.port.in.SearchSensor;
+import com.station.project.application.port.in.UpdateData;
 import com.station.project.domain.model.Data;
 import com.station.project.domain.model.Sensor;
 
@@ -27,29 +30,32 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class DataController {
 
-    private final DataService dataService;
-    private final SensorService sensorService;
+    private final CreateData createData;
+    private final SearchData searchData;
+    private final UpdateData updateData;
+    private final DeleteData deleteData;
+    private final SearchSensor searchSensor;
 
     @PostMapping
     public ResponseEntity<Data> create(@RequestBody DataRequest request) {
-        Data created = dataService.save(toData(request));
+        Data created = createData.save(toData(request));
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
     @GetMapping
     public List<Data> findAll() {
-        return dataService.findAll();
+        return searchData.findAll();
     }
 
     @GetMapping("/{id}")
     public Data findById(@PathVariable UUID id) {
-        return dataService.findById(id);
+        return searchData.findById(id);
     }
 
     @PutMapping("/{id}")
     public Data update(@PathVariable UUID id, @RequestBody DataRequest request) {
         Data data = toData(request);
-        return dataService.update(
+        return updateData.update(
                 data.sensor(),
                 data.data(),
                 data.data1(),
@@ -60,12 +66,12 @@ public class DataController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable UUID id) {
-        dataService.deleteData(id.toString());
+        deleteData.deleteData(id.toString());
         return ResponseEntity.noContent().build();
     }
 
     private Data toData(DataRequest request) {
-        Sensor sensor = sensorService.findById(request.sensorId());
+        Sensor sensor = searchSensor.findById(request.sensorId());
         return Data.builder()
                 .sensor(sensor)
                 .data(request.data())

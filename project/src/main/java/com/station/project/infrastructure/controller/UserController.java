@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.station.project.application.services.UserAuthService;
-import com.station.project.application.services.UserService;
+import com.station.project.application.port.in.DeleteUser;
+import com.station.project.application.port.in.SearchUser;
+import com.station.project.application.port.in.UpdateUser;
+import com.station.project.application.port.in.UpdateUserAuth;
 import com.station.project.domain.model.User;
 
 import lombok.RequiredArgsConstructor;
@@ -25,22 +27,24 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserController {
 
-    private final UserService userService;
-    private final UserAuthService userAuthService;
+    private final SearchUser searchUser;
+    private final UpdateUser updateUser;
+    private final DeleteUser deleteUser;
+    private final UpdateUserAuth updateUserAuth;
 
     @GetMapping
     public List<User> findAll() {
-        return userService.findAll();
+        return searchUser.findAll();
     }
 
     @GetMapping("/{id}")
     public User findById(@PathVariable UUID id) {
-        return userService.findById(id);
+        return searchUser.findById(id);
     }
 
     @PutMapping("/{id}")
     public User update(@PathVariable UUID id, @RequestBody UpdateUserRequest request) {
-        return userService.update(
+        return updateUser.update(
                 request.name(),
                 request.email(),
                 request.dni(),
@@ -52,7 +56,7 @@ public class UserController {
     public ResponseEntity<Void> updateUsername(
             @PathVariable UUID id,
             @RequestBody UpdateUsernameRequest request) {
-        userAuthService.updateUserName(request.userName(), id);
+        updateUserAuth.updateUserName(request.userName(), id);
         return ResponseEntity.noContent().build();
     }
 
@@ -60,13 +64,13 @@ public class UserController {
     public ResponseEntity<Void> updatePassword(
             @PathVariable UUID id,
             @RequestBody UpdatePasswordRequest request) {
-        userAuthService.updatePassword(request.password(), id);
+        updateUserAuth.updatePassword(request.password(), id);
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable UUID id) {
-        userService.deleteUser(id.toString());
+        deleteUser.deleteUser(id.toString());
         return ResponseEntity.noContent().build();
     }
 
