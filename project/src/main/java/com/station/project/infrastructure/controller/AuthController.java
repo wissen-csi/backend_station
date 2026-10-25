@@ -1,7 +1,5 @@
 package com.station.project.infrastructure.controller;
 
-import java.time.LocalDate;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;
@@ -19,6 +17,11 @@ import com.station.project.application.port.in.RegisterUser;
 import com.station.project.domain.enumerations.Role;
 import com.station.project.domain.model.User;
 import com.station.project.domain.model.UserAuth;
+import com.station.project.infrastructure.dto.AuthTokenResponseDTO;
+import com.station.project.infrastructure.dto.LoginRequestDTO;
+import com.station.project.infrastructure.dto.RefreshTokenResponseDTO;
+import com.station.project.infrastructure.dto.RegisterRequestDTO;
+import com.station.project.infrastructure.dto.RegistrationResponseDTO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -32,7 +35,7 @@ public class AuthController {
     private final Refresh refresh;
 
     @PostMapping("/register")
-    public ResponseEntity<RegistrationResponse> register(@RequestBody RegisterRequest request) {
+    public ResponseEntity<RegistrationResponseDTO> register(@RequestBody RegisterRequestDTO request) {
         User user = User.builder()
                 .name(request.name())
                 .email(request.email())
@@ -47,48 +50,27 @@ public class AuthController {
                 .user(user)
                 .build());
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(new RegistrationResponse(created.id(), created.userName(), created.role()));
+                .body(new RegistrationResponseDTO(created.id(), created.userName(), created.role().name()));
     }
 
     @PostMapping("/login")
-    public AuthTokenResponse login(@RequestBody LoginRequest request) {
+    public AuthTokenResponseDTO login(@RequestBody LoginRequestDTO request) {
         try {
             Tuple<String, String> tokens = login.login(request.userName(), request.password());
-            return new AuthTokenResponse(tokens._1(), tokens._2());
+            return new AuthTokenResponseDTO(tokens._1(), tokens._2());
         } catch (AuthenticationException exception) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid credentials", exception);
         }
     }
 
     @PostMapping("/refresh")
-    public RefreshTokenResponse refresh(
+    public RefreshTokenResponseDTO refresh(
             @RequestHeader("Authorization") String authorization) {
             try {
                 Tuple<String, String> token = refresh.refresh(authorization);
-                return new RefreshTokenResponse(token._1(), token._2());
+                return new RefreshTokenResponseDTO(token._1(), token._2());
             } catch (IllegalArgumentException exception) {
                 throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid refresh token", exception);
             }
-    }
-
-    public record RegisterRequest(
-            String userName,
-            String password,
-            String name,
-            String email,
-            String dni,
-            LocalDate birthdate) {
-    }
-
-    public record LoginRequest(String userName, String password) {
-    }
-
-    public record RegistrationResponse(java.util.UUID id, String userName, Role role) {
-    }
-
-    public record AuthTokenResponse(String accessToken, String refreshToken) {
-    }
-
-    public record RefreshTokenResponse(String userName, String accessToken) {
     }
 }
