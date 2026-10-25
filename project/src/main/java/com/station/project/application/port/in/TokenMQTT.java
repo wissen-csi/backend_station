@@ -6,5 +6,6 @@ public interface TokenMQTT {
 public String tokenFront(UserAuth user);
 public String tokenAdmin(UserAuth userAuth);
 public String tokenBoya(UserAuth userAuth);
+public String systemToken();
 
 }

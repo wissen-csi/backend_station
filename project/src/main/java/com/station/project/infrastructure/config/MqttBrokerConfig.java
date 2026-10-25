@@ -1,6 +1,7 @@
 package com.station.project.infrastructure.config;
 
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.eclipse.paho.client.mqttv3.MqttToken;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.annotation.ServiceActivator;
@@ -15,19 +16,22 @@ import org.springframework.integration.mqtt.support.DefaultPahoMessageConverter;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
 
+import com.station.project.application.services.TokensMQTTService;
 import com.station.project.infrastructure.components.MqttBrokerProperties;
+
+import lombok.RequiredArgsConstructor;
 
 import java.util.UUID;
 
 @EnableIntegration
 @Configuration
+@RequiredArgsConstructor 
 public class MqttBrokerConfig {
 
     private final MqttBrokerProperties mqttBrokerProperties;
+    private  final TokensMQTTService tokensMQTTService;
 
-    public MqttBrokerConfig(MqttBrokerProperties mqttBrokerProperties) {
-        this.mqttBrokerProperties = mqttBrokerProperties;
-    }
+
 
     @Bean
     public MqttPahoClientFactory mqttClientFactory() {
@@ -35,6 +39,10 @@ public class MqttBrokerConfig {
 
         MqttConnectOptions options = new MqttConnectOptions();
         options.setServerURIs(new String[]{mqttBrokerProperties.getUrl()});
+  
+        options.setUserName("bearer"); // O el identificador que pida tu backend go-auth
+        options.setPassword(tokensMQTTService.systemToken().toCharArray());
+     
         options.setAutomaticReconnect(true);
         options.setCleanSession(true);
         options.setConnectionTimeout(10);
