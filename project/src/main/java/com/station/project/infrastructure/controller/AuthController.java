@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import org.yaml.snakeyaml.util.Tuple;
 
-import com.station.project.application.port.in.Login;
-import com.station.project.application.port.in.Refresh;
-import com.station.project.application.port.in.RegisterUser;
+
+import com.station.project.application.services.AuthServices;
+import com.station.project.application.services.UserAuthService;
 import com.station.project.domain.enumerations.Role;
 import com.station.project.domain.model.User;
 import com.station.project.domain.model.UserAuth;
@@ -31,9 +31,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AuthController {
 
-    private final RegisterUser registerUser;
-    private final Login login;
-    private final Refresh refresh;
+    private final UserAuthService userAuthService;
+    private final AuthServices authServices;
 
     @PostMapping("/register")
     @PermitAll 
@@ -45,7 +44,7 @@ public class AuthController {
                 .birthdate(request.birthdate())
                 .active(true)
                 .build();
-        UserAuth created = registerUser.register(UserAuth.builder()
+        UserAuth created = userAuthService.save(UserAuth.builder()
                 .userName(request.userName())
                 .password(request.password())
                 .role(Role.USER)
@@ -58,7 +57,7 @@ public class AuthController {
     @PostMapping("/login")
     public AuthTokenResponseDTO login(@RequestBody LoginRequestDTO request) {
         try {
-            Tuple<String, String> tokens = login.login(request.userName(), request.password());
+            Tuple<String, String> tokens = authServices.login(request.userName(), request.password());
             return new AuthTokenResponseDTO(tokens._1(), tokens._2());
         } catch (AuthenticationException exception) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid credentials", exception);
@@ -69,7 +68,7 @@ public class AuthController {
     public RefreshTokenResponseDTO refresh(
             @RequestHeader("Authorization") String authorization) {
             try {
-                Tuple<String, String> token = refresh.refresh(authorization);
+                Tuple<String, String> token = authServices.refresh(authorization);
                 return new RefreshTokenResponseDTO(token._1(), token._2());
             } catch (IllegalArgumentException exception) {
                 throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid refresh token", exception);

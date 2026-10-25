@@ -27,6 +27,7 @@ public class MapperEnt {
     public static UserAuthPersisted userAuthPersisted(UserAuth user) {
         return UserAuthPersisted.builder()
                 .id(user.id())
+                .password(user.password())
                 .userName(user.userName())
                 .role(user.role())
                 .user(UserPersisted(user.user()))

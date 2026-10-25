@@ -24,13 +24,24 @@ public class UserAuthService implements CreateAuthUser, FindByNameUserAuth, Upda
 
     @Override
     public UserAuth save(UserAuth userRaw) {
-        UserAuth user = UserAuth.builder()
+        
+    System.out.println("PASSWORD RAW: " + userRaw.password());
+
+    String encodedPassword = passwordEnconderPort.encode(userRaw.password());
+
+    System.out.println("PASSWORD ENCODED: " + encodedPassword);
+
+    UserAuth user = UserAuth.builder()
         .userName(userRaw.userName())
-        .password(passwordEnconderPort.encode(userRaw.password()))
+        .password(encodedPassword)
         .role(userRaw.role())
         .user(userRaw.user())
         .build();
-    return  repository.save(user);
+
+    System.out.println("PASSWORD USER: " + user.password());
+
+    return repository.save(user);
+
     }
     @Override
     public UserAuth findByUserName(String userName) {
