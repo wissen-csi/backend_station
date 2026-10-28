@@ -1,7 +1,6 @@
 package com.station.project.infrastructure.config;
 
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
-import org.eclipse.paho.client.mqttv3.MqttToken;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.annotation.ServiceActivator;
@@ -40,9 +39,8 @@ public class MqttBrokerConfig {
         MqttConnectOptions options = new MqttConnectOptions();
         options.setServerURIs(new String[]{mqttBrokerProperties.getUrl()});
   
-        options.setUserName("bearer"); // O el identificador que pida tu backend go-auth
-        options.setPassword(tokensMQTTService.systemToken().toCharArray());
-     
+        options.setUserName(tokensMQTTService.systemToken());
+        options.setPassword(new char[0]);
         options.setAutomaticReconnect(true);
         options.setCleanSession(true);
         options.setConnectionTimeout(10);
