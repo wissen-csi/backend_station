@@ -9,6 +9,7 @@ services:
         - ./mosquitto/config/acl:/mosquitto/config/acl
         - ./mosquitto/data:/mosquitto/data
         - ./mosquitto/log:/mosquitto/log
+    restart: always
   redis:
     image: redis:latest
     ports:

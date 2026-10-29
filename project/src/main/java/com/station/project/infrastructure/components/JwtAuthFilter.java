@@ -39,7 +39,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             FilterChain filterChain)
             throws ServletException, IOException {
 
-        if (request.getServletPath().startsWith("/api/v1/auth")) {
+        if (request.getServletPath().startsWith("/api/v1/auth")
+                || request.getServletPath().equals("/api/mqtt/auth")) {
             filterChain.doFilter(request, response);
             return;
         }

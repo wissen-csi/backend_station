@@ -13,7 +13,7 @@ import org.yaml.snakeyaml.util.Tuple;
 
 
 import com.station.project.application.services.AuthServices;
-import com.station.project.application.services.UserAuthService;
+import com.station.project.application.services.RegisterServices;
 import com.station.project.domain.enumerations.Role;
 import com.station.project.domain.model.User;
 import com.station.project.domain.model.UserAuth;
@@ -31,7 +31,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AuthController {
 
-    private final UserAuthService userAuthService;
+    private final RegisterServices registerServices;
     private final AuthServices authServices;
 
     @PostMapping("/register")
@@ -44,7 +44,7 @@ public class AuthController {
                 .birthdate(request.birthdate())
                 .active(true)
                 .build();
-        UserAuth created = userAuthService.save(UserAuth.builder()
+        UserAuth created = registerServices.register(UserAuth.builder()
                 .userName(request.userName())
                 .password(request.password())
                 .role(Role.USER)

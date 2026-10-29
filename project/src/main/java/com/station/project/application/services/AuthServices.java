@@ -22,9 +22,13 @@ public class AuthServices implements Login, Refresh {
     private final AuthenticationPort authenticationPort;
     private final UserAuthService userAuthService;
 
+    public void validateCredentials(String userName, String password) {
+        authenticationPort.auth(userName, password);
+    }
+
     @Override
     public Tuple<String, String> login(String userName, String password) {
-        authenticationPort.auth(userName, password);
+        validateCredentials(userName, password);
         UserAuth user = userAuthService.findByUserName(userName);
         String jwtToken = jwtPort.generateToken(user);
         String jwtTokenRefresh = jwtPort.generateRefreshToken(user);

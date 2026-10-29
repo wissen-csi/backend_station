@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.station.project.application.services.DataService;
+import com.station.project.application.services.SensorService;
 import com.station.project.domain.model.Data;
 
 import lombok.RequiredArgsConstructor;
@@ -25,7 +26,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class DataController {
 
-    private  final DataService dataService;
+    private final DataService dataService;
+    private final SensorService sensorService;
+
     @PostMapping
     public ResponseEntity<Data> create(@RequestBody DataRequest request) {
         Data created = dataService.save(toData(request));
@@ -61,10 +64,8 @@ public class DataController {
     }
 
     private Data toData(DataRequest request) {
-        UUID id = UUID.fromString(request.sensorId());
-        Data data = dataService.findById(id);
         return Data.builder()
-                .sensor(data.sensor())
+                .sensor(sensorService.findById(request.sensorId()))
                 .data(request.data())
                 .data1(request.data1())
                 .data2(request.data2())

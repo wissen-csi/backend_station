@@ -13,10 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.station.project.application.port.in.CreateSensor;
-import com.station.project.application.port.in.DeleteSensor;
-import com.station.project.application.port.in.SearchSensor;
-import com.station.project.application.port.in.UpdateSensor;
+import com.station.project.application.services.SensorService;
 import com.station.project.domain.model.Sensor;
 
 import lombok.RequiredArgsConstructor;
@@ -26,14 +23,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SensorController {
 
-    private final CreateSensor createSensor;
-    private final SearchSensor searchSensor;
-    private final UpdateSensor updateSensor;
-    private final DeleteSensor deleteSensor;
+    private final SensorService sensorService;
 
     @PostMapping
     public ResponseEntity<Sensor> create(@RequestBody CreateSensorRequest request) {
-        Sensor created = createSensor.save(Sensor.builder()
+        Sensor created = sensorService.save(Sensor.builder()
                 .id(request.id())
                 .name(request.name())
                 .build());
@@ -42,22 +36,22 @@ public class SensorController {
 
     @GetMapping
     public List<Sensor> findAll() {
-        return searchSensor.findAll();
+        return sensorService.findAll();
     }
 
     @GetMapping("/{id}")
     public Sensor findById(@PathVariable String id) {
-        return searchSensor.findById(id);
+        return sensorService.findById(id);
     }
 
     @PutMapping("/{id}")
     public Sensor update(@PathVariable String id, @RequestBody UpdateSensorRequest request) {
-        return updateSensor.update(id, request.name());
+        return sensorService.update(id, request.name());
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable String id) {
-        deleteSensor.delete(id);
+        sensorService.delete(id);
         return ResponseEntity.noContent().build();
     }
 

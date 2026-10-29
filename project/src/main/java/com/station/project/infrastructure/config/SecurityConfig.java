@@ -12,51 +12,44 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.station.project.application.port.out.UserAuthRepositoryPort;
+import com.station.project.application.services.UserAuthService;
 import com.station.project.domain.model.UserAuth;
 import com.station.project.infrastructure.components.JwtAuthFilter;
 
-
-
+import jakarta.persistence.EntityNotFoundException;
 @Configuration
 @EnableWebSecurity 
 @EnableMethodSecurity 
 public class SecurityConfig {
 
-    private final UserAuthRepositoryPort repositoryPort;
+    private final UserAuthService userAuthService;
     private final JwtAuthFilter jwtAuthFilter;
 
     public SecurityConfig(
-            UserAuthRepositoryPort repositoryPort,
+            UserAuthService userAuthService,
             JwtAuthFilter jwtAuthFilter) {
-        this.repositoryPort = repositoryPort;
+        this.userAuthService = userAuthService;
         this.jwtAuthFilter = jwtAuthFilter;
     }
 
-
-
-
-    @Bean 
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(
+            HttpSecurity http,
+            AuthenticationProvider authenticationProvider) throws Exception {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(AbstractHttpConfigurer::disable) 
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/mqtt/auth").permitAll()
                         .requestMatchers("/api/v1/auth/**").permitAll() 
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authenticationProvider(authenticationProvider())
+                .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
@@ -64,7 +57,13 @@ public class SecurityConfig {
     @Bean 
     public UserDetailsService userDetailsService() {
         return userName -> {
-            final UserAuth user = repositoryPort.findByUserName(userName);
+            final UserAuth user;
+            try {
+                user = userAuthService.findByUserName(userName);
+            } catch (EntityNotFoundException exception) {
+                throw new org.springframework.security.core.userdetails.UsernameNotFoundException(
+                        "User not found", exception);
+            }
             
             return org.springframework.security.core.userdetails.User.builder()
                     .username(user.userName())
@@ -75,14 +74,15 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationProvider authenticationProvider() {
+    public AuthenticationProvider authenticationProvider(
+            UserDetailsService userDetailsService,
+            PasswordEncoder passwordEncoder) {
         DaoAuthenticationProvider authProvider =
-                new DaoAuthenticationProvider(userDetailsService());
-    
-        authProvider.setPasswordEncoder(passwordEncoder());
-    
+                new DaoAuthenticationProvider(userDetailsService);
+        authProvider.setPasswordEncoder(passwordEncoder);
         return authProvider;
     }
+
     @Bean
     public AuthenticationManager authenticationManager(
             AuthenticationConfiguration configuration) throws Exception {

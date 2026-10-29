@@ -5,12 +5,12 @@ import org.springframework.stereotype.Component;
 
 import com.station.project.application.port.out.PasswordEnconderPort;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
- @Component 
-@AllArgsConstructor 
+@Component
+@RequiredArgsConstructor
 public class BCryptPasswordEncoderAdapter implements PasswordEnconderPort {
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public String encode(String rawPassword) {

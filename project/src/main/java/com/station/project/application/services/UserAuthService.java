@@ -15,33 +15,24 @@ import com.station.project.application.port.out.UserAuthRepositoryPort;
 import com.station.project.domain.model.UserAuth;
 
 import lombok.AllArgsConstructor;
+
 @Service 
 @AllArgsConstructor 
-public class UserAuthService implements CreateAuthUser, FindByNameUserAuth, UpdateUserAuth, FindByIdUserAuth, DeleteUserAuth  {
+public class UserAuthService implements CreateAuthUser, FindByNameUserAuth, UpdateUserAuth, FindByIdUserAuth, DeleteUserAuth {
 
-    private UserAuthRepositoryPort repository;
-    private PasswordEnconderPort passwordEnconderPort;
+    private final UserAuthRepositoryPort repository;
+    private final PasswordEnconderPort passwordEnconderPort;
 
     @Override
     public UserAuth save(UserAuth userRaw) {
-        
-    System.out.println("PASSWORD RAW: " + userRaw.password());
-
-    String encodedPassword = passwordEnconderPort.encode(userRaw.password());
-
-    System.out.println("PASSWORD ENCODED: " + encodedPassword);
-
-    UserAuth user = UserAuth.builder()
-        .userName(userRaw.userName())
-        .password(encodedPassword)
-        .role(userRaw.role())
-        .user(userRaw.user())
-        .build();
-
-    System.out.println("PASSWORD USER: " + user.password());
-
-    return repository.save(user);
-
+        String encodedPassword = passwordEnconderPort.encode(userRaw.password());
+        UserAuth user = UserAuth.builder()
+                .userName(userRaw.userName())
+                .password(encodedPassword)
+                .role(userRaw.role())
+                .user(userRaw.user())
+                .build();
+        return repository.save(user);
     }
     @Override
     public UserAuth findByUserName(String userName) {
