@@ -1,6 +1,7 @@
 package com.station.project.application.port.out;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.station.project.domain.enumerations.TokenType;
 import com.station.project.domain.model.Token;
@@ -16,4 +17,8 @@ public interface TokenRepositoryPort {
     List<Token> saveAll(List<Token> list);
 
     List<Token> findAllByTokenTypeAndExpiredIsFalseAndRevokedIsFalse(TokenType tokenType);
+
+    Optional<Token> findByTokenAndTokenTypeAndExpiredIsFalseAndRevokedIsFalse(
+            String token,
+            TokenType tokenType);
 }

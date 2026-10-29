@@ -44,7 +44,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(AbstractHttpConfigurer::disable) 
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/mqtt/auth").permitAll()
+                        .requestMatchers("/api/mqtt/**").permitAll()
                         .requestMatchers("/api/v1/auth/**").permitAll() 
                         .anyRequest().authenticated()
                 )
