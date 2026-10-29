@@ -50,33 +50,29 @@ public class JwtAdapter implements JwtPort {
     }
     @Override
     public String generateMQTTFront() {
-        return Jwts.builder()
-    .id(UUID.randomUUID().toString())
-    .subject("frontend")
-    .issuedAt(new Date())
-    .expiration(new Date(System.currentTimeMillis()+expiration))
-    .signWith(key())
-    .compact();
+        return generateMQTTToken("frontend");
     }
     @Override
     public String generateMQTTAdmin() {
-                return Jwts.builder()
-    .id(UUID.randomUUID().toString())
-    .subject("admin")
-    .issuedAt(new Date())
-    .expiration(new Date(System.currentTimeMillis()+expiration))
-    .signWith(key())
-    .compact();
+        return generateMQTTToken("admin");
     }
     @Override
     public String generateMQTTBoya() {
+        return generateMQTTToken("boya-001");
+    }
+    @Override
+    public String generateMQTTSystem() {
+        return generateMQTTToken("broker-system");
+    }
+
+    private String generateMQTTToken(String subject) {
         return Jwts.builder()
-    .id(UUID.randomUUID().toString())
-    .subject("boya-001")
-    .issuedAt(new Date())
-    .expiration(new Date(System.currentTimeMillis()+expiration))
-    .signWith(key())
-    .compact();
+                .id(UUID.randomUUID().toString())
+                .subject(subject)
+                .issuedAt(new Date())
+                .expiration(new Date(System.currentTimeMillis() + expiration))
+                .signWith(key())
+                .compact();
     }
     @Override
     public String extractUserName(String token) {

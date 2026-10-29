@@ -40,7 +40,7 @@ public class MqttBrokerConfig {
         options.setServerURIs(new String[]{mqttBrokerProperties.getUrl()});
   
         options.setUserName(tokensMQTTService.systemToken());
-        options.setPassword(new char[0]);
+        options.setPassword("mqtt".toCharArray());
         options.setAutomaticReconnect(true);
         options.setCleanSession(true);
         options.setConnectionTimeout(10);

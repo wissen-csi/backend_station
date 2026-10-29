@@ -12,6 +12,7 @@ public interface JwtPort {
     public String generateMQTTFront();
     public String generateMQTTAdmin();
     public String generateMQTTBoya();
+    public String generateMQTTSystem();
     public boolean isTokenValid(String token, UserAuth userAuth);
     public boolean isTokenExpired(String token);
 }

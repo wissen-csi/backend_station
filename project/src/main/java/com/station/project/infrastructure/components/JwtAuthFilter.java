@@ -40,7 +40,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
 
         if (request.getServletPath().startsWith("/api/v1/auth")
-                || request.getServletPath().equals("/api/mqtt/auth")) {
+                || request.getServletPath().startsWith("/api/mqtt/")) {
             filterChain.doFilter(request, response);
             return;
         }

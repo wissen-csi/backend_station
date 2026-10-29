@@ -3,9 +3,11 @@ package com.station.project.application.port.in;
 import com.station.project.domain.model.UserAuth;
 
 public interface TokenMQTT {
-public String tokenFront(UserAuth user);
-public String tokenAdmin(UserAuth userAuth);
-public String tokenBoya(UserAuth userAuth);
-public String systemToken();
+    String tokenFront(UserAuth user);
+    String tokenAdmin(UserAuth userAuth);
+    String tokenBoya(UserAuth userAuth);
+    String systemToken();
+    boolean isTokenActive(String token);
+    boolean isAuthorized(String token, String topic, int access, String configuredTopic);
 
 }

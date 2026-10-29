@@ -1,6 +1,7 @@
 package com.station.project.infrastructure.adapters;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Component;
 
@@ -41,6 +42,14 @@ public class JpaTokenRepositoryAdapter implements TokenRepositoryPort{
     @Override
     public List<Token> findAllByTokenTypeAndExpiredIsFalseAndRevokedIsFalse(TokenType tokenType) {
         return repository.findAllByTokenTypeAndExpiredIsFalseAndRevokedIsFalse(tokenType).stream().map((token) -> MapperEnt.token(token)).toList();
+    }
+
+    @Override
+    public Optional<Token> findByTokenAndTokenTypeAndExpiredIsFalseAndRevokedIsFalse(
+            String token,
+            TokenType tokenType) {
+        return repository.findByTokenAndTokenTypeAndExpiredIsFalseAndRevokedIsFalse(token, tokenType)
+                .map(MapperEnt::token);
     }
     
 
