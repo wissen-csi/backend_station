@@ -4,6 +4,7 @@ package com.station.project.application.services;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.station.project.application.port.in.CreateAuthUser;
 import com.station.project.application.port.in.DeleteUserAuth;
@@ -34,10 +35,13 @@ public class UserAuthService implements CreateAuthUser, FindByNameUserAuth, Upda
                 .build();
         return repository.save(user);
     }
+
     @Override
+    @Transactional(readOnly = true)
     public UserAuth findByUserName(String userName) {
         return repository.findByUserName(userName);
     }
+
     @Override
     public UserAuth updatePassword(String passwordRaw, UUID id) {
         UserAuth user = repository.findById(id);
