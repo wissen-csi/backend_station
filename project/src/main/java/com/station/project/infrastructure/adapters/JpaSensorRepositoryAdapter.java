@@ -23,6 +23,11 @@ public class JpaSensorRepositoryAdapter implements SensorRepositoryPort {
     }
 
     @Override
+    public boolean existsById(String id) {
+        return repository.existsById(id);
+    }
+
+    @Override
     public Sensor findById(String id) {
         return MapperEnt.sensor(repository.findById(id).orElseThrow(() -> new EntityNotFoundException()));
     }
@@ -37,4 +42,3 @@ public class JpaSensorRepositoryAdapter implements SensorRepositoryPort {
         repository.deleteById(id);
     }
 }
-
