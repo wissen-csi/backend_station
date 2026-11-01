@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.config.EnableIntegration;
-import org.springframework.integration.core.MessageProducer;
 import org.springframework.integration.mqtt.core.DefaultMqttPahoClientFactory;
 import org.springframework.integration.mqtt.core.MqttPahoClientFactory;
 import org.springframework.integration.mqtt.inbound.MqttPahoMessageDrivenChannelAdapter;
@@ -35,17 +34,12 @@ public class MqttBrokerConfig {
     @Bean
     public MqttPahoClientFactory mqttClientFactory() {
         DefaultMqttPahoClientFactory factory = new DefaultMqttPahoClientFactory();
-
         MqttConnectOptions options = new MqttConnectOptions();
-        options.setServerURIs(new String[]{mqttBrokerProperties.getUrl()});
-  
-        options.setUserName(tokensMQTTService.systemToken());
-        options.setPassword("mqtt".toCharArray());
-        options.setAutomaticReconnect(true);
+
+        options.setServerURIs(new String[] { mqttBrokerProperties.getUrl() });
+        options.setUserName("system");
+        options.setPassword(tokensMQTTService.systemToken().toCharArray());
         options.setCleanSession(true);
-        options.setConnectionTimeout(10);
-        options.setMaxInflight(100);
-        options.setKeepAliveInterval(20);
 
         factory.setConnectionOptions(options);
         return factory;
@@ -57,10 +51,12 @@ public class MqttBrokerConfig {
     }
 
     @Bean
-    public MessageProducer mqttInbound() {
+    public MqttPahoMessageDrivenChannelAdapter mqttInbound() {
+        String inboundClientId = mqttBrokerProperties.getId() + "-inbound-" + UUID.randomUUID().toString().substring(0, 8);
+
         MqttPahoMessageDrivenChannelAdapter adapter =
                 new MqttPahoMessageDrivenChannelAdapter(
-                        mqttBrokerProperties.getId(),
+                        inboundClientId,
                         mqttClientFactory(),
                         mqttBrokerProperties.getTopic()
                 );
@@ -69,6 +65,8 @@ public class MqttBrokerConfig {
         adapter.setConverter(new DefaultPahoMessageConverter());
         adapter.setQos(0);
         adapter.setOutputChannel(mqttInputChannel());
+            
+        adapter.setAutoStartup(false);
 
         return adapter;
     }

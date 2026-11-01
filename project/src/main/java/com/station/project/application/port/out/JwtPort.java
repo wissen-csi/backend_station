@@ -1,6 +1,5 @@
 package com.station.project.application.port.out;
 
-import org.yaml.snakeyaml.util.Tuple;
 
 import com.station.project.domain.model.UserAuth;
 

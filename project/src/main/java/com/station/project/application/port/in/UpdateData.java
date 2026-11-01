@@ -1,7 +1,6 @@
 package com.station.project.application.port.in;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 import com.station.project.domain.model.Data;
 import com.station.project.domain.model.Sensor;
