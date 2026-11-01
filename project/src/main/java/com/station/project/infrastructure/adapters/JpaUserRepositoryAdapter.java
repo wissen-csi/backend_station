@@ -1,24 +1,40 @@
 package com.station.project.infrastructure.adapters;
-import java.util.Optional;
+
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.stereotype.Component;
 
 import  com.station.project.application.port.out.UserRepositoryPort;
 import com.station.project.domain.model.User;
-import com.station.project.infrastructure.persistence.Entities.UserPersisted;
 import com.station.project.infrastructure.persistence.repositories.SpringDataUserRepository;
-import com.station.project.infrastructure.utils.Mapper;
+import com.station.project.infrastructure.utils.MapperEnt;
 
-import lombok.NoArgsConstructor;
-@NoArgsConstructor 
+import jakarta.persistence.EntityNotFoundException;
+import lombok.AllArgsConstructor;
+@AllArgsConstructor 
+@Component 
 public class JpaUserRepositoryAdapter implements UserRepositoryPort {
     private  SpringDataUserRepository repository;
 
     @Override
-    public boolean save(User user) {
-        Optional<UserPersisted> opt = repository.save(Mapper.UserPersisted(user));
-        if(opt.isEmpty())
-            return false;
-        return true;
+    public User save(User user) {
+        return MapperEnt.user(repository.save(MapperEnt.UserPersisted(user)));
+        
     }
 
-    
+    @Override
+    public User findById(UUID id) {
+       return  MapperEnt.user(repository.findById(id).orElseThrow(() -> new EntityNotFoundException()));
+    }
+
+    @Override
+    public List<User> findAll() {
+        return repository.findAll().stream().map(MapperEnt::user).toList();
+    }
+
+    @Override
+    public void deleteById(UUID id) {
+        repository.deleteById(id);
+    }
 }

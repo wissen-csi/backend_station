@@ -2,11 +2,7 @@ package com.station.project.infrastructure.persistence.Entities;
 
 import java.util.UUID;
 
-import javax.management.relation.Role;
-
-import org.hibernate.annotations.AnyDiscriminatorImplicitValues.Strategy;
-
-import com.station.project.domain.model.User;
+import com.station.project.domain.enumerations.Role;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,13 +16,17 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity 
 @Table(name = "users_auth")
 @NoArgsConstructor 
 @AllArgsConstructor 
 @Builder 
+@Getter 
+@Setter 
 public class UserAuthPersisted {
     @Id 
     private UUID id;
@@ -39,5 +39,5 @@ public class UserAuthPersisted {
     @OneToOne (fetch = FetchType.LAZY)
     @MapsId 
     @JoinColumn (name = "user_id", nullable = false, unique = true)
-    private  User user;
+    private  UserPersisted user;
 }

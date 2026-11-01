@@ -1,10 +1,36 @@
 services:
+  spring-boot-app:
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      MQTT_URL: tcp://mosquitto:1883
+      SPRING_DATA_REDIS_HOST: redis
+    depends_on:
+      - mosquitto
+      - redis
+    restart: always
+
   mosquitto:
     image: iegomez/mosquitto-go-auth:latest
     ports:
       - "1883:1883"
       - "9001:9001"
     volumes:
-      - ./mosquitto/config/mosquitto.conf:/mosquitto/config/mosquitto.conf
-      - ./mosquitto/data:/mosquitto/data
-      - ./mosquitto/log:/mosquitto/log
+        - ./mosquitto/config/mosquitto.conf:/etc/mosquitto/mosquitto.conf
+        - ./mosquitto/config/acl:/mosquitto/config/acl
+        - ./mosquitto/data:/mosquitto/data
+        - ./mosquitto/log:/mosquitto/log
+    restart: always
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: always
+
+volumes:
+  redis_data:
