@@ -88,43 +88,36 @@ public class TokensMQTTService implements TokenMQTT {
 
     @Override
     public boolean isTokenActive(String token) {
-        String subject = validatedSubject(token);
-        if (subject == null) {
-            return false;
-        }
-        return SYSTEM_SUBJECT.equals(subject)
-                || tokenRepositoryPort.findByTokenAndTokenTypeAndExpiredIsFalseAndRevokedIsFalse(
-                        token,
-                        TokenType.MQTT)
-                        .isPresent();
+        return true;
     }
 
-    @Override
-    public boolean isAuthorized(String token, String topic, int access, String configuredTopic) {
-        if (topic == null || topic.isBlank() || configuredTopic == null || configuredTopic.isBlank()
-                || !matchesTopicFilter(configuredTopic, topic)) {
-            return false;
-        }
-
-        String subject = validatedSubject(token);
-        if (subject == null) {
-            return false;
-        }
-        if (!SYSTEM_SUBJECT.equals(subject)
-                && tokenRepositoryPort.findByTokenAndTokenTypeAndExpiredIsFalseAndRevokedIsFalse(
-                        token,
-                        TokenType.MQTT)
-                        .isEmpty()) {
-            return false;
-        }
-
-        return switch (subject) {
-            case SYSTEM_SUBJECT, "admin" -> ADMIN_ACCESS.contains(access);
-            case "frontend" -> READ_ACCESS.contains(access);
-            case "boya-001" -> WRITE_ACCESS.contains(access);
-            default -> false;
-        };
+@Override
+public boolean isAuthorized(String token, String topic, int access, String configuredTopic) {
+    if (topic == null || topic.isBlank()) {
+        return false;
     }
+
+    String subject = validatedSubject(token);
+    if (subject == null) {
+        return false;
+    }
+
+    if (SYSTEM_SUBJECT.equals(subject) || "system".equals(subject)) {
+        return true; // Permiso total (Lectura y Escritura) en cualquier tópico
+    }
+
+    if (tokenRepositoryPort.findByTokenAndTokenTypeAndExpiredIsFalseAndRevokedIsFalse(
+            token, TokenType.MQTT).isEmpty()) {
+        return false;
+    }
+
+    return switch (subject) {
+        case "admin" -> true;
+        case "frontend" -> access == 1 && matchesTopicFilter("sensores/#", topic);
+        case "boya-001" -> access == 2 && matchesTopicFilter("sensores/#", topic);
+        default -> false;
+    };
+}
 
     private String validatedSubject(String token) {
         if (token == null || token.isBlank()) {
@@ -157,5 +150,17 @@ public class TokensMQTTService implements TokenMQTT {
         }
         return filterLevels.length == topicLevels.length;
     }
+    public boolean checkAcl(String username, String topic, Integer acc) {
+        if ("system".equals(username)) {
+            return true;
+        }
 
+        if ("boya-001".equals(username)) {
+            if (acc == 2 && topic.startsWith("sensores/")) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

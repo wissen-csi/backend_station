@@ -3,31 +3,41 @@ package com.station.project.infrastructure.consumer;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.mqtt.support.MqttHeaders;
 import org.springframework.messaging.Message;
-import org.springframework.messaging.MessageHandler;
-import org.springframework.messaging.MessagingException;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.station.project.application.services.CacheDataServices;
 import com.station.project.domain.model.Data;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import tools.jackson.databind.json.JsonMapper;
-@AllArgsConstructor 
-@Component 
-@Slf4j 
-public class BoyaConsumerMqtt implements MessageHandler{
-    private CacheDataServices cacheDataServices;
-    private  JsonMapper jsonMapper;
-    @ServiceActivator (inputChannel = "mqttInputChannel")
-    @Override
-    public void handleMessage(Message<?> message) throws MessagingException {
-        String payLoad = message.getPayload().toString();
-        log.info("message: {}",message);
-        String topic = message.getHeaders().get(MqttHeaders.RECEIVED_TOPIC,String.class);
-        Data cache =jsonMapper.readValue(payLoad, Data.class);
-        cacheDataServices.save(cache);
-        
-    }
 
+@Component
+@RequiredArgsConstructor
+@Slf4j
+public class BoyaConsumerMqtt {
+
+    private final CacheDataServices cacheDataServices;
+    private final ObjectMapper objectMapper; // Inyección del ObjectMapper estándar de Spring Boot
+
+    @ServiceActivator(inputChannel = "mqttInputChannel")
+    public void consumeMqttMessage(Message<String> message) {
+        log.info("--> EVENTO MQTT CAPTURADO EN CANAL INBOUND <--");
+        
+        try {
+            String payload = message.getPayload();
+            String topic = message.getHeaders().get(MqttHeaders.RECEIVED_TOPIC, String.class);
+            
+            log.info("Mensaje MQTT recibido en tópico [{}]: {}", topic, payload);
+
+            Data data = objectMapper.readValue(payload, Data.class);
+            log.info("Objeto Data deserializado correctamente: {}", data);
+
+            cacheDataServices.save(data);
+            log.info("Objeto Data guardado exitosamente en cache/BD.");
+            
+        } catch (Exception e) {
+            log.error("Error al deserializar o guardar el mensaje MQTT de la boya: {}", e.getMessage(), e);
+        }
+    }
 }

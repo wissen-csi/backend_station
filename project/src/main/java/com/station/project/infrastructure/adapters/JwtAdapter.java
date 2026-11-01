@@ -27,7 +27,7 @@ public class JwtAdapter implements JwtPort {
     @Override
     public String generate(String id, UserAuth user, long expiration) {
         return Jwts.builder()
-        .id(user.id().toString())
+        .id(UUID.randomUUID().toString())
         .claims(Map.of("userName",user.userName(),"role",user.role(),"active",user.user().active()))
         .subject(user.userName())
         .issuedAt(new Date(System.currentTimeMillis()))
@@ -62,7 +62,13 @@ public class JwtAdapter implements JwtPort {
     }
     @Override
     public String generateMQTTSystem() {
-        return generateMQTTToken("broker-system");
+        return Jwts.builder()
+                .id(UUID.randomUUID().toString())
+                .subject("system")
+                .issuedAt(new Date())
+                .expiration(new Date(System.currentTimeMillis() + expiration))
+                .signWith(key())
+                .compact();
     }
 
     private String generateMQTTToken(String subject) {
