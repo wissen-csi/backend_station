@@ -1,0 +1,61 @@
+package com.station.project.application.services;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.stereotype.Service;
+
+import com.station.project.application.port.in.CreateUser;
+import com.station.project.application.port.in.DeleteUser;
+import com.station.project.application.port.in.SearchUser;
+import com.station.project.application.port.in.UpdateUser;
+import com.station.project.application.port.out.UserRepositoryPort;
+import com.station.project.domain.model.User;
+
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
+@Service 
+public class UserService implements CreateUser, UpdateUser, DeleteUser, SearchUser {
+
+    private UserRepositoryPort repository;
+
+    @Override
+    public User save(User user) {
+        return repository.save(user);
+    }
+
+    @Override
+    public User update(String name, String email, String dni, LocalDate birthdate, String id) {
+        User user = repository.findById(UUID.fromString(id));
+        return repository
+                .save(User
+                    .builder()
+                .id(user.id())
+                .name(name)
+                .email(email)
+                .dni(dni)
+                .birthdate(birthdate)
+                .active(user.active())
+                .build()
+            );
+    }
+
+    @Override
+    public boolean deleteUser(String id) {
+        repository.deleteById(UUID.fromString(id));
+        return true;
+    }
+
+    @Override
+    public User findById(UUID id) {
+        return repository.findById(id);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return repository.findAll();
+    }
+
+}
