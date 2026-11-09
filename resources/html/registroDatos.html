@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/styleRegistroDatos.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            "darkMode": "class", "theme": {
+                "extend": {
+                    "colors": {
+                        "on-tertiary-container": "#00452e",
+                        "tertiary-container": "#1bbd85",
+                        "on-secondary-fixed": "#001e2f",
+                        "surface-tint": "#4cd7f6",
+                        "on-primary": "#003640",
+                        "on-primary-fixed": "#001f26",
+                        "surface": "#0b1326",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "inverse-surface": "#dae2fd",
+                        "surface-container-low": "#131b2e",
+                        "on-tertiary-fixed": "#002113",
+                        "secondary-fixed-dim": "#89ceff",
+                        "surface-container-highest": "#2d3449",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-error": "#690005",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-primary-fixed-variant": "#004e5c",
+                        "surface-dim": "#0b1326",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-container": "#00424f",
+                        "primary-fixed": "#acedff",
+                        "on-secondary-fixed-variant": "#004c6e",
+                        "inverse-on-surface": "#283044",
+                        "surface-container-lowest": "#060e20",
+                        "secondary-fixed": "#c9e6ff",
+                        "primary-fixed-dim": "#4cd7f6",
+                        "background": "#0b1326",
+                        "inverse-primary": "#00687a",
+                        "on-secondary": "#00344d",
+                        "on-surface-variant": "#bcc9cd",
+                        "tertiary": "#4edea3",
+                        "surface-variant": "#2d3449",
+                        "surface-container": "#171f33", "surface-bright": "#31394d", "error": "#ffb4ab", "primary": "#4cd7f6", "secondary": "#89ceff", "primary-container": "#06b6d4", "surface-container-high": "#222a3d", "secondary-container": "#00a2e6", "outline-variant": "#3d494c", "on-surface": "#dae2fd", "on-tertiary": "#003824", "outline": "#869397", "on-background": "#dae2fd", "on-secondary-container": "#00344e"
+                    }, "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    }, "spacing": {
+                        "gutter-mobile": "1rem", "space-xl": "2rem", "header-height": "4rem", "space-xs": "0.5rem", "space-md": "1rem", "space-sm": "0.75rem", "sidebar-width": "16rem", "space-2xl": "3rem", "space-lg": "1.5rem", "gutter-desktop": "1.5rem", "space-2xs": "0.25rem"
+                    }, "fontFamily": { "body-md": ["Geist"], "metric-val": ["Geist"], "body-lg": ["Geist"], "headline-lg": ["Manrope"], "body-sm": ["Geist"], "headline-xl": ["Manrope"], "label-md": ["Geist"], "display-lg-mobile": ["Manrope"], "display-lg": ["Manrope"], "headline-md": ["Manrope"], "label-sm": ["Geist"] }, "fontSize": { "body-md": ["0.875rem", { "lineHeight": "1.375rem", "fontWeight": "400" }], "metric-val": ["1.875rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.02em", "fontWeight": "600" }], "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }], "headline-lg": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" }], "body-sm": ["0.75rem", { "lineHeight": "1.125rem", "fontWeight": "400" }], "headline-xl": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "600" }], "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.05em", "fontWeight": "500" }], "display-lg-mobile": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "700" }], "display-lg": ["3rem", { "lineHeight": "3.5rem", "letterSpacing": "-0.025em", "fontWeight": "700" }], "headline-md": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.08em", "fontWeight": "600" }] }
+                }
+            }
+        };</script>
+</head>
+
+<body class="bg-background font-body-md text-on-surface antialiased min-h-screen">
+    <aside
+        class="fixed left-0 top-0 h-full w-sidebar-width bg-surface-container-low z-50 flex flex-col justify-between py-space-md shadow-[0_1px_8px_rgba(0,0,0,0.25)]">
+        <div class="flex flex-col gap-space-lg">
+            <div class="flex items-center gap-space-xs px-space-md"><img alt="EcoSense Telemetry Logo"
+                    class="h-8 w-auto object-contain"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAim-ckI56_9b6QeytXJOEMIa_T9CKlHuLOk7dC4-Oaumb9q7pW2QdWWdQV7I-S65rJKOM8oPidXLI6d3PA1TRwBzK51eUBV3-ehzLpHmN-UXdHj3OntNK_3GymC-ZiiOJDoyXTKnkCtZJlb0j3NB90cxug3Fpp4rFWFEa_z2KAO7ViihvqESRhTo47GydKTKpw9ybwwjmCcmAiwHtQZ8j3CnxvcEYQzbAPw2GRouEeRPQ-HMhuqCan" />
+                <div class="flex flex-col"><span
+                        class="font-headline-md text-headline-md tracking-tight text-on-surface leading-none">AuraSense</span><span
+                        class="font-label-sm text-label-sm uppercase tracking-widest text-primary">Telemetry v2.4</span>
+                </div>
+            </div>
+            <div class="px-space-md">
+                <div
+                    class="flex items-center gap-space-xs px-space-xs py-space-2xs rounded-lg bg-surface-container-high/60">
+                    <span class="material-symbols-outlined text-primary text-[18px]">pin_drop</span>
+                    <div class="flex flex-col"><span
+                            class="font-label-sm text-label-sm uppercase text-on-surface-variant">Estación
+                            Activa</span><span
+                            class="font-body-sm text-body-sm font-semibold text-on-surface truncate max-w-[170px]">Valle
+                            Central - Nodo 01</span></div>
+                </div>
+            </div>
+            <nav class="flex flex-col gap-space-2xs px-space-xs"
+                data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a
+                    aria-current="page"
+                    class="flex items-center gap-space-xs px-space-sm py-space-xs transition-colors bg-primary-container text-on-primary-container font-semibold rounded-lg"
+                    data-path="monitoreo-general" href="#"><span
+                        class="material-symbols-outlined text-[20px]">dashboard</span><span
+                        class="font-body-md text-body-md">Monitoreo General</span></a><a
+                    class="flex items-center gap-space-xs px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors"
+                    data-path="analisis-tendencias" href="#"><span
+                        class="material-symbols-outlined text-[20px]">ssid_chart</span><span
+                        class="font-body-md text-body-md">Tendencias y Series</span></a><a
+                    class="flex items-center gap-space-xs px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors"
+                    data-path="registro-mediciones" href="#"><span
+                        class="material-symbols-outlined text-[20px]">table_chart</span><span
+                        class="font-body-md text-body-md">Registro de Datos</span></a><a
+                    class="flex items-center gap-space-xs px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors"
+                    data-path="red-sensores" href="#"><span
+                        class="material-symbols-outlined text-[20px]">sensors</span><span
+                        class="font-body-md text-body-md">Red de Nodos</span></a><a
+                    class="flex items-center gap-space-xs px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors"
+                    data-path="alertas-umbrales" href="#"><span
+                        class="material-symbols-outlined text-[20px]">warning</span><span
+                        class="font-body-md text-body-md">Alertas de Umbral</span></a></nav>
+        </div>
+        <div class="px-space-md flex flex-col gap-space-sm">
+            <div class="p-space-xs rounded-xl bg-surface-container/70 flex flex-col gap-space-2xs"><span
+                    class="font-label-sm text-label-sm text-on-surface-variant uppercase">Enlace RF / LoRa</span>
+                <div class="flex items-center justify-between text-on-surface"><span
+                        class="font-body-sm text-body-sm">RSSI: -68 dBm</span><span
+                        class="font-label-sm text-label-sm text-tertiary">99.8% SNR</span></div>
+            </div>
+            <div class="flex items-center justify-between px-space-2xs text-on-surface-variant"><span
+                    class="font-label-sm text-label-sm">SysTime UTC-4</span><span
+                    class="font-label-sm text-label-sm font-mono">14:28:02</span></div>
+        </div>
+    </aside>
+    <div class="pl-sidebar-width">
+        <header
+            class="fixed top-0 left-sidebar-width right-0 h-header-height bg-surface/85 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.18)]">
+            <div class="h-full w-full px-space-lg flex items-center justify-between">
+                <div class="flex items-center gap-space-md">
+                    <div class="flex items-center gap-space-xs"><span
+                            class="font-headline-md text-headline-md text-on-surface">AuraSense - Estación Central
+                            v2.4</span></div>
+                    <div
+                        class="flex items-center gap-space-xs px-space-xs py-space-2xs rounded-full bg-surface-container-high">
+                        <span class="flex h-2 w-2 relative"><span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span><span
+                                class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span></span><span
+                            class="font-label-sm text-label-sm font-medium text-tertiary tracking-wide uppercase">En
+                            línea / Transmitiendo en vivo (12s)</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-space-md">
+                    <div
+                        class="hidden xl:flex items-center gap-space-xs bg-surface-container-low px-space-xs py-space-2xs rounded-lg">
+                        <span
+                            class="material-symbols-outlined text-on-surface-variant text-[18px]">location_on</span><span
+                            class="font-body-sm text-body-sm text-on-surface">Valle Central - Nodo 01</span><span
+                            class="material-symbols-outlined text-on-surface-variant text-[16px]">unfold_more</span>
+                    </div>
+                    <div class="flex items-center bg-surface-container-low p-space-2xs rounded-lg">
+                        <nav class="flex items-center gap-space-2xs"
+                            data-active-classes="bg-surface-container-high text-primary font-semibold rounded-lg"><a
+                                class="px-space-xs py-space-2xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors"
+                                data-path="filtro-24h" href="#">Últimas 24 Horas</a><a
+                                class="px-space-xs py-space-2xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors"
+                                data-path="filtro-7d" href="#">Última semana</a><a
+                                class="px-space-xs py-space-2xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors"
+                                data-path="filtro-30d" href="#">Últimos 30 días</a><a
+                                class="px-space-xs py-space-2xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors"
+                                data-path="filtro-personalizado" href="#">Rango personalizado</a></nav>
+                    </div><button
+                        class="flex items-center gap-space-2xs px-space-sm py-space-xs rounded-lg bg-primary-container text-on-primary font-body-sm text-body-sm font-semibold hover:bg-surface-tint hover:text-on-primary-fixed transition-colors shadow-sm"
+                        type="button"><span
+                            class="material-symbols-outlined text-[18px]">download</span><span>Exportar</span></button>
+                    <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span
+                            class="material-symbols-outlined text-on-primary text-[18px]">person</span></div>
+                </div>
+            </div>
+        </header>
+        <main class="w-full pt-header-height bg-surface min-h-screen px-space-lg py-space-lg">
+            <div class="flex flex-col w-full gap-space-lg">
+                <!-- Active Nav Switcher via DOM injection for App Shell Fidelity -->
+                <script>
+                    (function syncSidebarActiveState() {
+                        const links = document.querySelectorAll('aside nav a');
+                        links.forEach(el => {
+                            if (el.getAttribute('data-path') === 'registro-mediciones') {
+                                el.className = "flex items-center gap-space-xs px-space-sm py-space-xs bg-primary-container text-on-primary font-semibold rounded-lg shadow-sm transition-all";
+                            } else {
+                                el.className = "flex items-center gap-space-xs px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors";
+                            }
+                        });
+                    })();
+                </script>
+                <!-- Encabezado de la página -->
+                <div class="flex flex-col xl:flex-row xl:items-end justify-between gap-space-md">
+                    <div class="flex flex-col gap-space-2xs">
+                        <div
+                            class="flex items-center gap-space-xs text-primary font-label-sm uppercase tracking-widest">
+                            <span class="material-symbols-outlined text-[16px]">database</span>
+                            <span>Repositorio Criptográfico de Sensores</span>
+                        </div>
+                        <h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">Registro Histórico
+                            de Datos y Telemetría</h1>
+                        <p class="font-body-md text-on-surface-variant max-w-4xl">
+                            Archivo secuencial inmutable de capturas crudas y validadas de los sensores de estación
+                            <span class="text-on-surface font-semibold">Valle Central - Nodo 01</span>.
+                        </p>
+                    </div>
+                    <!-- Acciones directas de exportación masiva -->
+                    <div class="flex items-center flex-wrap gap-space-xs">
+                        <button
+                            class="flex items-center gap-space-2xs px-space-sm py-space-xs rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md transition-colors shadow-sm"
+                            type="button">
+                            <span class="material-symbols-outlined text-[16px] text-primary">description</span>
+                            <span>CSV Crudo</span>
+                        </button>
+                        <button
+                            class="flex items-center gap-space-2xs px-space-sm py-space-xs rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md transition-colors shadow-sm"
+                            type="button">
+                            <span class="material-symbols-outlined text-[16px] text-secondary">table_view</span>
+                            <span>Parquet / XLSX</span>
+                        </button>
+                        <button
+                            class="flex items-center gap-space-2xs px-space-sm py-space-xs rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md transition-colors shadow-sm"
+                            type="button">
+                            <span class="material-symbols-outlined text-[16px] text-tertiary">picture_as_pdf</span>
+                            <span>Reporte Foliado QA</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Panel de Control y Filtros de Telemetría -->
+                <section class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-md shadow-md">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-space-md items-end">
+                        <!-- Selector de rango de fechas avanzado -->
+                        <div class="lg:col-span-4 flex flex-col gap-space-2xs">
+                            <label
+                                class="font-label-sm uppercase text-on-surface-variant flex items-center justify-between">
+                                <span>Ventana Temporal de Análisis</span>
+                                <span class="text-primary font-mono lowercase text-[10px]">utc-04:00</span>
+                            </label>
+                            <div class="flex items-center gap-space-xs bg-surface-container p-space-xs rounded-lg">
+                                <span class="material-symbols-outlined text-primary text-[18px]">calendar_today</span>
+                                <div class="flex items-center gap-space-xs w-full">
+                                    <input
+                                        class="bg-surface text-on-surface font-label-md px-space-xs py-space-2xs rounded w-full focus:outline-none text-center font-mono"
+                                        type="text" value="2025-05-18 00:00" />
+                                    <span class="text-on-surface-variant font-label-sm">→</span>
+                                    <input
+                                        class="bg-surface text-on-surface font-label-md px-space-xs py-space-2xs rounded w-full focus:outline-none text-center font-mono"
+                                        type="text" value="2025-05-18 14:45" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Filtro selector múltiple de parámetros -->
+                        <div class="lg:col-span-3 flex flex-col gap-space-2xs">
+                            <label class="font-label-sm uppercase text-on-surface-variant">Sondas Seleccionadas</label>
+                            <div class="relative">
+                                <div
+                                    class="flex items-center justify-between bg-surface-container px-space-sm py-space-xs rounded-lg cursor-pointer text-on-surface">
+                                    <span class="font-body-sm truncate pr-2">7 Sondas (Atmósfera + Agua)</span>
+                                    <span
+                                        class="material-symbols-outlined text-[18px] text-on-surface-variant">tune</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Selector de Estado de Muestra -->
+                        <div class="lg:col-span-3 flex flex-col gap-space-2xs">
+                            <label class="font-label-sm uppercase text-on-surface-variant">Criterio de
+                                Validación</label>
+                            <div
+                                class="bg-surface-container px-space-sm py-space-xs rounded-lg flex items-center justify-between">
+                                <div class="flex items-center gap-space-xs">
+                                    <span class="w-2 h-2 rounded-full bg-tertiary"></span>
+                                    <span class="font-body-sm text-on-surface">Validada + Outliers (Todas)</span>
+                                </div>
+                                <span
+                                    class="material-symbols-outlined text-[18px] text-on-surface-variant">expand_more</span>
+                            </div>
+                        </div>
+                        <!-- Botón de Ejecución de Filtro -->
+                        <div class="lg:col-span-2 flex items-center gap-space-xs">
+                            <button
+                                class="w-full flex items-center justify-center gap-space-xs px-space-md py-space-xs bg-primary-container text-on-primary hover:bg-surface-tint hover:text-on-primary-fixed rounded-lg font-body-sm font-semibold transition-all shadow-sm"
+                                type="button">
+                                <span class="material-symbols-outlined text-[18px]">filter_alt</span>
+                                <span>Filtrar Datos</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Tags rápidos y estado de consulta -->
+                    <div class="flex flex-wrap items-center justify-between pt-space-xs gap-space-sm">
+                        <div class="flex items-center flex-wrap gap-space-xs">
+                            <span class="font-label-sm text-on-surface-variant uppercase">Sondas activas:</span>
+                            <span
+                                class="px-space-xs py-space-2xs rounded bg-surface-container-highest text-primary font-label-sm">Temp
+                                (SHT35)</span>
+                            <span
+                                class="px-space-xs py-space-2xs rounded bg-surface-container-highest text-primary font-label-sm">Humedad
+                                (RH%)</span>
+                            <span
+                                class="px-space-xs py-space-2xs rounded bg-surface-container-highest text-secondary font-label-sm">Presión
+                                (BMP388)</span>
+                            <span
+                                class="px-space-xs py-space-2xs rounded bg-surface-container-highest text-tertiary font-label-sm">pH
+                                Industrial (E-201)</span>
+                            <span
+                                class="px-space-xs py-space-2xs rounded bg-surface-container-highest text-tertiary font-label-sm">Conductividad
+                                CE</span>
+                            <span
+                                class="px-space-xs py-space-2xs rounded bg-surface-container-highest text-on-surface-variant font-label-sm">+2
+                                más</span>
+                        </div>
+                        <div class="flex items-center gap-space-xs text-on-surface-variant font-label-md">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+                            <span>Mostrando <strong class="text-on-surface">1,420 registros</strong> indexados en el
+                                intervalo seleccionado</span>
+                        </div>
+                    </div>
+                </section>
+                <!-- Barra de resumen estadístico de la consulta (KPI strip) -->
+                <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+                    <!-- Muestras Totales -->
+                    <div class="bg-surface-container-low p-space-md rounded-xl flex items-center justify-between">
+                        <div class="flex flex-col">
+                            <span class="font-label-sm uppercase text-on-surface-variant tracking-wider">Muestras
+                                Registradas</span>
+                            <span class="font-metric-val text-metric-val text-on-surface mt-space-2xs">1,420</span>
+                            <span class="font-body-sm text-on-surface-variant">Intervalos cerrados de 15m</span>
+                        </div>
+                        <div
+                            class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined text-[22px]">dataset</span>
+                        </div>
+                    </div>
+                    <!-- Integridad CRC32 -->
+                    <div class="bg-surface-container-low p-space-md rounded-xl flex items-center justify-between">
+                        <div class="flex flex-col">
+                            <span class="font-label-sm uppercase text-on-surface-variant tracking-wider">Integridad de
+                                Trama</span>
+                            <div class="flex items-baseline gap-space-xs mt-space-2xs">
+                                <span class="font-metric-val text-metric-val text-tertiary">99.85%</span>
+                                <span class="font-label-sm text-tertiary">CRC32 OK</span>
+                            </div>
+                            <span class="font-body-sm text-on-surface-variant">0 colisiones de enlace RF</span>
+                        </div>
+                        <div
+                            class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary">
+                            <span class="material-symbols-outlined text-[22px]">verified_user</span>
+                        </div>
+                    </div>
+                    <!-- Intervalo de Muestreo -->
+                    <div class="bg-surface-container-low p-space-md rounded-xl flex items-center justify-between">
+                        <div class="flex flex-col">
+                            <span class="font-label-sm uppercase text-on-surface-variant tracking-wider">Ciclo de
+                                Adquisición</span>
+                            <span class="font-metric-val text-metric-val text-on-surface mt-space-2xs">15 min</span>
+                            <span class="font-body-sm text-on-surface-variant">Bajo consumo LoRaWAN v1.0.4</span>
+                        </div>
+                        <div
+                            class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+                            <span class="material-symbols-outlined text-[22px]">timer</span>
+                        </div>
+                    </div>
+                    <!-- Anomalías Detectadas -->
+                    <div class="bg-surface-container-low p-space-md rounded-xl flex items-center justify-between">
+                        <div class="flex flex-col">
+                            <span class="font-label-sm uppercase text-on-surface-variant tracking-wider">Anomalías /
+                                Outliers</span>
+                            <div class="flex items-baseline gap-space-xs mt-space-2xs">
+                                <span class="font-metric-val text-metric-val text-secondary-fixed-dim">3</span>
+                                <span class="font-label-sm text-secondary-fixed-dim">Fuera de perfil</span>
+                            </div>
+                            <span class="font-body-sm text-on-surface-variant">Desvío &gt; 2.5σ en ráfaga viento</span>
+                        </div>
+                        <div
+                            class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+                            <span class="material-symbols-outlined text-[22px]">troubleshoot</span>
+                        </div>
+                    </div>
+                </section>
+                <!-- Tabla Exhaustiva de Registro de Datos -->
+                <section class="bg-surface-container-low rounded-xl flex flex-col shadow-md overflow-hidden">
+                    <div class="px-space-md py-space-sm bg-surface-container flex items-center justify-between">
+                        <div class="flex items-center gap-space-xs">
+                            <span class="material-symbols-outlined text-primary text-[20px]">table_rows</span>
+                            <h2 class="font-headline-md text-headline-md text-on-surface">Secuencia Telemetría Primaria
+                            </h2>
+                            <span
+                                class="px-space-xs py-space-2xs rounded-full bg-surface-container-highest text-on-surface-variant font-mono text-[10px]">Trama
+                                LPP extendido</span>
+                        </div>
+                        <div class="flex items-center gap-space-sm">
+                            <span class="font-label-sm text-on-surface-variant">Filas por pág:</span>
+                            <select
+                                class="bg-surface text-on-surface font-label-md px-space-xs py-space-2xs rounded focus:outline-none">
+                                <option>12</option>
+                                <option>25</option>
+                                <option>50</option>
+                                <option>100</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Responsive Table Container -->
+                    <div class="w-full overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr
+                                    class="bg-surface-container/60 text-on-surface-variant font-label-sm uppercase tracking-wider">
+                                    <th class="py-space-sm px-space-md whitespace-nowrap">Timestamp (Local)</th>
+                                    <th class="py-space-sm px-space-sm whitespace-nowrap">ID Trama</th>
+                                    <th class="py-space-sm px-space-sm whitespace-nowrap text-right">Temp Amb</th>
+                                    <th class="py-space-sm px-space-sm whitespace-nowrap text-right">Humedad</th>
+                                    <th class="py-space-sm px-space-sm whitespace-nowrap text-right">Barómetro</th>
+                                    <th class="py-space-sm px-space-sm whitespace-nowrap">Viento (Vector)</th>
+                                    <th class="py-space-sm px-space-sm whitespace-nowrap text-right">Pluvio</th>
+                                    <th class="py-space-sm px-space-sm whitespace-nowrap text-right">pH Agua</th>
+                                    <th class="py-space-sm px-space-sm whitespace-nowrap text-right">Conduct.</th>
+                                    <th class="py-space-sm px-space-sm whitespace-nowrap text-center">Batería</th>
+                                    <th class="py-space-sm px-space-sm whitespace-nowrap text-center">Flag QA</th>
+                                    <th class="py-space-sm px-space-md whitespace-nowrap text-center">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-surface-container/50 font-body-sm text-on-surface">
+                                <!-- Fila 01 -->
+                                <tr class="hover:bg-surface-container/40 transition-colors">
+                                    <td class="py-space-xs px-space-md font-mono text-on-surface whitespace-nowrap">
+                                        2025-05-18 <span class="text-primary font-semibold">14:45:00</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm font-mono text-[11px] text-on-surface-variant">
+                                        #TX-884920</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface font-semibold">22.4</span> <span
+                                            class="text-on-surface-variant text-[11px]">°C</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface">54.2</span><span
+                                            class="text-on-surface-variant text-[11px]">%</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">1014.2 <span
+                                            class="text-on-surface-variant text-[11px]">hPa</span></td>
+                                    <td class="py-space-xs px-space-sm whitespace-nowrap font-mono">
+                                        <span
+                                            class="inline-block transform rotate-[45deg] text-primary text-[12px] mr-1">↑</span>
+                                        14.2 km/h <span class="text-on-surface-variant text-[10px]">NE</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">0.0 <span
+                                            class="text-on-surface-variant text-[11px]">mm</span></td>
+                                    <td
+                                        class="py-space-xs px-space-sm text-right font-mono font-semibold text-tertiary">
+                                        7.42</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">428 <span
+                                            class="text-on-surface-variant text-[11px]">µS/cm</span></td>
+                                    <td class="py-space-xs px-space-sm text-center font-mono">
+                                        <span
+                                            class="px-space-2xs py-space-2xs rounded bg-surface-container text-tertiary text-[11px]">3.98V</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-center">
+                                        <span
+                                            class="px-space-xs py-space-2xs rounded-full bg-tertiary/15 text-tertiary font-label-sm uppercase">Válido
+                                            QA</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-md text-center">
+                                        <button
+                                            class="px-space-xs py-space-2xs rounded hover:bg-surface-bright text-primary transition-colors"
+                                            onclick="loadPacket('#TX-884920', '2025-05-18 14:45:00', '22.4', '54.2', '1014.2', '14.2', '7.42', '428', '-68 dBm', '10.2 dB')"
+                                            type="button">
+                                            <span class="material-symbols-outlined text-[18px]">terminal</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Fila 02 -->
+                                <tr class="hover:bg-surface-container/40 transition-colors">
+                                    <td class="py-space-xs px-space-md font-mono text-on-surface whitespace-nowrap">
+                                        2025-05-18 <span class="text-primary font-semibold">14:30:00</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm font-mono text-[11px] text-on-surface-variant">
+                                        #TX-884919</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface font-semibold">22.8</span> <span
+                                            class="text-on-surface-variant text-[11px]">°C</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface">53.9</span><span
+                                            class="text-on-surface-variant text-[11px]">%</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">1014.4 <span
+                                            class="text-on-surface-variant text-[11px]">hPa</span></td>
+                                    <td class="py-space-xs px-space-sm whitespace-nowrap font-mono">
+                                        <span
+                                            class="inline-block transform rotate-[55deg] text-primary text-[12px] mr-1">↑</span>
+                                        12.8 km/h <span class="text-on-surface-variant text-[10px]">ENE</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">0.0 <span
+                                            class="text-on-surface-variant text-[11px]">mm</span></td>
+                                    <td
+                                        class="py-space-xs px-space-sm text-right font-mono font-semibold text-tertiary">
+                                        7.41</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">429 <span
+                                            class="text-on-surface-variant text-[11px]">µS/cm</span></td>
+                                    <td class="py-space-xs px-space-sm text-center font-mono">
+                                        <span
+                                            class="px-space-2xs py-space-2xs rounded bg-surface-container text-tertiary text-[11px]">3.99V</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-center">
+                                        <span
+                                            class="px-space-xs py-space-2xs rounded-full bg-tertiary/15 text-tertiary font-label-sm uppercase">Válido
+                                            QA</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-md text-center">
+                                        <button
+                                            class="px-space-xs py-space-2xs rounded hover:bg-surface-bright text-primary transition-colors"
+                                            onclick="loadPacket('#TX-884919', '2025-05-18 14:30:00', '22.8', '53.9', '1014.4', '12.8', '7.41', '429', '-69 dBm', '9.8 dB')"
+                                            type="button">
+                                            <span class="material-symbols-outlined text-[18px]">terminal</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Fila 03 (Con Ráfaga Outlier) -->
+                                <tr class="hover:bg-surface-container/40 transition-colors bg-secondary-container/5">
+                                    <td class="py-space-xs px-space-md font-mono text-on-surface whitespace-nowrap">
+                                        2025-05-18 <span class="text-secondary-fixed font-semibold">14:15:00</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm font-mono text-[11px] text-on-surface-variant">
+                                        #TX-884918</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface font-semibold">23.1</span> <span
+                                            class="text-on-surface-variant text-[11px]">°C</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface">52.8</span><span
+                                            class="text-on-surface-variant text-[11px]">%</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">1014.1 <span
+                                            class="text-on-surface-variant text-[11px]">hPa</span></td>
+                                    <td
+                                        class="py-space-xs px-space-sm whitespace-nowrap font-mono text-secondary-fixed">
+                                        <span
+                                            class="inline-block transform rotate-[90deg] text-secondary text-[12px] mr-1">↑</span>
+                                        38.6 km/h <span class="text-[10px]">E (Ráfaga)</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">0.0 <span
+                                            class="text-on-surface-variant text-[11px]">mm</span></td>
+                                    <td
+                                        class="py-space-xs px-space-sm text-right font-mono font-semibold text-tertiary">
+                                        7.40</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">431 <span
+                                            class="text-on-surface-variant text-[11px]">µS/cm</span></td>
+                                    <td class="py-space-xs px-space-sm text-center font-mono">
+                                        <span
+                                            class="px-space-2xs py-space-2xs rounded bg-surface-container text-tertiary text-[11px]">3.99V</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-center">
+                                        <span
+                                            class="px-space-xs py-space-2xs rounded-full bg-secondary-container/20 text-secondary-fixed font-label-sm uppercase">Flag
+                                            Umbral</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-md text-center">
+                                        <button
+                                            class="px-space-xs py-space-2xs rounded hover:bg-surface-bright text-secondary transition-colors"
+                                            onclick="loadPacket('#TX-884918', '2025-05-18 14:15:00', '23.1', '52.8', '1014.1', '38.6', '7.40', '431', '-72 dBm', '8.4 dB')"
+                                            type="button">
+                                            <span class="material-symbols-outlined text-[18px]">terminal</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Fila 04 -->
+                                <tr class="hover:bg-surface-container/40 transition-colors">
+                                    <td class="py-space-xs px-space-md font-mono text-on-surface whitespace-nowrap">
+                                        2025-05-18 <span class="text-primary font-semibold">14:00:00</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm font-mono text-[11px] text-on-surface-variant">
+                                        #TX-884917</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface font-semibold">23.0</span> <span
+                                            class="text-on-surface-variant text-[11px]">°C</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface">53.1</span><span
+                                            class="text-on-surface-variant text-[11px]">%</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">1014.6 <span
+                                            class="text-on-surface-variant text-[11px]">hPa</span></td>
+                                    <td class="py-space-xs px-space-sm whitespace-nowrap font-mono">
+                                        <span
+                                            class="inline-block transform rotate-[40deg] text-primary text-[12px] mr-1">↑</span>
+                                        15.1 km/h <span class="text-on-surface-variant text-[10px]">NE</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">0.0 <span
+                                            class="text-on-surface-variant text-[11px]">mm</span></td>
+                                    <td
+                                        class="py-space-xs px-space-sm text-right font-mono font-semibold text-tertiary">
+                                        7.39</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">430 <span
+                                            class="text-on-surface-variant text-[11px]">µS/cm</span></td>
+                                    <td class="py-space-xs px-space-sm text-center font-mono">
+                                        <span
+                                            class="px-space-2xs py-space-2xs rounded bg-surface-container text-tertiary text-[11px]">4.01V</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-center">
+                                        <span
+                                            class="px-space-xs py-space-2xs rounded-full bg-tertiary/15 text-tertiary font-label-sm uppercase">Válido
+                                            QA</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-md text-center">
+                                        <button
+                                            class="px-space-xs py-space-2xs rounded hover:bg-surface-bright text-primary transition-colors"
+                                            onclick="loadPacket('#TX-884917', '2025-05-18 14:00:00', '23.0', '53.1', '1014.6', '15.1', '7.39', '430', '-68 dBm', '10.5 dB')"
+                                            type="button">
+                                            <span class="material-symbols-outlined text-[18px]">terminal</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Fila 05 -->
+                                <tr class="hover:bg-surface-container/40 transition-colors">
+                                    <td class="py-space-xs px-space-md font-mono text-on-surface whitespace-nowrap">
+                                        2025-05-18 <span class="text-primary font-semibold">13:45:00</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm font-mono text-[11px] text-on-surface-variant">
+                                        #TX-884916</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface font-semibold">22.7</span> <span
+                                            class="text-on-surface-variant text-[11px]">°C</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface">54.0</span><span
+                                            class="text-on-surface-variant text-[11px]">%</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">1014.8 <span
+                                            class="text-on-surface-variant text-[11px]">hPa</span></td>
+                                    <td class="py-space-xs px-space-sm whitespace-nowrap font-mono">
+                                        <span
+                                            class="inline-block transform rotate-[30deg] text-primary text-[12px] mr-1">↑</span>
+                                        11.4 km/h <span class="text-on-surface-variant text-[10px]">NNE</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">0.0 <span
+                                            class="text-on-surface-variant text-[11px]">mm</span></td>
+                                    <td
+                                        class="py-space-xs px-space-sm text-right font-mono font-semibold text-tertiary">
+                                        7.43</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">427 <span
+                                            class="text-on-surface-variant text-[11px]">µS/cm</span></td>
+                                    <td class="py-space-xs px-space-sm text-center font-mono">
+                                        <span
+                                            class="px-space-2xs py-space-2xs rounded bg-surface-container text-tertiary text-[11px]">4.02V</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-center">
+                                        <span
+                                            class="px-space-xs py-space-2xs rounded-full bg-tertiary/15 text-tertiary font-label-sm uppercase">Válido
+                                            QA</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-md text-center">
+                                        <button
+                                            class="px-space-xs py-space-2xs rounded hover:bg-surface-bright text-primary transition-colors"
+                                            onclick="loadPacket('#TX-884916', '2025-05-18 13:45:00', '22.7', '54.0', '1014.8', '11.4', '7.43', '427', '-67 dBm', '11.1 dB')"
+                                            type="button">
+                                            <span class="material-symbols-outlined text-[18px]">terminal</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Fila 06 (Interpolado) -->
+                                <tr class="hover:bg-surface-container/40 transition-colors">
+                                    <td class="py-space-xs px-space-md font-mono text-on-surface whitespace-nowrap">
+                                        2025-05-18 <span class="text-secondary font-semibold">13:30:00</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm font-mono text-[11px] text-on-surface-variant">
+                                        #TX-884915</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface font-semibold">22.3</span> <span
+                                            class="text-on-surface-variant text-[11px]">°C</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface">54.9</span><span
+                                            class="text-on-surface-variant text-[11px]">%</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">1015.0 <span
+                                            class="text-on-surface-variant text-[11px]">hPa</span></td>
+                                    <td class="py-space-xs px-space-sm whitespace-nowrap font-mono">
+                                        <span
+                                            class="inline-block transform rotate-[25deg] text-primary text-[12px] mr-1">↑</span>
+                                        9.8 km/h <span class="text-on-surface-variant text-[10px]">NNE</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">0.0 <span
+                                            class="text-on-surface-variant text-[11px]">mm</span></td>
+                                    <td
+                                        class="py-space-xs px-space-sm text-right font-mono font-semibold text-secondary">
+                                        7.42</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono text-secondary">426 <span
+                                            class="text-on-surface-variant text-[11px]">µS/cm</span></td>
+                                    <td class="py-space-xs px-space-sm text-center font-mono">
+                                        <span
+                                            class="px-space-2xs py-space-2xs rounded bg-surface-container text-tertiary text-[11px]">4.03V</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-center">
+                                        <span
+                                            class="px-space-xs py-space-2xs rounded-full bg-secondary/15 text-secondary font-label-sm uppercase">Interpolado</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-md text-center">
+                                        <button
+                                            class="px-space-xs py-space-2xs rounded hover:bg-surface-bright text-primary transition-colors"
+                                            onclick="loadPacket('#TX-884915', '2025-05-18 13:30:00', '22.3', '54.9', '1015.0', '9.8', '7.42', '426', '-74 dBm', '7.1 dB')"
+                                            type="button">
+                                            <span class="material-symbols-outlined text-[18px]">terminal</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Fila 07 -->
+                                <tr class="hover:bg-surface-container/40 transition-colors">
+                                    <td class="py-space-xs px-space-md font-mono text-on-surface whitespace-nowrap">
+                                        2025-05-18 <span class="text-primary font-semibold">13:15:00</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm font-mono text-[11px] text-on-surface-variant">
+                                        #TX-884914</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface font-semibold">21.9</span> <span
+                                            class="text-on-surface-variant text-[11px]">°C</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface">56.2</span><span
+                                            class="text-on-surface-variant text-[11px]">%</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">1015.1 <span
+                                            class="text-on-surface-variant text-[11px]">hPa</span></td>
+                                    <td class="py-space-xs px-space-sm whitespace-nowrap font-mono">
+                                        <span
+                                            class="inline-block transform rotate-[10deg] text-primary text-[12px] mr-1">↑</span>
+                                        8.4 km/h <span class="text-on-surface-variant text-[10px]">N</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">0.0 <span
+                                            class="text-on-surface-variant text-[11px]">mm</span></td>
+                                    <td
+                                        class="py-space-xs px-space-sm text-right font-mono font-semibold text-tertiary">
+                                        7.44</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">425 <span
+                                            class="text-on-surface-variant text-[11px]">µS/cm</span></td>
+                                    <td class="py-space-xs px-space-sm text-center font-mono">
+                                        <span
+                                            class="px-space-2xs py-space-2xs rounded bg-surface-container text-tertiary text-[11px]">4.03V</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-center">
+                                        <span
+                                            class="px-space-xs py-space-2xs rounded-full bg-tertiary/15 text-tertiary font-label-sm uppercase">Válido
+                                            QA</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-md text-center">
+                                        <button
+                                            class="px-space-xs py-space-2xs rounded hover:bg-surface-bright text-primary transition-colors"
+                                            onclick="loadPacket('#TX-884914', '2025-05-18 13:15:00', '21.9', '56.2', '1015.1', '8.4', '7.44', '425', '-68 dBm', '10.1 dB')"
+                                            type="button">
+                                            <span class="material-symbols-outlined text-[18px]">terminal</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Fila 08 -->
+                                <tr class="hover:bg-surface-container/40 transition-colors">
+                                    <td class="py-space-xs px-space-md font-mono text-on-surface whitespace-nowrap">
+                                        2025-05-18 <span class="text-primary font-semibold">13:00:00</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm font-mono text-[11px] text-on-surface-variant">
+                                        #TX-884913</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface font-semibold">21.5</span> <span
+                                            class="text-on-surface-variant text-[11px]">°C</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface">57.8</span><span
+                                            class="text-on-surface-variant text-[11px]">%</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">1015.3 <span
+                                            class="text-on-surface-variant text-[11px]">hPa</span></td>
+                                    <td class="py-space-xs px-space-sm whitespace-nowrap font-mono">
+                                        <span
+                                            class="inline-block transform rotate-[0deg] text-primary text-[12px] mr-1">↑</span>
+                                        7.9 km/h <span class="text-on-surface-variant text-[10px]">N</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">0.0 <span
+                                            class="text-on-surface-variant text-[11px]">mm</span></td>
+                                    <td
+                                        class="py-space-xs px-space-sm text-right font-mono font-semibold text-tertiary">
+                                        7.45</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">424 <span
+                                            class="text-on-surface-variant text-[11px]">µS/cm</span></td>
+                                    <td class="py-space-xs px-space-sm text-center font-mono">
+                                        <span
+                                            class="px-space-2xs py-space-2xs rounded bg-surface-container text-tertiary text-[11px]">4.04V</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-center">
+                                        <span
+                                            class="px-space-xs py-space-2xs rounded-full bg-tertiary/15 text-tertiary font-label-sm uppercase">Válido
+                                            QA</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-md text-center">
+                                        <button
+                                            class="px-space-xs py-space-2xs rounded hover:bg-surface-bright text-primary transition-colors"
+                                            onclick="loadPacket('#TX-884913', '2025-05-18 13:00:00', '21.5', '57.8', '1015.3', '7.9', '7.45', '424', '-69 dBm', '9.9 dB')"
+                                            type="button">
+                                            <span class="material-symbols-outlined text-[18px]">terminal</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Fila 09 -->
+                                <tr class="hover:bg-surface-container/40 transition-colors">
+                                    <td class="py-space-xs px-space-md font-mono text-on-surface whitespace-nowrap">
+                                        2025-05-18 <span class="text-primary font-semibold">12:45:00</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm font-mono text-[11px] text-on-surface-variant">
+                                        #TX-884912</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface font-semibold">21.0</span> <span
+                                            class="text-on-surface-variant text-[11px]">°C</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface">59.1</span><span
+                                            class="text-on-surface-variant text-[11px]">%</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">1015.4 <span
+                                            class="text-on-surface-variant text-[11px]">hPa</span></td>
+                                    <td class="py-space-xs px-space-sm whitespace-nowrap font-mono">
+                                        <span
+                                            class="inline-block transform rotate-[350deg] text-primary text-[12px] mr-1">↑</span>
+                                        6.3 km/h <span class="text-on-surface-variant text-[10px]">NNW</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">0.0 <span
+                                            class="text-on-surface-variant text-[11px]">mm</span></td>
+                                    <td
+                                        class="py-space-xs px-space-sm text-right font-mono font-semibold text-tertiary">
+                                        7.46</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">422 <span
+                                            class="text-on-surface-variant text-[11px]">µS/cm</span></td>
+                                    <td class="py-space-xs px-space-sm text-center font-mono">
+                                        <span
+                                            class="px-space-2xs py-space-2xs rounded bg-surface-container text-tertiary text-[11px]">4.05V</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-center">
+                                        <span
+                                            class="px-space-xs py-space-2xs rounded-full bg-tertiary/15 text-tertiary font-label-sm uppercase">Válido
+                                            QA</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-md text-center">
+                                        <button
+                                            class="px-space-xs py-space-2xs rounded hover:bg-surface-bright text-primary transition-colors"
+                                            onclick="loadPacket('#TX-884912', '2025-05-18 12:45:00', '21.0', '59.1', '1015.4', '6.3', '7.46', '422', '-67 dBm', '10.8 dB')"
+                                            type="button">
+                                            <span class="material-symbols-outlined text-[18px]">terminal</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Fila 10 -->
+                                <tr class="hover:bg-surface-container/40 transition-colors">
+                                    <td class="py-space-xs px-space-md font-mono text-on-surface whitespace-nowrap">
+                                        2025-05-18 <span class="text-primary font-semibold">12:30:00</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm font-mono text-[11px] text-on-surface-variant">
+                                        #TX-884911</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface font-semibold">20.4</span> <span
+                                            class="text-on-surface-variant text-[11px]">°C</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface">61.0</span><span
+                                            class="text-on-surface-variant text-[11px]">%</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">1015.6 <span
+                                            class="text-on-surface-variant text-[11px]">hPa</span></td>
+                                    <td class="py-space-xs px-space-sm whitespace-nowrap font-mono">
+                                        <span
+                                            class="inline-block transform rotate-[340deg] text-primary text-[12px] mr-1">↑</span>
+                                        5.8 km/h <span class="text-on-surface-variant text-[10px]">NNW</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">0.0 <span
+                                            class="text-on-surface-variant text-[11px]">mm</span></td>
+                                    <td
+                                        class="py-space-xs px-space-sm text-right font-mono font-semibold text-tertiary">
+                                        7.48</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">421 <span
+                                            class="text-on-surface-variant text-[11px]">µS/cm</span></td>
+                                    <td class="py-space-xs px-space-sm text-center font-mono">
+                                        <span
+                                            class="px-space-2xs py-space-2xs rounded bg-surface-container text-tertiary text-[11px]">4.05V</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-center">
+                                        <span
+                                            class="px-space-xs py-space-2xs rounded-full bg-tertiary/15 text-tertiary font-label-sm uppercase">Válido
+                                            QA</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-md text-center">
+                                        <button
+                                            class="px-space-xs py-space-2xs rounded hover:bg-surface-bright text-primary transition-colors"
+                                            onclick="loadPacket('#TX-884911', '2025-05-18 12:30:00', '20.4', '61.0', '1015.6', '5.8', '7.48', '421', '-70 dBm', '9.4 dB')"
+                                            type="button">
+                                            <span class="material-symbols-outlined text-[18px]">terminal</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Fila 11 (Lluvia ligera previa) -->
+                                <tr class="hover:bg-surface-container/40 transition-colors">
+                                    <td class="py-space-xs px-space-md font-mono text-on-surface whitespace-nowrap">
+                                        2025-05-18 <span class="text-primary font-semibold">12:15:00</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm font-mono text-[11px] text-on-surface-variant">
+                                        #TX-884910</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface font-semibold">19.8</span> <span
+                                            class="text-on-surface-variant text-[11px]">°C</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface">64.5</span><span
+                                            class="text-on-surface-variant text-[11px]">%</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">1015.8 <span
+                                            class="text-on-surface-variant text-[11px]">hPa</span></td>
+                                    <td class="py-space-xs px-space-sm whitespace-nowrap font-mono">
+                                        <span
+                                            class="inline-block transform rotate-[320deg] text-primary text-[12px] mr-1">↑</span>
+                                        7.2 km/h <span class="text-on-surface-variant text-[10px]">NW</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono text-primary font-semibold">
+                                        0.4 <span class="text-on-surface-variant text-[11px]">mm</span></td>
+                                    <td
+                                        class="py-space-xs px-space-sm text-right font-mono font-semibold text-tertiary">
+                                        7.49</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">420 <span
+                                            class="text-on-surface-variant text-[11px]">µS/cm</span></td>
+                                    <td class="py-space-xs px-space-sm text-center font-mono">
+                                        <span
+                                            class="px-space-2xs py-space-2xs rounded bg-surface-container text-tertiary text-[11px]">4.06V</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-center">
+                                        <span
+                                            class="px-space-xs py-space-2xs rounded-full bg-tertiary/15 text-tertiary font-label-sm uppercase">Válido
+                                            QA</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-md text-center">
+                                        <button
+                                            class="px-space-xs py-space-2xs rounded hover:bg-surface-bright text-primary transition-colors"
+                                            onclick="loadPacket('#TX-884910', '2025-05-18 12:15:00', '19.8', '64.5', '1015.8', '7.2', '7.49', '420', '-66 dBm', '11.4 dB')"
+                                            type="button">
+                                            <span class="material-symbols-outlined text-[18px]">terminal</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Fila 12 -->
+                                <tr class="hover:bg-surface-container/40 transition-colors">
+                                    <td class="py-space-xs px-space-md font-mono text-on-surface whitespace-nowrap">
+                                        2025-05-18 <span class="text-primary font-semibold">12:00:00</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm font-mono text-[11px] text-on-surface-variant">
+                                        #TX-884909</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface font-semibold">19.2</span> <span
+                                            class="text-on-surface-variant text-[11px]">°C</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">
+                                        <span class="text-on-surface">68.2</span><span
+                                            class="text-on-surface-variant text-[11px]">%</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">1016.0 <span
+                                            class="text-on-surface-variant text-[11px]">hPa</span></td>
+                                    <td class="py-space-xs px-space-sm whitespace-nowrap font-mono">
+                                        <span
+                                            class="inline-block transform rotate-[300deg] text-primary text-[12px] mr-1">↑</span>
+                                        6.8 km/h <span class="text-on-surface-variant text-[10px]">WNW</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono text-primary font-semibold">
+                                        1.2 <span class="text-on-surface-variant text-[11px]">mm</span></td>
+                                    <td
+                                        class="py-space-xs px-space-sm text-right font-mono font-semibold text-tertiary">
+                                        7.51</td>
+                                    <td class="py-space-xs px-space-sm text-right font-mono">418 <span
+                                            class="text-on-surface-variant text-[11px]">µS/cm</span></td>
+                                    <td class="py-space-xs px-space-sm text-center font-mono">
+                                        <span
+                                            class="px-space-2xs py-space-2xs rounded bg-surface-container text-tertiary text-[11px]">4.06V</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-sm text-center">
+                                        <span
+                                            class="px-space-xs py-space-2xs rounded-full bg-tertiary/15 text-tertiary font-label-sm uppercase">Válido
+                                            QA</span>
+                                    </td>
+                                    <td class="py-space-xs px-space-md text-center">
+                                        <button
+                                            class="px-space-xs py-space-2xs rounded hover:bg-surface-bright text-primary transition-colors"
+                                            onclick="loadPacket('#TX-884909', '2025-05-18 12:00:00', '19.2', '68.2', '1016.0', '6.8', '7.51', '418', '-68 dBm', '10.3 dB')"
+                                            type="button">
+                                            <span class="material-symbols-outlined text-[18px]">terminal</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Paginador Completo al Pie -->
+                    <div
+                        class="px-space-md py-space-sm bg-surface-container flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+                        <span class="font-body-sm text-on-surface-variant">
+                            Mostrando registros <strong class="text-on-surface">1</strong> a <strong
+                                class="text-on-surface">12</strong> de <strong class="text-on-surface">1,420</strong>
+                        </span>
+                        <div class="flex items-center gap-space-2xs">
+                            <button
+                                class="px-space-xs py-space-2xs rounded bg-surface hover:bg-surface-container-high text-on-surface-variant disabled:opacity-30"
+                                disabled="" type="button">
+                                <span class="material-symbols-outlined text-[16px]">first_page</span>
+                            </button>
+                            <button
+                                class="px-space-xs py-space-2xs rounded bg-surface hover:bg-surface-container-high text-on-surface-variant disabled:opacity-30"
+                                disabled="" type="button">
+                                <span class="material-symbols-outlined text-[16px]">chevron_left</span>
+                            </button>
+                            <button
+                                class="w-7 h-7 rounded bg-primary-container text-on-primary font-mono text-label-md font-semibold"
+                                type="button">1</button>
+                            <button
+                                class="w-7 h-7 rounded bg-surface hover:bg-surface-container-high text-on-surface font-mono text-label-md"
+                                type="button">2</button>
+                            <button
+                                class="w-7 h-7 rounded bg-surface hover:bg-surface-container-high text-on-surface font-mono text-label-md"
+                                type="button">3</button>
+                            <span class="text-on-surface-variant px-space-2xs font-mono">...</span>
+                            <button
+                                class="w-7 h-7 rounded bg-surface hover:bg-surface-container-high text-on-surface font-mono text-label-md"
+                                type="button">119</button>
+                            <button
+                                class="px-space-xs py-space-2xs rounded bg-surface hover:bg-surface-container-high text-on-surface"
+                                type="button">
+                                <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+                            </button>
+                            <button
+                                class="px-space-xs py-space-2xs rounded bg-surface hover:bg-surface-container-high text-on-surface"
+                                type="button">
+                                <span class="material-symbols-outlined text-[16px]">last_page</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+                <!-- Panel Inferior de Inspección de Trama Cruda (Raw Packet Inspector) -->
+                <section class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm shadow-md">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-space-xs">
+                            <span class="material-symbols-outlined text-primary text-[20px]">code</span>
+                            <div class="flex flex-col">
+                                <h3 class="font-headline-md text-headline-md text-on-surface">Inspección de Trama Hex /
+                                    Decodificación LoRaWAN</h3>
+                                <span class="font-label-sm text-on-surface-variant">Validador sintáctico y de integridad
+                                    radiofrecuencia (Sub-GHz 915.2 MHz)</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-space-xs">
+                            <span
+                                class="px-space-xs py-space-2xs rounded bg-surface-container-high text-on-surface-variant font-mono text-[11px]"
+                                id="rf-channel">Ch 0 | SF7 / 125 kHz</span>
+                            <span
+                                class="px-space-xs py-space-2xs rounded bg-tertiary/15 text-tertiary font-mono text-[11px]"
+                                id="rf-crc">CRC: 0x8F9C2B (OK)</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md mt-space-2xs">
+                        <!-- Payload Crudo HEX -->
+                        <div
+                            class="lg:col-span-5 bg-surface-container-lowest p-space-sm rounded-lg flex flex-col gap-space-2xs font-mono text-body-sm">
+                            <div
+                                class="flex items-center justify-between text-on-surface-variant pb-space-2xs font-label-sm">
+                                <span>PAYLOAD ENCRIPTADO / CRUSO (HEX)</span>
+                                <span class="text-primary" id="packet-id-tag">#TX-884920</span>
+                            </div>
+                            <p class="text-on-surface-variant break-all leading-relaxed text-[12px]">
+                                <span class="text-primary font-bold">01 67 00 E0</span> <span
+                                    class="text-secondary font-bold">02 68 6C</span> <span
+                                    class="text-tertiary font-bold">03 73 27 9E</span> 04 02 00 8E 05 77 02 E6 06 7D 01
+                                AC 07 00 FF 8A
+                            </p>
+                            <div
+                                class="pt-space-xs flex items-center justify-between text-on-surface-variant text-[11px]">
+                                <span id="packet-rssi">RSSI: -68 dBm</span>
+                                <span id="packet-snr">SNR: +10.2 dB</span>
+                                <span>Gateway: GW-CHILE-ANDES-04</span>
+                            </div>
+                        </div>
+                        <!-- JSON Decodificado en Línea -->
+                        <div
+                            class="lg:col-span-7 bg-surface-container-lowest p-space-sm rounded-lg flex flex-col gap-space-2xs font-mono text-body-sm overflow-x-auto">
+                            <div
+                                class="flex items-center justify-between text-on-surface-variant pb-space-2xs font-label-sm">
+                                <span>PAYLOAD DECODIFICADO JSON (CAYENNE LPP EXPANDED)</span>
+                                <span class="text-tertiary text-[11px]">Sintaxis Validada</span>
+                            </div>
+                            <pre class="text-on-surface text-[12px] leading-snug" id="json-viewer"><code>{
+  "packet_id": "TX-884920",
+  "timestamp": "2025-05-18T14:45:00-04:00",
+  "dev_eui": "70B3D57ED0049F21",
+  "metrics": {
+    "temperature_c": 22.4,
+    "humidity_rh": 54.2,
+    "barometer_hpa": 1014.2,
+    "wind_speed_kmh": 14.2,
+    "ph_probe": 7.42,
+    "conductivity_us_cm": 428
+  },
+  "diagnostics": {
+    "battery_v": 3.98,
+    "integrity_flag": "QA_VERIFIED"
+  }
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <!-- Script interactivo para el Inspector de Trama en tiempo real -->
+                <script>
+                    function loadPacket(txId, ts, temp, hum, bar, wind, ph, cond, rssi, snr) {
+                        document.getElementById('packet-id-tag').innerText = txId;
+                        document.getElementById('packet-rssi').innerText = 'RSSI: ' + rssi;
+                        document.getElementById('packet-snr').innerText = 'SNR: ' + snr;
+
+                        const jsonObj = {
+                            packet_id: txId.replace('#', ''),
+                            timestamp: ts + "-04:00",
+                            dev_eui: "70B3D57ED0049F21",
+                            metrics: {
+                                temperature_c: parseFloat(temp),
+                                humidity_rh: parseFloat(hum),
+                                barometer_hpa: parseFloat(bar),
+                                wind_speed_kmh: parseFloat(wind),
+                                ph_probe: parseFloat(ph),
+                                conductivity_us_cm: parseInt(cond, 10)
+                            },
+                            diagnostics: {
+                                battery_v: 3.98,
+                                integrity_flag: "QA_VERIFIED",
+                                rf_rssi: rssi,
+                                rf_snr: snr
+                            }
+                        };
+
+                        document.getElementById('json-viewer').innerHTML = '<code>' + JSON.stringify(jsonObj, null, 2) + '</code>';
+                    }
+                </script>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
