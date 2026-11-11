@@ -6,7 +6,7 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -37,10 +37,10 @@ class SchedulingTest {
         Data cachedData = Data.builder()
                 .id(UUID.randomUUID())
                 .sensor(sensor)
-                .data(1)
-                .data1(2)
-                .data2(3)
-                .current(LocalDate.now())
+                .temperatura(22.4)
+                .humedad(54.2)
+                .presion(1014.2)
+                .fechaHora(OffsetDateTime.now())
                 .build();
         when(cacheDataServices.findAll()).thenReturn(List.of(cachedData));
 
@@ -48,10 +48,10 @@ class SchedulingTest {
 
         Data expected = Data.builder()
                 .sensor(sensor)
-                .data(1)
-                .data1(2)
-                .data2(3)
-                .current(cachedData.current())
+                .temperatura(22.4)
+                .humedad(54.2)
+                .presion(1014.2)
+                .fechaHora(cachedData.fechaHora())
                 .build();
         verify(dataService).saveAll(List.of(expected));
         verify(cacheDataServices).deleteAll();
@@ -62,9 +62,10 @@ class SchedulingTest {
         Sensor sensor = Sensor.builder().id("sensor-1").name("Sensor 1").build();
         when(cacheDataServices.findAll()).thenReturn(List.of(Data.builder()
                 .sensor(sensor)
-                .current(LocalDate.now())
+                .fechaHora(OffsetDateTime.now())
                 .build()));
-        doThrow(new RuntimeException("database failure")).when(dataService).saveAll(org.mockito.ArgumentMatchers.anyList());
+        doThrow(new RuntimeException("database failure")).when(dataService)
+                .saveAll(org.mockito.ArgumentMatchers.anyList());
 
         scheduling.saveRelationalDB();
 

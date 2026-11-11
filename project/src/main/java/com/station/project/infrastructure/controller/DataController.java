@@ -1,9 +1,10 @@
 package com.station.project.infrastructure.controller;
 
-import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,8 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.station.project.application.services.DataService;
 import com.station.project.application.services.SensorService;
 import com.station.project.domain.model.Data;
@@ -36,7 +39,12 @@ public class DataController {
     }
 
     @GetMapping
-    public List<Data> findAll() {
+    public List<Data> find(
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) OffsetDateTime desde,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) OffsetDateTime hasta) {
+        if (desde != null && hasta != null) {
+            return dataService.findByRange(desde, hasta);
+        }
         return dataService.findAll();
     }
 
@@ -47,14 +55,7 @@ public class DataController {
 
     @PutMapping("/{id}")
     public Data update(@PathVariable UUID id, @RequestBody DataRequest request) {
-        Data data = toData(request);
-        return dataService.update(
-                data.sensor(),
-                data.data(),
-                data.data1(),
-                data.data2(),
-                data.current(),
-                id.toString());
+        return dataService.update(toData(request), id.toString());
     }
 
     @DeleteMapping("/{id}")
@@ -66,18 +67,26 @@ public class DataController {
     private Data toData(DataRequest request) {
         return Data.builder()
                 .sensor(sensorService.findById(request.sensorId()))
-                .data(request.data())
-                .data1(request.data1())
-                .data2(request.data2())
-                .current(request.current())
+                .fechaHora(request.fechaHora())
+                .temperatura(request.temperatura())
+                .humedad(request.humedad())
+                .presion(request.presion())
+                .vientoVelocidad(request.vientoVelocidad())
+                .vientoDireccion(request.vientoDireccion())
+                .lluvia(request.lluvia())
+                .calidad(request.calidad())
                 .build();
     }
 
     public record DataRequest(
             String sensorId,
-            int data,
-            int data1,
-            int data2,
-            LocalDate current) {
+            @JsonProperty("fecha_hora") OffsetDateTime fechaHora,
+            Double temperatura,
+            Double humedad,
+            Double presion,
+            @JsonProperty("viento_velocidad") Double vientoVelocidad,
+            @JsonProperty("viento_direccion") Double vientoDireccion,
+            Double lluvia,
+            String calidad) {
     }
 }

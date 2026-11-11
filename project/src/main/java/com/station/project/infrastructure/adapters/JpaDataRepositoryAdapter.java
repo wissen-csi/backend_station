@@ -1,5 +1,6 @@
 package com.station.project.infrastructure.adapters;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -31,8 +32,7 @@ public class JpaDataRepositoryAdapter implements DataRepositoryPort {
     @Override
     public void saveAll(List<Data> list) {
         repository.saveAll(
-            list.stream().map((x)->MapperEnt.dataPersisted(x)).toList()
-        );
+                list.stream().map((x) -> MapperEnt.dataPersisted(x)).toList());
     }
 
     @Override
@@ -44,5 +44,10 @@ public class JpaDataRepositoryAdapter implements DataRepositoryPort {
     public void deleteById(UUID id) {
         repository.deleteById(id);
     }
-}
 
+    @Override
+    public List<Data> findByRange(OffsetDateTime desde, OffsetDateTime hasta) {
+        return repository.findByFechaHoraBetweenOrderByFechaHoraAsc(desde, hasta)
+                .stream().map(MapperEnt::data).toList();
+    }
+}

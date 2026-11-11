@@ -8,7 +8,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.ArgumentMatchers.argThat;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -70,7 +69,7 @@ class DataServiceTest {
         when(sensorRepository.existsById(sensor.id())).thenReturn(false);
         when(dataRepository.findById(dataId)).thenReturn(existing);
 
-        dataService.update(sensor, 1, 2, 3, LocalDate.now(), dataId.toString());
+        dataService.update(Data.builder().sensor(sensor).build(), dataId.toString());
 
         InOrder inOrder = inOrder(sensorRepository, dataRepository);
         inOrder.verify(sensorRepository).existsById(sensor.id());

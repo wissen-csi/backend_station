@@ -1,8 +1,7 @@
 package com.station.project.infrastructure.persistence.Entities;
 
-import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.UUID;
-
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,27 +16,36 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 @Entity
 @Table(name = "data")
-@Builder 
-@NoArgsConstructor 
-@AllArgsConstructor 
-@Getter 
-@Setter 
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class DataPersisted {
-    @Id 
-    @GeneratedValue (strategy = GenerationType.UUID)
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     UUID id;
+
     @ManyToOne
     @JoinColumn(name = "sensor_id")
+    SensorPersisted sensor;
 
-    SensorPersisted sensor; 
-    @Column (nullable = false)
-    int data;
-    @Column (nullable = false)
-    int data1;
-    @Column (nullable = false)
-    int data2;
-    @Column (nullable = false)
-    LocalDate current;
+    @Column(name = "fecha_hora", nullable = false)
+    OffsetDateTime fechaHora;
+
+    Double temperatura;
+    Double humedad;
+    Double presion;
+
+    @Column(name = "viento_velocidad")
+    Double vientoVelocidad;
+
+    @Column(name = "viento_direccion")
+    Double vientoDireccion;
+
+    Double lluvia;
+    String calidad;
 }

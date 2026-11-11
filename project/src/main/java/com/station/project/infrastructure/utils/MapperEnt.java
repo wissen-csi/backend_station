@@ -81,10 +81,14 @@ public class MapperEnt {
         return Data.builder()
                 .id(data.getId())
                 .sensor(data.getSensor())
-                .data(data.getData())
-                .data1(data.getData1())
-                .data2(data.getData2())
-                .current(data.getCurrent())
+                .fechaHora(data.getFechaHora())
+                .temperatura(data.getTemperatura())
+                .humedad(data.getHumedad())
+                .presion(data.getPresion())
+                .vientoVelocidad(data.getVientoVelocidad())
+                .vientoDireccion(data.getVientoDireccion())
+                .lluvia(data.getLluvia())
+                .calidad(data.getCalidad())
                 .build();
     }
 
@@ -106,10 +110,14 @@ public class MapperEnt {
         return DataPersisted.builder()
                 .id(data.id())
                 .sensor(sensorPersisted(data.sensor()))
-                .data(data.data())
-                .data1(data.data1())
-                .data2(data.data2())
-                .current(data.current())
+                .fechaHora(data.fechaHora())
+                .temperatura(data.temperatura())
+                .humedad(data.humedad())
+                .presion(data.presion())
+                .vientoVelocidad(data.vientoVelocidad())
+                .vientoDireccion(data.vientoDireccion())
+                .lluvia(data.lluvia())
+                .calidad(data.calidad())
                 .build();
     }
 
@@ -117,17 +125,33 @@ public class MapperEnt {
         return Data.builder()
                 .id(data.getId())
                 .sensor(sensor(data.getSensor()))
-                .data(data.getData())
-                .data1(data.getData1())
-                .data2(data.getData2())
-                .current(data.getCurrent())
+                .fechaHora(data.getFechaHora())
+                .temperatura(data.getTemperatura())
+                .humedad(data.getHumedad())
+                .presion(data.getPresion())
+                .vientoVelocidad(data.getVientoVelocidad())
+                .vientoDireccion(data.getVientoDireccion())
+                .lluvia(data.getLluvia())
+                .calidad(data.getCalidad())
                 .build();
     }
-    public static Data dataD(DataRegister data){
-        return Data.builder().id(data.getId()).sensor(data.getSensor()).data(data.getData()).data1(data.getData1()).data2(data.getData2()).current(data.getCurrent()).build();
+
+    public static Data dataD(DataRegister data) {
+        return data(data);
     }
-    public static DataRegister dataC(Data data){
-        return DataRegister.builder().id(data.id()).sensor(data.sensor()).data(data.data()).data1(data.data1()).data2(data.data2()).current(data.current()).build();
+
+    public static DataRegister dataC(Data data) {
+        return DataRegister.builder()
+                .id(data.id())
+                .sensor(data.sensor())
+                .fechaHora(data.fechaHora())
+                .temperatura(data.temperatura())
+                .humedad(data.humedad())
+                .presion(data.presion())
+                .vientoVelocidad(data.vientoVelocidad())
+                .vientoDireccion(data.vientoDireccion())
+                .lluvia(data.lluvia())
+                .calidad(data.calidad())
+                .build();
     }
 }
-

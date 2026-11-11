@@ -26,10 +26,14 @@ public class Scheduling {
                 .map(x -> Data.builder()
                         .id(null)
                         .sensor(x.sensor())
-                        .data(x.data())
-                        .data1(x.data1())
-                        .data2(x.data2())
-                        .current(x.current())
+                        .fechaHora(x.fechaHora())
+                        .temperatura(x.temperatura())
+                        .humedad(x.humedad())
+                        .presion(x.presion())
+                        .vientoVelocidad(x.vientoVelocidad())
+                        .vientoDireccion(x.vientoDireccion())
+                        .lluvia(x.lluvia())
+                        .calidad(x.calidad())
                         .build())
                 .toList();
 

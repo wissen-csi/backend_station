@@ -1,6 +1,6 @@
 package com.station.project.application.services;
 
-import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -33,16 +33,20 @@ public class DataService implements CreateData, UpdateData, DeleteData, SearchDa
     }
 
     @Override
-    public Data update(Sensor sensor, int data, int data1, int data2, LocalDate current, String id) {
-        ensureSensorExists(sensor);
+    public Data update(Data data, String id) {
+        ensureSensorExists(data.sensor());
         Data existing = repository.findById(UUID.fromString(id));
         return repository.save(Data.builder()
                 .id(existing.id())
-                .sensor(sensor)
-                .data(data)
-                .data1(data1)
-                .data2(data2)
-                .current(current)
+                .sensor(data.sensor())
+                .fechaHora(data.fechaHora())
+                .temperatura(data.temperatura())
+                .humedad(data.humedad())
+                .presion(data.presion())
+                .vientoVelocidad(data.vientoVelocidad())
+                .vientoDireccion(data.vientoDireccion())
+                .lluvia(data.lluvia())
+                .calidad(data.calidad())
                 .build());
     }
 
@@ -60,6 +64,11 @@ public class DataService implements CreateData, UpdateData, DeleteData, SearchDa
     @Override
     public List<Data> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public List<Data> findByRange(OffsetDateTime desde, OffsetDateTime hasta) {
+        return repository.findByRange(desde, hasta);
     }
 
     @Override
