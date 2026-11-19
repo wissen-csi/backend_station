@@ -32,7 +32,7 @@ public class MqttAclController {
             return ResponseEntity.ok().build(); 
         } else {
             log.warn("ACL Denegado para usuario: {} en tópico: {}", request.username(), request.topic());
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build(); // 403 Forbidden
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build(); 
         }
     }
 

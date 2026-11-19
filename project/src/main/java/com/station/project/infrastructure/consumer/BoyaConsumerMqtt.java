@@ -1,5 +1,7 @@
 package com.station.project.infrastructure.consumer;
 
+import java.util.UUID;
+
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.mqtt.support.MqttHeaders;
 import org.springframework.messaging.Message;
@@ -30,7 +32,7 @@ public class BoyaConsumerMqtt {
             
             log.info("Mensaje MQTT recibido en tópico [{}]: {}", topic, payload);
 
-            Data data = objectMapper.readValue(payload, Data.class);
+            Data data = ensureId(objectMapper.readValue(payload, Data.class));
             log.info("Objeto Data deserializado correctamente: {}", data);
 
             cacheDataServices.save(data);
@@ -39,5 +41,24 @@ public class BoyaConsumerMqtt {
         } catch (Exception e) {
             log.error("Error al deserializar o guardar el mensaje MQTT de la boya: {}", e.getMessage(), e);
         }
+    }
+
+    private static Data ensureId(Data data) {
+        if (data.id() != null) {
+            return data;
+        }
+
+        return Data.builder()
+                .id(UUID.randomUUID())
+                .sensor(data.sensor())
+                .windSpeed(data.windSpeed())
+                .windDirection(data.windDirection())
+                .precipitation(data.precipitation())
+                .temperature(data.temperature())
+                .altitude(data.altitude())
+                .humidity(data.humidity())
+                .pressure(data.pressure())
+                .measuredAt(data.measuredAt())
+                .build();
     }
 }

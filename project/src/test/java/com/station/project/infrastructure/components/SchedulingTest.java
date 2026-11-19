@@ -1,73 +1,53 @@
 package com.station.project.infrastructure.components;
 
 import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InOrder;
 
 import com.station.project.application.services.CacheDataServices;
-import com.station.project.application.services.DataService;
+import com.station.project.application.services.DataBatchPersistenceService;
 import com.station.project.domain.model.Data;
-import com.station.project.domain.model.Sensor;
 
 class SchedulingTest {
 
-    private CacheDataServices cacheDataServices;
-    private DataService dataService;
-    private Scheduling scheduling;
-
-    @BeforeEach
-    void setUp() {
-        cacheDataServices = mock(CacheDataServices.class);
-        dataService = mock(DataService.class);
-        scheduling = new Scheduling(cacheDataServices, dataService);
-    }
+    private final CacheDataServices cacheDataServices = mock(CacheDataServices.class);
+    private final DataBatchPersistenceService persistenceService =
+            mock(DataBatchPersistenceService.class);
+    private final Scheduling scheduling = new Scheduling(cacheDataServices, persistenceService);
 
     @Test
-    void savesCurrentAndClearsCacheAfterSuccessfulDatabaseSave() {
-        Sensor sensor = Sensor.builder().id("sensor-1").name("Sensor 1").build();
-        Data cachedData = Data.builder()
-                .id(UUID.randomUUID())
-                .sensor(sensor)
-                .data(1)
-                .data1(2)
-                .data2(3)
-                .current(LocalDate.now())
-                .build();
-        when(cacheDataServices.findAll()).thenReturn(List.of(cachedData));
+    void deletesOnlyBatchIdsAfterDatabasePersistenceSucceeds() {
+        UUID readingId = UUID.fromString("123e4567-e89b-12d3-a456-426614174000");
+        Data reading = Data.builder().id(readingId).build();
+        when(cacheDataServices.findAll()).thenReturn(List.of(reading));
 
         scheduling.saveRelationalDB();
 
-        Data expected = Data.builder()
-                .sensor(sensor)
-                .data(1)
-                .data1(2)
-                .data2(3)
-                .current(cachedData.current())
-                .build();
-        verify(dataService).saveAll(List.of(expected));
-        verify(cacheDataServices).deleteAll();
+        InOrder order = inOrder(persistenceService, cacheDataServices);
+        order.verify(persistenceService).persistBatch(List.of(reading));
+        order.verify(cacheDataServices).deleteById(readingId);
+        verify(cacheDataServices, never()).deleteAll();
     }
 
     @Test
-    void keepsCacheWhenDatabaseSaveFails() {
-        Sensor sensor = Sensor.builder().id("sensor-1").name("Sensor 1").build();
-        when(cacheDataServices.findAll()).thenReturn(List.of(Data.builder()
-                .sensor(sensor)
-                .current(LocalDate.now())
-                .build()));
-        doThrow(new RuntimeException("database failure")).when(dataService).saveAll(org.mockito.ArgumentMatchers.anyList());
+    void keepsRedisBatchWhenDatabasePersistenceFails() {
+        Data reading = Data.builder().id(UUID.randomUUID()).build();
+        when(cacheDataServices.findAll()).thenReturn(List.of(reading));
+        doThrow(new IllegalStateException("database unavailable"))
+                .when(persistenceService).persistBatch(List.of(reading));
 
         scheduling.saveRelationalDB();
 
+        verify(cacheDataServices, never()).deleteById(reading.id());
         verify(cacheDataServices, never()).deleteAll();
     }
 }

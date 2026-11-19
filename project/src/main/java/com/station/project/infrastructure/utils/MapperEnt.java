@@ -81,10 +81,14 @@ public class MapperEnt {
         return Data.builder()
                 .id(data.getId())
                 .sensor(data.getSensor())
-                .data(data.getData())
-                .data1(data.getData1())
-                .data2(data.getData2())
-                .current(data.getCurrent())
+                .windSpeed(data.getWindSpeed())
+                .windDirection(data.getWindDirection())
+                .precipitation(data.getPrecipitation())
+                .temperature(data.getTemperature())
+                .altitude(data.getAltitude())
+                .humidity(data.getHumidity())
+                .pressure(data.getPressure())
+                .measuredAt(data.getMeasuredAt())
                 .build();
     }
 
@@ -106,10 +110,14 @@ public class MapperEnt {
         return DataPersisted.builder()
                 .id(data.id())
                 .sensor(sensorPersisted(data.sensor()))
-                .data(data.data())
-                .data1(data.data1())
-                .data2(data.data2())
-                .current(data.current())
+                .windSpeed(data.windSpeed())
+                .windDirection(data.windDirection())
+                .precipitation(data.precipitation())
+                .temperature(data.temperature())
+                .altitude(data.altitude())
+                .humidity(data.humidity())
+                .pressure(data.pressure())
+                .measuredAt(data.measuredAt())
                 .build();
     }
 
@@ -117,17 +125,33 @@ public class MapperEnt {
         return Data.builder()
                 .id(data.getId())
                 .sensor(sensor(data.getSensor()))
-                .data(data.getData())
-                .data1(data.getData1())
-                .data2(data.getData2())
-                .current(data.getCurrent())
+                .windSpeed(data.getWindSpeed())
+                .windDirection(data.getWindDirection())
+                .precipitation(data.getPrecipitation())
+                .temperature(data.getTemperature())
+                .altitude(data.getAltitude())
+                .humidity(data.getHumidity())
+                .pressure(data.getPressure())
+                .measuredAt(data.getMeasuredAt())
                 .build();
     }
-    public static Data dataD(DataRegister data){
-        return Data.builder().id(data.getId()).sensor(data.getSensor()).data(data.getData()).data1(data.getData1()).data2(data.getData2()).current(data.getCurrent()).build();
+
+    public static Data dataD(DataRegister data) {
+        return MapperEnt.data(data);
     }
-    public static DataRegister dataC(Data data){
-        return DataRegister.builder().id(data.id()).sensor(data.sensor()).data(data.data()).data1(data.data1()).data2(data.data2()).current(data.current()).build();
+
+    public static DataRegister dataC(Data data) {
+        return DataRegister.builder()
+                .id(data.id())
+                .sensor(data.sensor())
+                .windSpeed(data.windSpeed())
+                .windDirection(data.windDirection())
+                .precipitation(data.precipitation())
+                .temperature(data.temperature())
+                .altitude(data.altitude())
+                .humidity(data.humidity())
+                .pressure(data.pressure())
+                .measuredAt(data.measuredAt())
+                .build();
     }
 }
-
