@@ -6,7 +6,6 @@ services:
     ports:
       - "8080:8080"
     environment:
-      MQTT_URL: tcp://mosquitto:1883
       SPRING_DATA_REDIS_HOST: redis
     depends_on:
       - mosquitto
