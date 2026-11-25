@@ -16,7 +16,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="css/styleRegistroDatos.css">
+    <link rel="stylesheet" href="../css/styleRegistroDatos.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -140,10 +140,12 @@
                     <div
                         class="flex items-center gap-space-xs px-space-xs py-space-2xs rounded-full bg-surface-container-high">
                         <span class="flex h-2 w-2 relative"><span
-                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span><span
-                                class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span></span><span
-                            class="font-label-sm text-label-sm font-medium text-tertiary tracking-wide uppercase">En
-                            línea / Transmitiendo en vivo (12s)</span>
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-outline opacity-50"
+                                id="mqtt-status-ping"></span><span
+                                class="relative inline-flex rounded-full h-2 w-2 bg-outline"
+                                id="mqtt-status-dot"></span></span><span
+                                class="font-label-sm text-label-sm font-medium text-on-surface-variant tracking-wide uppercase"
+                                id="mqtt-status-label" aria-live="polite">MQTT desconectado</span>
                     </div>
                 </div>
                 <div class="flex items-center gap-space-md">
@@ -176,6 +178,30 @@
         </header>
         <main class="w-full pt-header-height bg-surface min-h-screen px-space-lg py-space-lg">
             <div class="flex flex-col w-full gap-space-lg">
+                <section class="w-full bg-surface-container-low rounded-xl p-space-md shadow-md">
+                    <div class="flex flex-col gap-space-sm">
+                        <div class="flex flex-wrap items-center justify-between gap-space-sm">
+                            <div>
+                                <h2 class="font-headline-md text-headline-md text-on-surface">Conexión MQTT segura</h2>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">Broker WSS · tema sensores/data</p>
+                            </div>
+                            <form id="mqtt-connect-form" class="flex flex-wrap items-end gap-space-xs">
+                                <label class="font-label-sm text-on-surface-variant">Usuario
+                                    <input id="mqtt-username" class="block bg-surface-container-lowest text-on-surface px-space-xs py-space-2xs rounded-lg" value="front" autocomplete="username" required />
+                                </label>
+                                <label class="font-label-sm text-on-surface-variant">Contraseña
+                                    <input id="mqtt-password" class="block bg-surface-container-lowest text-on-surface px-space-xs py-space-2xs rounded-lg" type="password" autocomplete="current-password" required />
+                                </label>
+                                <button class="px-space-sm py-space-xs rounded-lg bg-primary-container text-on-primary font-body-sm font-semibold" type="submit">Conectar</button>
+                            </form>
+                        </div>
+                        <p id="mqtt-status-detail" class="font-body-sm text-on-surface-variant" role="status" aria-live="polite">Desconectado. Ingresa la contraseña del broker para conectar.</p>
+                        <div class="rounded-lg bg-surface-container-lowest p-space-sm">
+                            <span class="font-label-sm uppercase text-on-surface-variant">Último mensaje recibido</span>
+                            <pre id="mqtt-last-message" class="mt-space-2xs whitespace-pre-wrap break-all font-mono text-body-sm text-on-surface">Esperando mensajes en sensores/data…</pre>
+                        </div>
+                    </div>
+                </section>
                 <!-- Active Nav Switcher via DOM injection for App Shell Fidelity -->
                 <script>
                     (function syncSidebarActiveState() {
@@ -1134,6 +1160,8 @@
             </div>
         </main>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/mqtt@5.10.4/dist/mqtt.min.js"></script>
+    <script src="../javascript/mqttClient.js"></script>
 </body>
 
 </html>
